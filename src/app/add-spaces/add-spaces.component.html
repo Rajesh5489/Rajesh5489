@@ -1,0 +1,154 @@
+<div class="section">
+    <div class="container-fluid">
+        <div>
+            <button class="btn btn-color add-space" (click)="addNewSpace()">Add Space</button>
+        <h2 class="mx-4 py-2 border-btm">
+            Registration Form
+        </h2>
+    </div>
+        <form [formGroup]="addSpaces" class="m-4">
+            <div class="single-space" *ngFor="let row of groups; let i = index">
+                <div class="row">
+                    <div class="col-6 ">
+                        <h6>YOUR DETAILS</h6>
+                        <small class="text-muted">(xxx)</small>
+                        <div class="form-row  d-flex">
+                            <div class="input-group mx-3 w-75 d-inline-block">
+                                <label class="small text-muted">Type of spaces</label>
+                                <select id="state" class="form-control form-select w-100" formControlName="state">
+                                    <option *ngFor="let state of states" value="state">{{state}}</option>
+                                </select>
+                            </div>
+                            <div class="input-group mx-3 w-75 d-inline-block">
+                                <label class="small text-muted">Category</label>
+                                <select id="state" class="form-control form-select w-100" formControlName="state">
+                                    <option *ngFor="let state of states" value="state">{{state}}</option>
+                                </select>
+                            </div>
+                            <div class="input-group mx-3 w-75 d-inline-block">
+                                <label class="small text-muted">Area in sqft</label>
+                                <select id="state" class="form-control form-select w-100" formControlName="state">
+                                    <option *ngFor="let state of states" value="state">{{state}}</option>
+                                </select>
+                            </div>
+                            <div class="input-group mx-3 w-75 d-inline-block">
+                                <label class="small text-muted">Cost in Rs</label>
+                                <select id="state" class="form-control form-select w-100" formControlName="state">
+                                    <option *ngFor="let state of states" value="state">{{state}}</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+                        <h6>BANK DETAILS</h6>
+                        <small class="f-12  text-muted">(Your earnings will be transfered to this account)</small>
+                        <div class="form-row  d-flex">
+
+                            <div class="input-group mx-3 w-75 d-inline-block">
+                                <label class="small text-muted">Minimum booking period</label>
+                                <div class="mb-3 d-flex">
+                                    <select id="state" class="form-control form-select w-100" formControlName="state">
+                                        <option *ngFor="let state of states" value="state">{{state}}</option>
+                                    </select>
+                                    <select id="state" class="form-control form-select w-100" formControlName="state">
+                                        <option *ngFor="let state of states" value="state">{{state}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group mx-3 w-75 d-inline-block">
+                                <label class="small text-muted">Minimum pre-booking</label>
+                                <div class="mb-3 d-flex">
+                                    <select id="state" class="form-control form-select w-100" formControlName="state">
+                                        <option *ngFor="let state of states" value="state">{{state}}</option>
+                                    </select>
+                                    <select id="state" class="form-control form-select w-100" formControlName="state">
+                                        <option *ngFor="let state of states" value="state">{{state}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group mx-3 w-75 d-inline-block">
+                                <label class="small text-muted">Reserved Categories</label>
+                                <select id="state" class="form-control form-select w-100" formControlName="state">
+                                    <option *ngFor="let state of states" value="state">{{state}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label>In-store View</label>
+                        <div class="col-12 d-flex  ">
+                            <div class="col-1 m-2">
+                                <label>
+                                    <img src={{url}} height="50" width="50" class="border border-1 rounded">
+                                    <input id="fileUpload" type="file" (change)="onSelectFile($event)" class="d-none">
+                                </label>
+                            </div>
+                            <div class="col-1 m-2">
+                                <label>
+                                    <img src={{url}} height="50" width="50" class="border border-1 rounded">
+                                    <input id="fileUpload" type="file" (change)="onSelectFile($event)" class="d-none">
+                                </label>
+                            </div>
+                            <div class="col-1 m-2">
+                                <label>
+                                    <img src={{url}} height="50" width="50" class="border border-1 rounded">
+                                    <input id="fileUpload" type="file" (change)="onSelectFile($event)" class="d-none">
+                                </label>
+                            </div>
+                            <div class="col-1 m-2">
+                                <label>
+                                    <img src={{url}} height="50" width="50" class="border border-1 rounded">
+                                    <input id="fileUpload" type="file" (change)="onSelectFile($event)" class="d-none">
+                                </label>
+                            </div>
+                            <div class="col-1 m-2">
+                                <label>
+                                    <img src={{url}} height="50" width="50" class="border border-1 rounded">
+                                    <input id="fileUpload" type="file" (change)="onSelectFile($event)" class="d-none">
+                                </label>
+                            </div>
+                            <div class="col-1 m-2">
+                                <label>
+                                    <img src={{url}} height="50" width="50" class="border border-1 rounded">
+                                    <input id="fileUpload" type="file" (change)="onSelectFile($event)" class="d-none">
+                                </label>
+                            </div>
+                            <div class="col-1 m-2">
+                                <label>
+                                    <img src={{url}} height="50" width="50" class="border border-1 rounded">
+                                    <input id="fileUpload" type="file" (change)="onSelectFile($event)" class="d-none">
+                                </label>
+                            </div>
+                            <div class="col-1 m-2">
+                                <label>
+                                    <img src={{url}} height="50" width="50" class="border border-1 rounded">
+                                    <input id="fileUpload" type="file" (change)="onSelectFile($event)" class="d-none">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-4 bg-grey">
+
+                                <label>statusby</label>
+                                <span>unlisted</span>
+                            </div>
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <button class="btn btn-color" (click)="removeSpace(i)">X</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-color" type=submit>Add Store Details</button>
+        </form>
+    </div>
+</div>
