@@ -15,14 +15,14 @@
                         <div class="form-row  d-flex">
                             <div class="input-group mx-3 w-75 d-inline-block">
                                 <label class="small text-muted">Type of spaces</label>
-                                <select id="state" class="form-control form-select w-100" formControlName="state">
-                                    <option *ngFor="let state of states" value="state">{{state}}</option>
+                                <select id="state" class="form-control form-select w-100" formControlName="shelf">
+                                    <option *ngFor="let shelf of shelfTypes" value="shelf.id">{{shelf.name}}</option>
                                 </select>
                             </div>
                             <div class="input-group mx-3 w-75 d-inline-block">
                                 <label class="small text-muted">Category</label>
-                                <select id="state" class="form-control form-select w-100" formControlName="state">
-                                    <option *ngFor="let state of states" value="state">{{state}}</option>
+                                <select id="state" class="form-control form-select w-100" formControlName="category">
+                                    <option *ngFor="let category of productCategories" value="category.id">{{category.name}}</option>
                                 </select>
                             </div>
                             <div class="input-group mx-3 w-75 d-inline-block">

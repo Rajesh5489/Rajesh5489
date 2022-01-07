@@ -12,11 +12,11 @@
                     <div class="form-group">
 
                         <div class="input-group mb-3">
-                            <input formControlName="bussinessName" type="text" class="form-control"
+                            <input formControlName="businessName" type="text" class="form-control"
                                 placeholder="Bussiness Name">
                         </div>
                         <div class="input-group mb-3">
-                            <input formControlName="ownersName" type="text" class="form-control"
+                            <input formControlName="primaryContactName" type="text" class="form-control"
                                 placeholder="Owners Name">
                         </div>
                         <div class="input-group mb-3">
@@ -32,11 +32,11 @@
                                 placeholder="Secondary Contact Number">
                         </div>
                         <div class="input-group mb-3">
-                            <input formControlName="secondaryEmailId" type="text" class="form-control"
+                            <input formControlName="secondaryEmailAddress" type="text" class="form-control"
                                 placeholder="Secondary Email Id">
                         </div>
                         <div class="input-group mb-3">
-                            <input formControlName="pANNo" type="text" class="form-control" placeholder="PAN No">
+                            <input formControlName="pan" type="text" class="form-control" placeholder="PAN No">
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-color" (click)="addStoreDetails()" type=submit>Add Store Details</button>
+                <button class="btn btn-color" (click)="completeRegistration()" type=submit>Add Store Details</button>
         </form>
     </div>
 </div>

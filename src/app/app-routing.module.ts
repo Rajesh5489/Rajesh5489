@@ -4,13 +4,13 @@ import { AddSpacesComponent } from './add-spaces/add-spaces.component';
 import { CountersComponent } from './counters/counters.component';
 import { StoreDetailsComponent } from './store-details/store-details.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { HomepageComponent} from './homepage/homepage.component'
+import { HomepageComponent } from './homepage/homepage.component'
 const routes: Routes = [
   { path: '', component: UserDetailsComponent },
   { path: 'storedetails', component: StoreDetailsComponent },
   { path: 'addSpaces', component: AddSpacesComponent },
   { path: 'counters', component: CountersComponent },
-  {path:'homePage',component:HomepageComponent}
+  { path: 'homePage', component: HomepageComponent }
 
 ];
 
@@ -18,6 +18,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
-  
+export class AppRoutingModule {
+
 }
