@@ -17,6 +17,8 @@ import { BsDatepickerModule, BsDatepickerConfig } from 'ngx-bootstrap/datepicker
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { AppInitService } from './app-init.service';
+import { BankDetailsComponent } from './bank-details/bank-details.component';
+import { StoreListComponent } from './store-list/store-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { AppInitService } from './app-init.service';
     SearchComponent,
     MapsComponent,
     OverviewComponent,
-    HeaderComponent
+    HeaderComponent,
+    BankDetailsComponent,
+    StoreListComponent
   ],
   imports: [
     BrowserModule,
