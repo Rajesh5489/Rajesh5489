@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { retry, catchError } from 'rxjs/operators';
 import { AppStateService } from '../shared/appStateService';
-import { RetailerCompanyProfileRequest } from '../Models/RetailerCompanyProfileRequest';
 
 @Injectable({
   providedIn: 'root'

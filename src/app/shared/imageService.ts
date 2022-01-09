@@ -11,7 +11,14 @@ export class ImageService {
     constructor(private http: HttpClient, public appStateService: AppStateService) {
         this.baseUrl = this.appStateService.getBaseUrl();
     }
-
+    getImage(retailerId: number, storeId: number, shelfId: number, storeImageId: number, sequenceId: number, successCallback: Function, errorCallback: Function) {
+        return this.http
+            .post(this.baseUrl + 'Image/GetImage/', retailerId + '/' + storeId + '/' + shelfId + '/' + storeImageId + '/' + sequenceId)
+            .subscribe(
+                response => successCallback(response),
+                error => errorCallback(error)
+            );
+    }
     uploadNewmage(retailerImage: RetailerStoreDetailsImageRequest, successCallback: Function, errorCallback: Function) {
         return this.http
             .post(this.baseUrl + 'Image/UploadNewmage', retailerImage).subscribe(

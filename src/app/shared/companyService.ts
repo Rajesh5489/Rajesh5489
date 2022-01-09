@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { NewRetailerCompanyProfileRequest } from "../Models/NewRetailerCompanyProfileRequest";
-import { RetailerCompanyProfileRequest } from "../Models/RetailerCompanyProfileRequest";
+import { NewRetailerProfileRequest } from "../Models/NewRetailerProfileRequest";
+import { RetailerProfileRequest } from "../Models/RetailerProfileRequest";
 import { AppStateService } from "./appStateService";
 
 @Injectable({
@@ -13,17 +13,25 @@ export class CompanyService {
         this.baseUrl = this.appStateService.getBaseUrl();
     }
 
-    createRetailerCompanyProfile(retailerCompanyProfile: NewRetailerCompanyProfileRequest, successCallback: Function, errorCallback: Function) {
+    getRetailerProfile(retailerId: number, successCallback: Function, errorCallback: Function) {
         return this.http
-            .post(this.baseUrl + 'Company/CreateRetailerCompanyProfile', retailerCompanyProfile).subscribe(
+            .get(this.baseUrl + 'Company/GetRetailerProfile/' + retailerId).subscribe(
                 response => successCallback(response),
                 error => errorCallback(error)
             );
     }
 
-    updateRetailerCompanyProfile(retailerCompanyProfile: RetailerCompanyProfileRequest, retailerId: number, successCallback: Function, errorCallback: Function) {
+    createRetailerProfile(retailerProfile: NewRetailerProfileRequest, successCallback: Function, errorCallback: Function) {
         return this.http
-            .put(this.baseUrl + 'Company/UpdateRetailerCompanyProfile/' + retailerId, retailerCompanyProfile).subscribe(
+            .post(this.baseUrl + 'Company/CreateRetailerProfile', retailerProfile).subscribe(
+                response => successCallback(response),
+                error => errorCallback(error)
+            );
+    }
+
+    updateRetailerProfile(retailerProfile: RetailerProfileRequest, retailerId: number, successCallback: Function, errorCallback: Function) {
+        return this.http
+            .put(this.baseUrl + 'Company/UpdateRetailerProfile/' + retailerId, retailerProfile).subscribe(
                 response => successCallback(response),
                 error => errorCallback(error)
             );
@@ -31,7 +39,7 @@ export class CompanyService {
 
     deleteRetailerApprovalBookingsStatus(retailerId: number, successCallback: Function, errorCallback: Function) {
         return this.http
-            .delete(this.baseUrl + 'Company/DeleteRetailerCompanyProfile/' +
+            .delete(this.baseUrl + 'Company/DeleteRetailerProfile/' +
                 retailerId).subscribe(
                     response => successCallback(response),
                     error => errorCallback(error)

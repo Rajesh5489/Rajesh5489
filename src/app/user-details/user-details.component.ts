@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NewRetailerCompanyProfileRequest } from '../Models/NewRetailerCompanyProfileRequest';
+import { NewRetailerProfileRequest } from '../Models/NewRetailerProfileRequest';
 import { AppStateService } from '../shared/appStateService';
 import { CompanyService } from '../shared/companyService';
 
@@ -33,11 +33,11 @@ export class UserDetailsComponent {
     //this.addStoreDetails();
   }
   completeRegistration() {
-    var retailerDetails = new NewRetailerCompanyProfileRequest();
+    var retailerDetails = new NewRetailerProfileRequest();
     retailerDetails = this.userDetailsForm.getRawValue();
     retailerDetails.createdBy = "manju";
     retailerDetails.createdDate = new Date().toISOString();
-    this.companyService.createRetailerCompanyProfile(retailerDetails,
+    this.companyService.createRetailerProfile(retailerDetails,
       (res: any) => {
         if (res) {
           this.appStateService.retailerId = res.retailerId;

@@ -1,5 +1,5 @@
-export class NewRetailerCompanyProfileRequest {
-    registeredName!: string;
+export class RetailerProfileRequest {
+    retailerId!: string;
     businessName!: string;
     primaryContactName!: string;
     primaryContactNumber!: string;
@@ -7,7 +7,6 @@ export class NewRetailerCompanyProfileRequest {
     secondaryContactName!: string;
     secondaryContactNumber!: string;
     secondaryEmailAddress!: string;
-    pan!: string;
-    createdDate!: string;
-    createdBy!: string;
+    modifiedDate!: string;
+    modifiedBy!: string;
 }

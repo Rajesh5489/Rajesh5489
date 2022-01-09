@@ -1,3 +1,5 @@
+import { ImagesDetails } from "./ImageDetails";
+
 export class StoreSummary {
     storeId!: number;
     storeName!: string;
@@ -15,12 +17,7 @@ export class StoreSummary {
     areaInSft!: number;
     projectedFootfallPerMonth!: number;
     estimatedSalesPerMonth!: number;
-    storeImagesDetails!: StoreImagesDetail[];
+    storeImagesDetails!: ImagesDetails[];
     createdDate!: Date;
     createdBy!: string;
-}
-
-export class StoreImagesDetail {
-    imageType!: string;
-    imageUrl!: string;
 }

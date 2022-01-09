@@ -1,8 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { NewShelfRequest } from "../Models/NewShelfRequest";
 import { NewStoreRequest } from "../Models/NewStoreRequest";
-import { ShelfRequest } from "../Models/ShelfRequest";
 import { StoreRequest } from "../Models/StoreRequest";
 import { AppStateService } from "./appStateService";
 
@@ -45,38 +43,6 @@ export class RetailerStoreService {
             response => successCallback(response),
             error => errorCallback(error)
         );
-    }
-    createShelf(shelfDetails: NewShelfRequest, successCallback: Function, errorCallback: Function) {
-        return this.http
-            .post(this.baseUrl + 'RetailerStore/CreateShelf',
-                shelfDetails).subscribe(
-                    response => successCallback(response),
-                    error => errorCallback(error)
-                );
-    }
-    updateShelf(shelfDetails: ShelfRequest, retailerId: number, storeId: number, shelfId: number, successCallback: Function, errorCallback: Function) {
-        return this.http
-            .put(this.baseUrl + 'RetailerStore/UpdateShelf/' + retailerId + '/' + storeId + '/' + shelfId,
-                shelfDetails).subscribe(
-                    response => successCallback(response),
-                    error => errorCallback(error)
-                );
-    }
-    blockShelf(retailerId: number, storeId: number, shelfId: number, successCallback: Function, errorCallback: Function) {
-        return this.http
-            .put(this.baseUrl + 'RetailerStore/BlockShelf/' + retailerId + '/' + storeId + '/' + shelfId
-                , null).subscribe(
-                    response => successCallback(response),
-                    error => errorCallback(error)
-                );
-    }
-    deleteShelf(retailerId: number, storeId: number, shelfId: number, successCallback: Function, errorCallback: Function) {
-        return this.http
-            .delete(this.baseUrl + 'RetailerStore/DeleteShelf/' + retailerId + '/' + storeId + '/' + shelfId
-            ).subscribe(
-                response => successCallback(response),
-                error => errorCallback(error)
-            );
     }
     getStoreShelvesDetails(retailerId: number, storeId: number, successCallback: Function, errorCallback: Function) {
         return this.http
