@@ -19,6 +19,7 @@ import { AppInitService } from './app-init.service';
 import { BankDetailsComponent } from './bank-details/bank-details.component';
 import { StoreListComponent } from './store-list/store-list.component';
 import { StoreDetailsComponent } from './store-details/store-details.component';
+import { RetailerRejectedComponent } from './retailer-rejected/retailer-rejected.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { StoreDetailsComponent } from './store-details/store-details.component';
     OverviewComponent,
     HeaderComponent,
     BankDetailsComponent,
-    StoreListComponent
+    StoreListComponent,
+    RetailerRejectedComponent
   ],
   imports: [
     BrowserModule,
