@@ -34,4 +34,11 @@ export class ImageService {
                 error => errorCallback(error)
             );
     }
+    deleteImage(retailerId: number, storeId: number, shelfId: number, storeImageId: number, sequenceId: number, successCallback: Function, errorCallback: Function) {
+        return this.http
+            .delete(this.baseUrl + 'Image/DeleteImage/' + retailerId + '/' + storeId + '/' + shelfId + '/' + storeImageId + '/' + sequenceId).subscribe(
+                response => successCallback(response),
+                error => errorCallback(error)
+            );
+    }
 }

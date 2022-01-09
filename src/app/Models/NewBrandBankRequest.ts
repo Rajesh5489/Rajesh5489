@@ -1,6 +1,5 @@
-export class RetailerBankRequest {
-    bankId!: number;
-    retailerId!: number;
+export class NewBrandBankRequest {
+    brandId!: number;
     bankName!: string;
     branch!: string;
     accountNumber!: string;

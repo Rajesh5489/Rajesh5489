@@ -19,6 +19,6 @@ export class StoreSummary {
     projectedFootfallPerMonth!: number;
     estimatedSalesPerMonth!: number;
     storeImagesDetails!: ImageDetails[];
-    createdDate!: Date;
+    createdDate!: string;
     createdBy!: string;
 }

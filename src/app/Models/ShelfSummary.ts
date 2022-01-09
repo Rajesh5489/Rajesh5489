@@ -15,6 +15,6 @@ export class ShelfSummary {
     preBookingPeriodInDays!: number;
     isActive!: boolean;
     shelfImagesDetails!: ImageDetails[];
-    createdDate!: Date;
+    createdDate!: string;
     createdBy!: string;
 }
