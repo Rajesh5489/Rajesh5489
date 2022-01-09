@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BrandProfileRequest } from "../Models/BrandProfilerequest";
+import { BrandProfileRequest } from "../Models/BrandProfileRequest";
 import { NewBrandProfileRequest } from "../Models/NewBrandProfileRequest";
 import { NewRetailerProfileRequest } from "../Models/NewRetailerProfileRequest";
 import { RetailerProfileRequest } from "../Models/RetailerProfileRequest";
