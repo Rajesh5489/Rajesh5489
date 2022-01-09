@@ -1,4 +1,4 @@
-import { ImagesDetails } from "./ImageDetails";
+import { ImageDetails } from "./ImageDetails";
 
 export class ShelfSummary {
     shelfId!: number;
@@ -14,7 +14,7 @@ export class ShelfSummary {
     minimumBookingPeriodInDays!: number;
     preBookingPeriodInDays!: number;
     isActive!: boolean;
-    shelfImagesDetails!: ImagesDetails[];
+    shelfImagesDetails!: ImageDetails[];
     createdDate!: Date;
     createdBy!: string;
 }

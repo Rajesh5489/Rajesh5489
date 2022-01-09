@@ -1,5 +1,5 @@
 
-export class ImagesDetails {
+export class ImageDetails {
     imageType!: string;
     imageUrl!: string;
 }
