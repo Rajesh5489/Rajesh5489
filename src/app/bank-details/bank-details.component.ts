@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppStateService } from '../shared/appStateService';
+import { RetailerStoreService } from '../shared/retailerStoreService';
 
 @Component({
   selector: 'app-bank-details',
@@ -8,10 +11,24 @@ import { Component, OnInit } from '@angular/core';
 export class BankDetailsComponent implements OnInit {
   states: any = ["telangana", "AndhraPradesh", "Orissa"];
 
-  constructor() { }
+  constructor(private router: Router, private storeService: RetailerStoreService,
+    private appStateService: AppStateService) { }
 
   ngOnInit(): void {
 
   }
-
+  addStore() {
+    this.storeService.getAllStores(this.appStateService.retailerId,
+      (res: any) => {
+        this.appStateService.storeList = res;
+        if (res.length != 0) {
+          this.router.navigate(["/storelist"]);
+        }
+        else {
+          this.router.navigate(["/storedetails"]);
+        }
+      },
+      (err: any) => { })
+    this.router.navigate(["/storedetails"]);
+  }
 }

@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StoreDetailsComponent } from './store-details/store-details.component';
 import { AddSpacesComponent } from './add-spaces/add-spaces.component';
 import { CountersComponent } from './counters/counters.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -19,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { AppInitService } from './app-init.service';
 import { BankDetailsComponent } from './bank-details/bank-details.component';
 import { StoreListComponent } from './store-list/store-list.component';
+import { StoreDetailsComponent } from './store-details/store-details.component';
 
 @NgModule({
   declarations: [

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-store-list',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
   }
-
+  editSpace() {
+    this.router.navigate(["/addSpaces"]);
+  }
+  editBookings() {
+    this.router.navigate(["/addSpaces"]);
+  }
+  editStore() {
+    this.router.navigate(["/storedetails"], {queryParams: {storeId: null}});
+  }
 }

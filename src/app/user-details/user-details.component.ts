@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RetailerCompanyProfileRequest } from '../Models/RetailerCompanyProfileRequest';
-import { UserDetailsService } from './user-details.service';
+import { NewRetailerCompanyProfileRequest } from '../Models/NewRetailerCompanyProfileRequest';
+import { AppStateService } from '../shared/appStateService';
+import { CompanyService } from '../shared/companyService';
 
 @Component({
   selector: 'app-user-details',
@@ -12,45 +13,40 @@ import { UserDetailsService } from './user-details.service';
 export class UserDetailsComponent {
   banks: any = ["hdfc", "axis", "sbi"];
   userDetailsForm = new FormGroup({
+    registeredName: new FormControl(''),
     businessName: new FormControl(''),
     primaryContactName: new FormControl(''),
     primaryContactNumber: new FormControl(''),
+    primaryEmailAddress: new FormControl(''),
     secondaryContactName: new FormControl(''),
     secondaryContactNumber: new FormControl(''),
     secondaryEmailAddress: new FormControl(''),
-    pan: new FormControl(''),
-    // bankName: new FormControl(''),
-    // branch: new FormControl(''),
-    // accountNumber: new FormControl(''),
-    // ifscCode: new FormControl(''),
-    // upiId: new FormControl(''),
+    pan: new FormControl('')
   });
   constructor(
-    private route: Router,
-    public UserDetailsService: UserDetailsService
+    private router: Router,
+    private companyService: CompanyService,
+    public appStateService: AppStateService
   ) { }
 
   ngOnInit() {
     //this.addStoreDetails();
   }
   completeRegistration() {
-    var retailerDetails = new RetailerCompanyProfileRequest();
+    var retailerDetails = new NewRetailerCompanyProfileRequest();
     retailerDetails = this.userDetailsForm.getRawValue();
-    retailerDetails.primaryEmailAddress = "manjusha@gmail.com";
-    retailerDetails.registeredName = "PrimeSHelf";
     retailerDetails.createdBy = "manju";
     retailerDetails.createdDate = new Date().toISOString();
-    retailerDetails.modifiedBy = "manju";
-    retailerDetails.modifiedDate = new Date().toISOString();
-    this.UserDetailsService.createRegistration(retailerDetails,
+    this.companyService.createRetailerCompanyProfile(retailerDetails,
       (res: any) => {
         if (res) {
-          this.route.navigate(["/storedetails"]);
+          this.appStateService.retailerId = res.retailerId;
+          this.router.navigate(["/bankdetails"]);
         }
       },
-      (err: any) => { 
-        this.route.navigate(["/storedetails"]);
+      (err: any) => {
+        this.router.navigate(["/bankdetails"]);
       });
-      this.route.navigate(["/storedetails"]);
+    this.router.navigate(["/bankdetails"]);
   }
 }

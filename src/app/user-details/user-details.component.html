@@ -10,7 +10,10 @@
                     <small class="text-muted">(xxx)</small>
 
                     <div class="form-group">
-
+                        <div class="input-group mb-3">
+                            <input formControlName="registeredName" type="text" class="form-control"
+                                placeholder="Registered Name">
+                        </div>
                         <div class="input-group mb-3">
                             <input formControlName="businessName" type="text" class="form-control"
                                 placeholder="Bussiness Name">
@@ -22,6 +25,10 @@
                         <div class="input-group mb-3">
                             <input formControlName="primaryContactNumber" type="text" class="form-control"
                                 placeholder="Primary Contact Number">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input formControlName="primaryEmailAddress" type="text" class="form-control"
+                                placeholder="Primary email id">
                         </div>
                         <div class="input-group mb-3">
                             <input formControlName="secondaryContactName" type="text" class="form-control"
@@ -41,7 +48,7 @@
                     </div>
 
                 </div>
-                <div class="col-4">
+                <!-- <div class="col-4">
                     <h6>BANK DETAILS</h6>
                     <small class="f-12 text-muted">(Your earnings will be transfered to this account)</small>
                     <div class="form-group">
@@ -71,9 +78,9 @@
                                 <input formControlName="upiId" type="text" class="form-control" placeholder="UPI Id">
                             </div>
                         </div>
-                    </div>
-                </div>
-                <button class="btn btn-color" (click)="completeRegistration()" type=submit>Add Store Details</button>
+                    </div> -->
+            </div>
+            <button class="btn btn-color" (click)="completeRegistration()" type=submit>Complete Registration</button>
         </form>
     </div>
 </div>
