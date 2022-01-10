@@ -11,18 +11,16 @@ import { RetailerStoreService } from '../shared/retailerStoreService';
   styleUrls: ['./store-details.component.scss']
 })
 export class StoreDetailsComponent {
-  storeId: any;
+  storeId!: any;
   constructor(private router: Router,
     private storeService: RetailerStoreService,
     private route: ActivatedRoute,
     private appStateService: AppStateService) { }
   states: any = ["telangana", "AndhraPradesh", "Orissa"];
   areaInSfts: any = ["1000sft", "2000sft", "300sft"];
-  projectedFootballs: any = ["Projected Football per Month", "Projected Football per Month2", "Projected Football per Month3"]
-  estimatedFootballs: any = ["Estimated Football per Month", "Estimated Football per Month", "Estimated Football per Month"]
-  url = "./assets/plus.png"
+  projectedFootfalls: any = [10, 20, 30]
+  estimatedFootfalls: any = [10, 20, 30]
   storeForm = new FormGroup({
-    retailerId: new FormControl(''),
     storeName: new FormControl(''),
     fullAddress: new FormControl(''),
     location: new FormControl(''),
@@ -38,14 +36,14 @@ export class StoreDetailsComponent {
   });
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.storeId = params.storeId;
+      this.storeId = params.storeId ?? null;
       if (this.storeId) {
         this.initialiseForm();
       }
     });
   }
   initialiseForm() {
-    var storeInfo = this.appStateService.storeList.find(x => x.storeId == this.storeId);
+    var storeInfo = this.appStateService.storeList.find((x: any) => x.storeId == this.storeId);
     this.storeForm.patchValue({
       storeName: storeInfo?.storeName,
       fullAddress: storeInfo?.fullAddress,
@@ -61,25 +59,23 @@ export class StoreDetailsComponent {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {
-        this.url = event.target.result;
       }
     }
   }
-  
+
   saveStoreDetails() {
     if (!this.storeId) {
       let storeDetails = this.getStoreDetails();
       this.storeService.createStore(storeDetails,
         (res: any) => {
           if (res) {
-            this.router.navigate(["/storelist"]);
+            this.storeId = res.storeId;
           }
         },
         (err: any) => {
-          this.router.navigate(["/storelist"]);
         });
       this.router.navigate(["/storelist"]);
-    } else {      
+    } else {
       let storeDetails = new StoreRequest();
       this.storeService.updateStore(storeDetails, this.appStateService.retailerId, this.storeId,
         (res: any) => {
@@ -88,13 +84,30 @@ export class StoreDetailsComponent {
           }
         },
         (err: any) => {
-          this.router.navigate(["/storelist"]);
         });
+        this.router.navigate(["/storelist"]);
     }
   }
 
   getStoreDetails() {
     var storeDetails = new NewStoreRequest();
+    storeDetails.retailerId = this.appStateService.retailerId;
+    storeDetails.storeName = this.storeForm.value.storeName;
+    storeDetails.fullAddress = this.storeForm.value.fullAddress;
+    storeDetails.country = this.storeForm.value.country;
+    storeDetails.state = this.storeForm.value.state;
+    storeDetails.city = this.storeForm.value.city;
+    storeDetails.location = this.storeForm.value.location;
+    storeDetails.pinCode = this.storeForm.value.pinCode;
+    storeDetails.latitude = this.storeForm.value.latitude;
+    storeDetails.longitude = this.storeForm.value.longitude;
+    storeDetails.areaInSft = this.storeForm.value.areaInSft;
+    storeDetails.gstin = this.storeForm.value.retailerId;
+    storeDetails.projectedFootfallPerMonth = this.storeForm.value.projectedFootfallPerMonth;
+    storeDetails.estimatedSalesPerMonth = this.storeForm.value.estimatedSalesPerMonth;
+    storeDetails.createdDate = new Date().toISOString();
+    storeDetails.createdBy = "manju";
+
     return storeDetails;
   }
 }

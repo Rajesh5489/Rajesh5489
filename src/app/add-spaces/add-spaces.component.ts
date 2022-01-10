@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormControlName, FormArray } from '@angular/forms';
-import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ImageDetails } from '../Models/ImageDetails';
+import { NewShelfRequest } from '../Models/NewShelfRequest';
+import { RetailerStoreDetailsImageRequest } from '../Models/RetailerStoreDetailsImageRequest';
+import { ShelfRequest } from '../Models/ShelfRequest';
+import { ShelfSummary } from '../Models/ShelfSummary';
+import { AppStateService } from '../shared/appStateService';
+import { RetailerStoreService } from '../shared/retailerStoreService';
+import { ShelfService } from '../shared/shelfService';
 import { AddSpacesService } from './add-spacesService';
 @Component({
   selector: 'app-add-spaces',
@@ -10,19 +19,45 @@ import { AddSpacesService } from './add-spacesService';
 export class AddSpacesComponent {
   states: any = ["telangana", "AndhraPradesh", "Orissa"];
   url = "./assets/plus.png"
+  images!: Array<RetailerStoreDetailsImageRequest>;
   spaceFormArray: Array<FormGroup> = [];
   shelfTypes: any;
   productCategories: any;
   formBuilder: any;
+  shelfCount: number = 0;
+  isAddMoreDisable!: boolean;
+  storeId!: any;
+  shelves!: Array<ShelfSummary>;
 
   constructor(
     private router: Router,
-    public addSpacesService: AddSpacesService
+    private addSpacesService: AddSpacesService,
+    private shelfService: ShelfService,
+    private domSanitizer: DomSanitizer,
+    private appStateService: AppStateService,
+    private storeService: RetailerStoreService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.getShelfTypes();
-    this.getProductCategories();
+    this.route.queryParams.subscribe(params => {
+      this.storeId = params.storeId;
+      this.getShelfTypes();
+      this.getProductCategories();
+      this.getShelvesDetails();
+    });
+  }
+  getShelvesDetails() {
+    this.storeService.getStoreShelvesDetails(this.appStateService.retailerId,
+      this.storeId,
+      (res: any) => {
+        this.shelves = res;
+        res.forEach((element: any) => {
+          this.spaceFormArray.push(this.intialiseItem(element));
+        });
+      },
+      (err: any) => { }
+    )
   }
 
   getShelfTypes() {
@@ -42,37 +77,163 @@ export class AddSpacesComponent {
   }
 
   onSelectFile(event: any) {
-    if (event.target.files) {
+    let file = event.target.files[0];
+    if (file) {
       var reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (event: any) => {
-        this.url = event.target.result;
-      }
+      reader.onload = this._handleReaderLoaded.bind(
+        this,
+        file.name
+      );
+      reader.readAsBinaryString(file);
     }
   }
 
+  _handleReaderLoaded(filename: any, readerEvt: any) {
+    let base64String = btoa(readerEvt.target.result);
+    this.setImgFromBinary(base64String, filename);
+  }
+  setImgFromBinary(base64String: any, filename: any) {
+    var image = new ImageDetails;
+    image.imageUrl = base64String;
+    var image1 = this.domSanitizer.bypassSecurityTrustUrl(
+      "data:image/;base64, " + base64String
+    );
+  }
+
   addNewSpace() {
+    this.isAddMoreDisable = true;
     this.spaceFormArray.push(
       this.createItem());
   }
 
-  removeSpace(space: any, index: any) {
+  deleteSpace(space: any, index: any) {
+    this.shelfService.deleteShelf(
+      this.appStateService.retailerId,
+      this.storeId,
+      space.value.shelfId,
+      (res: any) => { this.deleteSuccessCallback(space, index); },
+      (err: any) => { }
+    )
+    this.deleteSuccessCallback(space, index);
+  }
+  deleteSuccessCallback(space: any, index: any) {
     let i = this.spaceFormArray.findIndex(
-      x => x.value.shelfId === space.value.shelfId
+      x => x.value.rowNumber === space.value.rowNumber
     );
     this.spaceFormArray.splice(i, 1);
   }
 
-  saveSpaces() {
+  editSpace(space: any, index: any) {
+    space.patchValue({
+      isEditClicked: true
+    });
+    this.isAddMoreDisable = true;
+  }
+
+  saveSpace(space: any, index: any) {
+    if (space.value.shelfId) {
+      let shelf = new ShelfRequest();
+      shelf.shelfId = space.value.shelfId;
+      shelf.modifiedDate = new Date().toISOString();
+      shelf.modifiedBy = "manju";
+      shelf.isActive = true;
+      this.buildShelfRequest(shelf, space);
+      this.shelfService.updateShelf(
+        shelf,
+        this.appStateService.retailerId,
+        this.storeId,
+        space.value.shelfId,
+        (res: any) => {
+          this.saveSuccessCallback(space, res);
+        },
+        (err: any) => { }
+      )
+    }
+    else {
+      let shelf = new NewShelfRequest();
+      shelf.retailerId = this.appStateService.retailerId;
+      shelf.storeId = this.storeId;
+      shelf.createdDate = new Date().toISOString();
+      shelf.createdBy = "manju";
+      this.buildShelfRequest(shelf, space);
+      this.shelfService.createShelf(
+        shelf,
+        (res: any) => {
+          space.patchValue({
+            shelfId: res.shelfId,
+            isEditClicked: false
+          });
+          this.isAddMoreDisable = false;
+        },
+        (err: any) => { }
+      )
+      space.patchValue({
+        isEditClicked: false
+      });
+      this.isAddMoreDisable = false;
+    }
+  }
+
+  private buildShelfRequest(shelf: any, space: any) {
+    shelf.shelfTypeId = space.value.shelfTypeId;
+    shelf.rowNumber = space.value.rowNumber;
+    shelf.customName = space.value.customName;
+    shelf.currentCategory = space.value.currentCategory;
+    shelf.prohibitedCategories = space.value.prohibitedCategories;
+    shelf.areaInSft = space.value.areaInSft;
+    shelf.costPerSft = space.value.costPerSft;
+    shelf.minimumBookingPeriodInDays = space.value.minimumBookingPeriodInDays;
+    shelf.preBookingPeriodInDays = space.value.preBookingPeriodInDays;
+  }
+
+  saveSuccessCallback(space: any, res: any) {
+    space.patchValue({
+      shelfId: res.shelfId,
+      isEditClicked: false
+    });
+    this.isAddMoreDisable = false;
+  }
+
+  saveAllSpaces() {
     this.router.navigate(["/storelist"]);
   }
 
   createItem(): FormGroup {
     return new FormGroup({
-      shelfId: new FormControl(1),
-      shelf: new FormControl(''),
-      category: new FormControl(''),
-      state: new FormControl('')
+      rowNumber: new FormControl(this.shelfCount++),
+      shelfId: new FormControl(''),
+      shelfTypeId: new FormControl(''),
+      customName: new FormControl(''),
+      currentCategory: new FormControl(''),
+      prohibitedCategories: new FormControl(''),
+      areaInSft: new FormControl(''),
+      costPerSft: new FormControl(''),
+      minimumBookingPeriodInDays: new FormControl(''),
+      preBookingPeriodInDays: new FormControl(''),
+      isEditClicked: new FormControl(true)
     });
+  }
+
+  intialiseItem(element: ShelfSummary): FormGroup {
+    return new FormGroup({
+      rowNumber: new FormControl(element.rowNumber),
+      shelfId: new FormControl(element.shelfId),
+      shelfTypeId: new FormControl(element.shelfTypeId),
+      customName: new FormControl(element.customName),
+      currentCategory: new FormControl(element.currentCategory),
+      prohibitedCategories: new FormControl(element.prohibitedCategories),
+      areaInSft: new FormControl(element.areaInSft),
+      costPerSft: new FormControl(element.costPerSft),
+      minimumBookingPeriodInDays: new FormControl(element.minimumBookingPeriodInDays),
+      preBookingPeriodInDays: new FormControl(element.preBookingPeriodInDays),
+      isEditClicked: new FormControl(true)
+    });
+  }
+
+  cancel(space: any, i: any) {
+    if (!space.value.shelfId) {
+      this.deleteSuccessCallback(space, i);
+    }
+    this.isAddMoreDisable = false;
   }
 }

@@ -19,9 +19,9 @@ export class ImageService {
                 error => errorCallback(error)
             );
     }
-    uploadNewmage(retailerImage: RetailerStoreDetailsImageRequest, successCallback: Function, errorCallback: Function) {
+    uploadNewImage(retailerImage: RetailerStoreDetailsImageRequest, successCallback: Function, errorCallback: Function) {
         return this.http
-            .post(this.baseUrl + 'Image/UploadNewmage', retailerImage).subscribe(
+            .post(this.baseUrl + 'Image/UploadNewImage', retailerImage).subscribe(
                 response => successCallback(response),
                 error => errorCallback(error)
             );

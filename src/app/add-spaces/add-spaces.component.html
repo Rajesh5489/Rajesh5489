@@ -1,7 +1,8 @@
 <div class="section">
     <div class="container-fluid">
         <div>
-            <button class="btn btn-color add-space" (click)="addNewSpace()">+ Add More</button>
+            <button class="btn btn-color add-space" [disabled]="isAddMoreDisable" (click)="addNewSpace()">+ Add
+                More</button>
             <h2 class="mx-4 py-2 border-btm">
                 Retailer- First Login
             </h2>
@@ -14,7 +15,8 @@
                             <div class="form-row  d-flex">
                                 <div class="input-group mx-3 w-75 d-inline-block">
                                     <label class="small text-muted">Type of spaces</label>
-                                    <select id="state" class="form-control form-select w-100" formControlName="shelf">
+                                    <select id="state" class="form-control form-select w-100"
+                                        formControlName="shelfTypeId">
                                         <option value="">-- Select --</option>
                                         <option *ngFor="let shelf of shelfTypes" value="shelf.id">{{shelf.name}}
                                         </option>
@@ -23,7 +25,7 @@
                                 <div class="input-group mx-3 w-75 d-inline-block">
                                     <label class="small text-muted">Category</label>
                                     <select id="state" class="form-control form-select w-100"
-                                        formControlName="category">
+                                        formControlName="currentCategory">
                                         <option value="">-- Select --</option>
                                         <option *ngFor="let category of productCategories" value="category.id">
                                             {{category.name}}</option>
@@ -31,11 +33,13 @@
                                 </div>
                                 <div class="input-group mx-3 w-75 d-inline-block">
                                     <label class="small text-muted">Area in sqft</label>
-                                    <input type="text" id="state" class="form-control w-100" formControlName="state" />
+                                    <input type="text" id="state" class="form-control w-100"
+                                        formControlName="areaInSft" />
                                 </div>
                                 <div class="input-group mx-3 w-75 d-inline-block">
                                     <label class="small text-muted">Cost in Rs</label>
-                                    <input type="text" id="state" class="form-control w-100" formControlName="state" />
+                                    <input type="text" id="state" class="form-control w-100"
+                                        formControlName="costPerSft" />
                                 </div>
                             </div>
                         </div>
@@ -45,7 +49,7 @@
                                     <label class="small text-muted">Minimum booking period</label>
                                     <div class="mb-3 d-flex">
                                         <select id="state" class="form-control form-select w-100"
-                                            formControlName="state">
+                                            formControlName="minimumBookingPeriodInDays">
                                             <option *ngFor="let state of states" value="state">{{state}}</option>
                                         </select>
                                     </div>
@@ -54,14 +58,15 @@
                                     <label class="small text-muted">Minimum pre-booking</label>
                                     <div class="mb-3 d-flex">
                                         <select id="state" class="form-control form-select w-100"
-                                            formControlName="state">
+                                            formControlName="preBookingPeriodInDays">
                                             <option *ngFor="let state of states" value="state">{{state}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="input-group mx-3 w-75 d-inline-block">
-                                    <label class="small text-muted">Reserved Categories</label>
-                                    <select id="state" class="form-control form-select w-100" formControlName="state">
+                                    <label class="small text-muted">Prohibited Categories</label>
+                                    <select id="state" class="form-control form-select w-100"
+                                        formControlName="prohibitedCategories">
                                         <option *ngFor="let state of states" value="state">{{state}}</option>
                                     </select>
                                 </div>
@@ -70,7 +75,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <label>In-store View</label>
+                            <label class="small text-muted">Add pictures</label>
                             <div class="col-12 d-flex  ">
                                 <div class="col-1 m-2">
                                     <label>
@@ -133,21 +138,24 @@
                         <div class="col-6">
                             <div class="row">
                                 <div class="col-4 bg-grey">
-
-                                    <label>statusby</label>
-                                    <span>unlisted</span>
+                                    <label class="small text-muted">Custom Name</label>
+                                    <input type="text" id="state" class="form-control w-100"
+                                        formControlName="customName" />
                                 </div>
-                                <div class="col-4"></div>
-                                <div class="col-4">
-                                    <button class="btn btn-color" (click)="removeSpace(space,i)">X</button>
+                                <div class="col-4" *ngIf="space.value.isEditClicked">
+                                    <button class="btn btn-color" (click)="cancel(space,i)">X</button>
+                                    <button class="btn btn-color" (click)="saveSpace(space,i)">Save</button>
+                                </div>
+                                <div class="col-4" *ngIf="!space.value.isEditClicked">
+                                    <button class="btn btn-color" (click)="editSpace(space,i)">edit</button><button
+                                        class="btn btn-color" (click)="deleteSpace(space, i)">delete</button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </form>
         </ng-container>
-        <button class="btn btn-color" type=submit (click)="saveSpaces()">Save and Close</button>
+        <button class="btn btn-color" type=submit (click)="saveAllSpaces()">Save and Close</button>
     </div>
 </div>

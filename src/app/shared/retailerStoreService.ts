@@ -22,7 +22,7 @@ export class RetailerStoreService {
     }
     createStore(storeDetails: NewStoreRequest, successCallback: Function, errorCallback: Function) {
         return this.http
-            .post(this.baseUrl + 'RetailerStore/UpdateStore',
+            .post(this.baseUrl + 'RetailerStore/CreateStore',
                 storeDetails).subscribe(
                     response => successCallback(response),
                     error => errorCallback(error)

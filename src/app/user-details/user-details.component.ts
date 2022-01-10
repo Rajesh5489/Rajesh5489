@@ -37,16 +37,16 @@ export class UserDetailsComponent {
     retailerDetails = this.userDetailsForm.getRawValue();
     retailerDetails.createdBy = "manju";
     retailerDetails.createdDate = new Date().toISOString();
-    this.companyService.createRetailerProfile(retailerDetails,
-      (res: any) => {
-        if (res) {
-          this.appStateService.retailerId = res.retailerId;
-          this.router.navigate(["/bankdetails"]);
-        }
-      },
-      (err: any) => {
-        this.router.navigate(["/bankdetails"]);
-      });
+    // this.companyService.createRetailerProfile(retailerDetails,
+    //   (res: any) => {
+    //     if (res) {
+    //       this.appStateService.retailerId = res.retailerId;
+    //       this.router.navigate(["/bankdetails"]);
+    //     }
+    //   },
+    //   (err: any) => {
+    //   });
+    this.appStateService.retailerId = 2;
     this.router.navigate(["/bankdetails"]);
   }
 }

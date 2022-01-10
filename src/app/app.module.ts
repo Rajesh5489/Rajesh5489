@@ -2,6 +2,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +20,7 @@ import { AppInitService } from './app-init.service';
 import { BankDetailsComponent } from './bank-details/bank-details.component';
 import { StoreListComponent } from './store-list/store-list.component';
 import { StoreDetailsComponent } from './store-details/store-details.component';
-import { RetailerRejectedComponent } from './retailer-rejected/retailer-rejected.component';
+import { RetailerRequestedComponent } from './retailer-requested/retailer-requested.component';
 
 @NgModule({
   declarations: [
@@ -36,9 +37,10 @@ import { RetailerRejectedComponent } from './retailer-rejected/retailer-rejected
     HeaderComponent,
     BankDetailsComponent,
     StoreListComponent,
-    RetailerRejectedComponent
+    RetailerRequestedComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

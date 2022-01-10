@@ -18,9 +18,7 @@ const routes: Routes = [
   { path: 'homePage', component: HomepageComponent },
   { path: 'storelist', component: StoreListComponent },
   { path: 'bankdetails', component: BankDetailsComponent },
-  { path: 'retailConfirm', component: RetailerConfirmedComponent },
-  { path: 'retailsReject', component: RetailerRejectedComponent },
-  { path: 'retailRequest', component: RetailerRequestedComponent }
+  { path: 'bookings', component: RetailerRequestedComponent }
 ];
 
 @NgModule({

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AppStateService } from '../shared/appStateService';
 import { RetailerStoreService } from '../shared/retailerStoreService';
 import { FormGroup, FormControl } from '@angular/forms';
+import { BankService } from '../shared/bankService';
+import { NewRetailerBankRequest } from '../Models/NewRetailerBankRequest';
 @Component({
   selector: 'app-bank-details',
   templateUrl: './bank-details.component.html',
@@ -11,7 +13,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class BankDetailsComponent implements OnInit {
   states: any = ["telangana", "AndhraPradesh", "Orissa"];
 
-  constructor(private router: Router, private storeService: RetailerStoreService,
+  constructor(private router: Router,
+    private storeService: RetailerStoreService,
+    private bankService: BankService,
     private appStateService: AppStateService) { }
 
   ngOnInit(): void {
@@ -21,21 +25,31 @@ export class BankDetailsComponent implements OnInit {
     bankName: new FormControl(''),
     branch: new FormControl(''),
     accountNumber: new FormControl(''),
-    ifscCode: new FormControl(''),
-    upiId: new FormControl(''),
+    ifsc: new FormControl(''),
+    upi: new FormControl(''),
   });
-  addStore() {
-    this.storeService.getAllStores(this.appStateService.retailerId,
+
+  addBankDetails() {
+    var bankDetails = new NewRetailerBankRequest();
+    bankDetails = this.bankDetailsForm.getRawValue();
+    bankDetails.retailerId = this.appStateService.retailerId;
+    bankDetails.createdBy = "manju";
+    bankDetails.createdDate = new Date().toISOString();
+    this.bankService.createBankForRetailer(bankDetails,
       (res: any) => {
-        this.appStateService.storeList = res;
-        if (res.length != 0) {
-          this.router.navigate(["/storelist"]);
-        }
-        else {
-          this.router.navigate(["/storedetails"]);
-        }
+        this.storeService.getAllStores(this.appStateService.retailerId,
+          (res: any) => {
+            this.appStateService.storeList = res;
+            if (res.length != 0) {
+              this.router.navigate(["/storelist"]);
+            }
+            else {
+              this.router.navigate(["/storedetails"]);
+            }
+          },
+          (err: any) => { });
       },
-      (err: any) => { })
-    this.router.navigate(["/storedetails"]);
+      (err: any) => { });
+    this.router.navigate(["/storedetails"])
   }
 }

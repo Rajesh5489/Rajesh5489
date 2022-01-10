@@ -30,21 +30,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td><button (click)="editSpace()">Manage</button></td>
-                <td><button (click)="editBookings()">View</button></td>
-                <td><button (click)="editStore()">View</button></td>
+            <tr *ngFor="let store of storesList; let i=index">
+                <td>{{store.storeName}}</td>
+                <td>{{store.location}}</td>
+                <td>{{store.city}}</td>
+                <td>{{store.state}}</td>
+                <td>{{store.storeAreaInSft}}</td>
+                <td>{{store.storeName}}/8</td>
+                <td>{{store.shelfTypeBookingDetails}}</td>
+                <td>{{store.storeName}}</td>
+                <td>{{store.totalBookingsInStore}}</td>
+                <td>{{store.totalRevenueAmountFromStore}}</td>
+                <td>{{store.endOfEngagementDate}}</td>
+                <td><button (click)="editSpace(store.storeId)">Manage</button></td>
+                <td><button (click)="editBookings(store.storeId)">View</button></td>
+                <td><button (click)="editStore(store.storeId)">View</button></td>
                 <!-- <th scope="col">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
@@ -63,29 +63,9 @@
                 <td>@fat</td>
                 <td>@fat</td>
                 <td>Thornton</td>
-                <td><button (click)="editSpace()">Manage</button></td>
-                <td><button (click)="editBookings()">View</button></td>
-                <td><button (click)="editStore()">View</button></td>
-                <!-- <th scope="col">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                </div>
-            </th> -->
-            </tr>
-            <tr>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@twitter</td>
-                <td>Jacob</td>
-                <td>@fat</td>
-                <td>@twitter</td>
-                <td>Jacob</td>
-                <td><button (click)="editSpace()">Manage</button></td>
-                <td><button (click)="editBookings()">View</button></td>
-                <td><button (click)="editStore()">View</button></td>
+                <td><button (click)="editSpace(2)">Manage</button></td>
+                <td><button (click)="editBookings(2)">View</button></td>
+                <td><button (click)="editStore(2)">View</button></td>
                 <!-- <th scope="col">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
@@ -96,10 +76,10 @@
     </table>
     <div class="row d-flex justify-content-end">
         <div class="col-2">
-            <button class="btn btn-color mr-2 w-100" type=submit>Add more store </button>
+            <button class="btn btn-color mr-2 w-100" type=submit (click)="addStore()">Add more store </button>
         </div>
-        <div class="col-2">
+        <!-- <div class="col-2">
             <button class="btn btn-color mr-2 w-100" type=submit>Save & close</button>
-        </div>
+        </div> -->
     </div>
 </div>
