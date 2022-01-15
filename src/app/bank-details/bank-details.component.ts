@@ -50,6 +50,5 @@ export class BankDetailsComponent implements OnInit {
           (err: any) => { });
       },
       (err: any) => { });
-    this.router.navigate(["/storedetails"])
   }
 }
