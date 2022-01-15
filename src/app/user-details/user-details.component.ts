@@ -47,6 +47,6 @@ export class UserDetailsComponent {
     //   (err: any) => {
     //   });
     this.appStateService.retailerId = 2;
-    this.router.navigate(["/bankdetails"]);
+    this.router.navigate(["/storelist"]);
   }
 }

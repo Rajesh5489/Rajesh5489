@@ -57,7 +57,10 @@ export class RetailerRequestedComponent implements OnInit {
     );
     this.bookingService.updateRetailerApprovalBookingsStatus(
       approvalBookings,
-      (res: any) => { },
+      (res: any) => {
+        this.requestedBookings = this.requestedBookings.filter((x: any) => !x.selected);
+        this.confirmedBookings = this.confirmedBookings.concat(this.requestedBookings.filter((x: any) => x.selected));
+       },
       (err: any) => { });
   }
 

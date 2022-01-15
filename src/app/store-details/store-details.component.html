@@ -22,6 +22,27 @@
                                         placeholder="Full Address">
                                 </div>
                                 <div class="input-group mb-3">
+                                    <input formControlName="managerContactName" type="text" class="form-control" placeholder="managerContactName">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input formControlName="managerContactNumber" type="text" class="form-control" placeholder="managerContactNumber">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input formControlName="managerEmailAddress" type="text" class="form-control" placeholder="managerEmailAddress">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input formControlName="secondaryContactName" type="text" class="form-control" placeholder="secondaryContactName">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input formControlName="secondaryContactNumber" type="text" class="form-control" placeholder="secondaryContactNumber">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input formControlName="secondaryEmailAddress" type="text" class="form-control" placeholder="secondaryEmailAddress">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input formControlName="storeContactNumber" type="text" class="form-control" placeholder="storeContactNumber">
+                                </div>
+                                <div class="input-group mb-3">
                                     <input formControlName="geoTag" type="text" class="form-control"
                                         placeholder="Geo Tag (google Location)">
                                 </div>
@@ -34,7 +55,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <select id="state" class="form-control form-select" formControlName="state">
-                                        <option *ngFor="let state of states" value="state">{{state}}</option>
+                                        <option *ngFor="let state of states" [value]="state">{{state}}</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
@@ -46,7 +67,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <select id="areaInSft" class="form-control form-select" formControlName="areaInSft">
-                                        <option *ngFor="let areaInSft of areaInSfts" value="state">{{areaInSft}}
+                                        <option *ngFor="let areaInSft of areaInSfts" [value]="areaInSft">{{areaInSft}}
                                         </option>
                                     </select>
                                 </div>
@@ -56,14 +77,14 @@
                                 <div class="mb-3">
                                     <select id="projectedFootfall" class="form-control form-select"
                                         formControlName="projectedFootfallPerMonth">
-                                        <option *ngFor="let projectedFootfall of projectedFootfalls" value="projectedFootfall">
+                                        <option *ngFor="let projectedFootfall of projectedFootfalls" [value]="projectedFootfall">
                                             {{projectedFootfall}}</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
                                     <select id="estimatedFootfall" class="form-control form-select"
                                         formControlName="estimatedSalesPerMonth">
-                                        <option *ngFor="let estimatedFootfall of estimatedFootfalls" value="estimatedFootfall">
+                                        <option *ngFor="let estimatedFootfall of estimatedFootfalls" [value]="estimatedFootfall">
                                             {{estimatedFootfall}}</option>
                                     </select>
                                 </div>
@@ -149,8 +170,7 @@
                         <button class="btn btn-color mr-2 w-100" type=submit (click)="saveStoreDetails()">Save</button>
                     </div>
                     <div class="col-4" *ngIf="storeId">
-                        <button class="btn btn-color mr-2 w-100" type=submit (click)="saveStoreDetails()">Save &
-                            close</button>
+                        <button class="btn btn-color mr-2 w-100" type=submit (click)="close()">Close</button>
                     </div>
 
                 </div>

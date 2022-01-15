@@ -17,12 +17,19 @@ export class StoreDetailsComponent {
     private route: ActivatedRoute,
     private appStateService: AppStateService) { }
   states: any = ["telangana", "AndhraPradesh", "Orissa"];
-  areaInSfts: any = ["1000sft", "2000sft", "300sft"];
+  areaInSfts: any = [1000, 2000, 3000];
   projectedFootfalls: any = [10, 20, 30]
   estimatedFootfalls: any = [10, 20, 30]
   storeForm = new FormGroup({
     storeName: new FormControl(''),
-    fullAddress: new FormControl(''),
+    fullAddress: new FormControl(''),    
+    managerContactName: new FormControl(''),
+    managerContactNumber: new FormControl(''),
+    managerEmailAddress: new FormControl(''),
+    secondaryContactName: new FormControl(''),
+    secondaryContactNumber: new FormControl(''),
+    secondaryEmailAddress: new FormControl(''),
+    storeContactNumber: new FormControl(''),
     location: new FormControl(''),
     city: new FormControl(''),
     state: new FormControl(''),
@@ -47,6 +54,13 @@ export class StoreDetailsComponent {
     this.storeForm.patchValue({
       storeName: storeInfo?.storeName,
       fullAddress: storeInfo?.fullAddress,
+      managerContactName: storeInfo?.managerContactName,
+      managerContactNumber: storeInfo?.managerContactNumber,
+      managerEmailAddress: storeInfo?.managerEmailAddress,
+      secondaryContactName: storeInfo?.secondaryContactName,
+      secondaryContactNumber: storeInfo?.secondaryContactNumber,
+      secondaryEmailAddress: storeInfo?.secondaryEmailAddress,
+      storeContactNumber: storeInfo?.storeContactNumber,
       location: storeInfo?.location,
       geoTag: storeInfo?.storeName,
       areaInSft: storeInfo?.areaInSft,
@@ -74,7 +88,7 @@ export class StoreDetailsComponent {
         },
         (err: any) => {
         });
-      this.router.navigate(["/storelist"]);
+      //this.router.navigate(["/storelist"]);
     } else {
       let storeDetails = new StoreRequest();
       this.storeService.updateStore(storeDetails, this.appStateService.retailerId, this.storeId,
@@ -85,7 +99,7 @@ export class StoreDetailsComponent {
         },
         (err: any) => {
         });
-        this.router.navigate(["/storelist"]);
+        //this.router.navigate(["/storelist"]);
     }
   }
 
@@ -94,20 +108,33 @@ export class StoreDetailsComponent {
     storeDetails.retailerId = this.appStateService.retailerId;
     storeDetails.storeName = this.storeForm.value.storeName;
     storeDetails.fullAddress = this.storeForm.value.fullAddress;
+    storeDetails.managerContactName = this.storeForm.value.managerContactName;
+    storeDetails.managerContactNumber = this.storeForm.value.managerContactNumber;
+    storeDetails.managerEmailAddress = this.storeForm.value.managerEmailAddress;
+    storeDetails.secondaryContactName = this.storeForm.value.secondaryContactName;
+    storeDetails.secondaryContactNumber = this.storeForm.value.secondaryContactNumber;
+    storeDetails.secondaryEmailAddress = this.storeForm.value.secondaryEmailAddress;
+    storeDetails.storeContactNumber = this.storeForm.value.storeContactNumber;
     storeDetails.country = this.storeForm.value.country;
     storeDetails.state = this.storeForm.value.state;
     storeDetails.city = this.storeForm.value.city;
     storeDetails.location = this.storeForm.value.location;
     storeDetails.pinCode = this.storeForm.value.pinCode;
-    storeDetails.latitude = this.storeForm.value.latitude;
-    storeDetails.longitude = this.storeForm.value.longitude;
-    storeDetails.areaInSft = this.storeForm.value.areaInSft;
-    storeDetails.gstin = this.storeForm.value.retailerId;
-    storeDetails.projectedFootfallPerMonth = this.storeForm.value.projectedFootfallPerMonth;
-    storeDetails.estimatedSalesPerMonth = this.storeForm.value.estimatedSalesPerMonth;
+    // storeDetails.latitude = this.storeForm.value.latitude;
+    // storeDetails.longitude = this.storeForm.value.longitude;    
+    storeDetails.latitude = 1;
+    storeDetails.longitude = 2;
+    storeDetails.areaInSft = +this.storeForm.value.areaInSft;
+    storeDetails.gstin = this.storeForm.value.gstin;
+    storeDetails.projectedFootfallPerMonth = +this.storeForm.value.projectedFootfallPerMonth;
+    storeDetails.estimatedSalesPerMonth = +this.storeForm.value.estimatedSalesPerMonth;
     storeDetails.createdDate = new Date().toISOString();
     storeDetails.createdBy = "manju";
 
     return storeDetails;
+  }
+  
+  close() {
+    this.router.navigate(["/storelist"]);
   }
 }

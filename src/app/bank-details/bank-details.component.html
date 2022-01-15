@@ -7,8 +7,8 @@
                 <div class="form-group">
                     <div class=" mb-3">
                         <select id="bank" class="form-control form-select" formControlName="bankName" placeholder="Bank Name">
-                            <option value="">-- Select --</option>
-                            <option *ngFor="let bank of banks" value="bank">{{bank}}</option>
+                            <option [value]="">-- Select --</option>
+                            <option *ngFor="let bank of banks" [value]="bank">{{bank}}</option>
                         </select>
                     </div>
                     <div class="input-group mb-3">

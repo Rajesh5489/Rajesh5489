@@ -7,8 +7,6 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { HomepageComponent } from './homepage/homepage.component'
 import { StoreListComponent } from './store-list/store-list.component';
 import { BankDetailsComponent } from './bank-details/bank-details.component';
-import { RetailerConfirmedComponent } from './retailer-confirmed/retailer-confirmed.component';
-import { RetailerRejectedComponent } from './retailer-rejected/retailer-rejected.component';
 import { RetailerRequestedComponent } from './retailer-requested/retailer-requested.component';
 const routes: Routes = [
   { path: '', component: UserDetailsComponent },

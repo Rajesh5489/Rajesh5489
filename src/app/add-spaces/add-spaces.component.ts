@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormControlName, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormControlName, FormArray, FormBuilder } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ImageDetails } from '../Models/ImageDetails';
@@ -24,10 +24,10 @@ export class AddSpacesComponent {
   shelfTypes: any;
   productCategories: any;
   formBuilder: any;
-  shelfCount: number = 0;
+  shelfCount: number = 3;
   isAddMoreDisable!: boolean;
   storeId!: any;
-  shelves!: Array<ShelfSummary>;
+  shelves: Array<ShelfSummary> = [];
 
   constructor(
     private router: Router,
@@ -41,7 +41,7 @@ export class AddSpacesComponent {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.storeId = params.storeId;
+      this.storeId = +params.storeId;
       this.getShelfTypes();
       this.getProductCategories();
       this.getShelvesDetails();
@@ -51,10 +51,12 @@ export class AddSpacesComponent {
     this.storeService.getStoreShelvesDetails(this.appStateService.retailerId,
       this.storeId,
       (res: any) => {
-        this.shelves = res;
-        res.forEach((element: any) => {
-          this.spaceFormArray.push(this.intialiseItem(element));
-        });
+        if (res) {
+          this.shelves = res;
+          res.forEach((element: any) => {
+            this.spaceFormArray.push(this.intialiseItem(element));
+          });
+        }
       },
       (err: any) => { }
     )
@@ -130,10 +132,10 @@ export class AddSpacesComponent {
     this.isAddMoreDisable = true;
   }
 
-  saveSpace(space: any, index: any) {
+  saveSpace(space: FormGroup, index: any) {
     if (space.value.shelfId) {
       let shelf = new ShelfRequest();
-      shelf.shelfId = space.value.shelfId;
+      shelf.shelfId = +space.value.shelfId;
       shelf.modifiedDate = new Date().toISOString();
       shelf.modifiedBy = "manju";
       shelf.isActive = true;
@@ -163,6 +165,7 @@ export class AddSpacesComponent {
             shelfId: res.shelfId,
             isEditClicked: false
           });
+          this.shelves.push(this.createShelfSummary(space));
           this.isAddMoreDisable = false;
         },
         (err: any) => { }
@@ -174,16 +177,47 @@ export class AddSpacesComponent {
     }
   }
 
-  private buildShelfRequest(shelf: any, space: any) {
-    shelf.shelfTypeId = space.value.shelfTypeId;
-    shelf.rowNumber = space.value.rowNumber;
+  createShelfSummary(space: FormGroup): ShelfSummary {
+    var shelf = new ShelfSummary();
+    shelf.shelfId = +space.value.shelfId;
+    shelf.shelfTypeId = +space.value.shelfTypeId;
+    shelf.rowNumber = +space.value.rowNumber;
     shelf.customName = space.value.customName;
-    shelf.currentCategory = space.value.currentCategory;
+    shelf.currentCategory = +space.value.currentCategory;
     shelf.prohibitedCategories = space.value.prohibitedCategories;
-    shelf.areaInSft = space.value.areaInSft;
-    shelf.costPerSft = space.value.costPerSft;
-    shelf.minimumBookingPeriodInDays = space.value.minimumBookingPeriodInDays;
-    shelf.preBookingPeriodInDays = space.value.preBookingPeriodInDays;
+    shelf.areaInSft = +space.value.areaInSft;
+    shelf.costPerSft = +space.value.costPerSft;
+    shelf.minimumBookingPeriodInDays = +space.value.minimumBookingPeriodInDays;
+    shelf.preBookingPeriodInDays = +space.value.preBookingPeriodInDays;
+    return shelf;
+  }
+
+  updateShelfSummary(space: FormGroup) {
+    var shelf = this.shelves.find((x: any) => x.shelfId == space.value.shelfId);
+    if (shelf) {
+      shelf.shelfId = +space.value.shelfId;
+      shelf.shelfTypeId = +space.value.shelfTypeId;
+      shelf.rowNumber = +space.value.rowNumber;
+      shelf.customName = space.value.customName;
+      shelf.currentCategory = +space.value.currentCategory;
+      shelf.prohibitedCategories = space.value.prohibitedCategories;
+      shelf.areaInSft = +space.value.areaInSft;
+      shelf.costPerSft = +space.value.costPerSft;
+      shelf.minimumBookingPeriodInDays = +space.value.minimumBookingPeriodInDays;
+      shelf.preBookingPeriodInDays = +space.value.preBookingPeriodInDays;
+    }
+  }
+
+  private buildShelfRequest(shelf: any, space: any) {
+    shelf.shelfTypeId = +space.value.shelfTypeId;
+    shelf.rowNumber = +space.value.rowNumber;
+    shelf.customName = space.value.customName;
+    shelf.currentCategory = +space.value.currentCategory;
+    shelf.prohibitedCategories = space.value.prohibitedCategories;
+    shelf.areaInSft = +space.value.areaInSft;
+    shelf.costPerSft = +space.value.costPerSft;
+    shelf.minimumBookingPeriodInDays = +space.value.minimumBookingPeriodInDays;
+    shelf.preBookingPeriodInDays = +space.value.preBookingPeriodInDays;
   }
 
   saveSuccessCallback(space: any, res: any) {
@@ -191,11 +225,8 @@ export class AddSpacesComponent {
       shelfId: res.shelfId,
       isEditClicked: false
     });
+    this.updateShelfSummary(space);
     this.isAddMoreDisable = false;
-  }
-
-  saveAllSpaces() {
-    this.router.navigate(["/storelist"]);
   }
 
   createItem(): FormGroup {
@@ -233,7 +264,32 @@ export class AddSpacesComponent {
   cancel(space: any, i: any) {
     if (!space.value.shelfId) {
       this.deleteSuccessCallback(space, i);
+    } else {
+      var shelf = this.shelves.find((x: any) => x.shelfId == space.value.shelfId);
+      if (shelf) {
+        this.reintialiseItem(space, shelf);
+      }
     }
     this.isAddMoreDisable = false;
+  }
+
+  reintialiseItem(space: FormGroup, element: ShelfSummary) {
+    space.patchValue({
+      rowNumber: element.rowNumber,
+      shelfId: element.shelfId,
+      shelfTypeId: element.shelfTypeId,
+      customName: element.customName,
+      currentCategory: element.currentCategory,
+      prohibitedCategories: element.prohibitedCategories,
+      areaInSft: element.areaInSft,
+      costPerSft: element.costPerSft,
+      minimumBookingPeriodInDays: element.minimumBookingPeriodInDays,
+      preBookingPeriodInDays: element.preBookingPeriodInDays,
+      isEditClicked: false
+    });
+  }
+
+  close() {
+    this.router.navigate(["/storelist"]);
   }
 }
