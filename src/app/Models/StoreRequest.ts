@@ -13,6 +13,7 @@ export class StoreRequest {
     latitude!: number;
     longitude!: number;
     areaInSft!: number;
+    isActive!: boolean;
     projectedFootfallPerMonth!: number;
     estimatedSalesPerMonth!: number;
     modifiedDate!: string;

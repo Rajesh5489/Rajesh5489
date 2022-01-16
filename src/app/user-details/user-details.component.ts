@@ -35,18 +35,20 @@ export class UserDetailsComponent {
   completeRegistration() {
     var retailerDetails = new NewRetailerProfileRequest();
     retailerDetails = this.userDetailsForm.getRawValue();
-    retailerDetails.createdBy = "manju";
+    retailerDetails.createdBy = retailerDetails.primaryContactName;
     retailerDetails.createdDate = new Date().toISOString();
-    this.companyService.createRetailerProfile(retailerDetails,
-      (res: any) => {
-        if (res) {
-          this.appStateService.retailerId = res.retailerId;
-          this.router.navigate(["/bankdetails"]);
-        }
-      },
-      (err: any) => {
-      });
-    // this.appStateService.retailerId = 2;
-    // this.router.navigate(["/storelist"]);
+    // this.companyService.createRetailerProfile(retailerDetails,
+    //   (res: any) => {
+    //     if (res) {
+    //       this.appStateService.retailerId = res.retailerId;
+    //       this.appStateService.retailerName = retailerDetails.primaryContactName;
+    //       this.router.navigate(["/bankdetails"]);
+    //     }
+    //   },
+    //   (err: any) => {
+    //   });
+    this.appStateService.retailerId = 2;
+    this.appStateService.retailerName = "manju";
+    this.router.navigate(["/storelist"]);
   }
 }

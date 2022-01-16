@@ -44,11 +44,4 @@ export class RetailerStoreService {
             error => errorCallback(error)
         );
     }
-    getStoreShelvesDetails(retailerId: number, storeId: number, successCallback: Function, errorCallback: Function) {
-        return this.http
-            .get(this.baseUrl + 'RetailerStore/GetStoreShelvesDetails/' + retailerId + '/' + storeId).subscribe(
-                response => successCallback(response),
-                error => errorCallback(error)
-            );
-    }
 }
