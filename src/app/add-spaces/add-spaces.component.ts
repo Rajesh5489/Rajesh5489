@@ -257,7 +257,7 @@ export class AddSpacesComponent {
       costPerSft: new FormControl(element.costPerSft),
       minimumBookingPeriodInDays: new FormControl(element.minimumBookingPeriodInDays),
       preBookingPeriodInDays: new FormControl(element.preBookingPeriodInDays),
-      isEditClicked: new FormControl(true)
+      isEditClicked: new FormControl(false)
     });
   }
 
