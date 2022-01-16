@@ -8,7 +8,7 @@ import { NewStoreRequest } from '../Models/NewStoreRequest';
   providedIn: 'root'
 })
 export class MapMarkerService {
-  allStores: string = 'https://localhost:7271/api/retailerstore/stores'
+  allStores: string = 'https://localhost:7271/api/shelf/SearchShelvesBasicFilter'
 
   constructor(
     private http: HttpClient,
@@ -28,10 +28,9 @@ export class MapMarkerService {
 
   makeStoreDetailsPopup(data: any): string {
     return `` +
-      `<div>Capital: ${data.storeName}</div>` +
-      `<div>State: ${data.state}</div>` +
-      `<div>State: ${data.city}</div>` +
-      `<div>State: ${data.areaInSft}</div>` +
-      `<div>Population: ${data.country}</div>`
+      `<div>Store Name: ${data.storeName}</div>` +
+      `<div>Area in SFT: ${data.areaInSft}</div>` +
+      `<div>Footfall per Month: ${data.projectedFootfallPerMonth}</div>` +
+      `<div>Sales per Month: ${data.estimatedSalesPerMonth}</div>`
   }
 }
