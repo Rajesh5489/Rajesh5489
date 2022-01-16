@@ -12,16 +12,18 @@ import { RetailerStoreService } from '../shared/retailerStoreService';
   styleUrls: ['./store-list.component.scss']
 })
 export class StoreListComponent implements OnInit {
-  storesList!: Array<RetailerBookingSummary>;
+  storesList!: Array<StoreSummary>;
+  bookingsList!: Array<RetailerBookingSummary>;
   constructor(
     private router: Router,
     private bookingService: BookingService,
-    private appStateService: AppStateService) { }
+    private appStateService: AppStateService,
+    private storeService: RetailerStoreService) { }
 
   ngOnInit() {
     this.bookingService.getAllBookingsForRetailer(this.appStateService.retailerId,
       (res: any) => {
-        this.storesList = res;
+        this.bookingsList = res;
       },
       (err: any) => { });
   }
@@ -32,7 +34,13 @@ export class StoreListComponent implements OnInit {
     this.router.navigate(["/bookings"], { queryParams: { storeId: storeId } });
   }
   editStore(storeId: number) {
-    this.router.navigate(["/storedetails"], { queryParams: { storeId: storeId } });
+    this.storeService.getAllStores(this.appStateService.retailerId,
+      (res: any) => {
+        this.storesList = res;
+        this.appStateService.storeList = this.storesList;
+        this.router.navigate(["/storedetails"], { queryParams: { storeId: storeId } });
+      },
+      (err: any) => { });
   }
   addStore() {
     this.router.navigate(["/storedetails"]);

@@ -24,7 +24,6 @@ export class AddSpacesComponent {
   shelfTypes: any;
   productCategories: any;
   formBuilder: any;
-  shelfCount: number = 3;
   isAddMoreDisable!: boolean;
   storeId!: any;
   shelves: Array<ShelfSummary> = [];
@@ -48,7 +47,7 @@ export class AddSpacesComponent {
     });
   }
   getShelvesDetails() {
-    this.storeService.getStoreShelvesDetails(this.appStateService.retailerId,
+    this.shelfService.getShelvesDetailsForRetailerByStore(this.appStateService.retailerId,
       this.storeId,
       (res: any) => {
         if (res) {
@@ -116,11 +115,10 @@ export class AddSpacesComponent {
       (res: any) => { this.deleteSuccessCallback(space, index); },
       (err: any) => { }
     )
-    this.deleteSuccessCallback(space, index);
   }
   deleteSuccessCallback(space: any, index: any) {
     let i = this.spaceFormArray.findIndex(
-      x => x.value.rowNumber === space.value.rowNumber
+      x => x.value.shelfId === space.value.shelfId
     );
     this.spaceFormArray.splice(i, 1);
   }
@@ -137,8 +135,8 @@ export class AddSpacesComponent {
       let shelf = new ShelfRequest();
       shelf.shelfId = +space.value.shelfId;
       shelf.modifiedDate = new Date().toISOString();
-      shelf.modifiedBy = "manju";
-      shelf.isActive = true;
+      shelf.modifiedBy = this.appStateService.retailerName;
+      shelf.isActive = space.value.isActive === "true" ? true : false;
       this.buildShelfRequest(shelf, space);
       this.shelfService.updateShelf(
         shelf,
@@ -156,7 +154,7 @@ export class AddSpacesComponent {
       shelf.retailerId = this.appStateService.retailerId;
       shelf.storeId = this.storeId;
       shelf.createdDate = new Date().toISOString();
-      shelf.createdBy = "manju";
+      shelf.createdBy = this.appStateService.retailerName;
       this.buildShelfRequest(shelf, space);
       this.shelfService.createShelf(
         shelf,
@@ -205,6 +203,7 @@ export class AddSpacesComponent {
       shelf.costPerSft = +space.value.costPerSft;
       shelf.minimumBookingPeriodInDays = +space.value.minimumBookingPeriodInDays;
       shelf.preBookingPeriodInDays = +space.value.preBookingPeriodInDays;
+      shelf.isActive = space.value.isActive === "true" ? true : false;
     }
   }
 
@@ -231,7 +230,7 @@ export class AddSpacesComponent {
 
   createItem(): FormGroup {
     return new FormGroup({
-      rowNumber: new FormControl(this.shelfCount++),
+      rowNumber: new FormControl(1),
       shelfId: new FormControl(''),
       shelfTypeId: new FormControl(''),
       customName: new FormControl(''),
@@ -241,7 +240,8 @@ export class AddSpacesComponent {
       costPerSft: new FormControl(''),
       minimumBookingPeriodInDays: new FormControl(''),
       preBookingPeriodInDays: new FormControl(''),
-      isEditClicked: new FormControl(true)
+      isEditClicked: new FormControl(true),
+      isActive: new FormControl(true)
     });
   }
 
@@ -257,7 +257,8 @@ export class AddSpacesComponent {
       costPerSft: new FormControl(element.costPerSft),
       minimumBookingPeriodInDays: new FormControl(element.minimumBookingPeriodInDays),
       preBookingPeriodInDays: new FormControl(element.preBookingPeriodInDays),
-      isEditClicked: new FormControl(false)
+      isEditClicked: new FormControl(false),
+      isActive: new FormControl(element.isActive)
     });
   }
 
@@ -285,7 +286,8 @@ export class AddSpacesComponent {
       costPerSft: element.costPerSft,
       minimumBookingPeriodInDays: element.minimumBookingPeriodInDays,
       preBookingPeriodInDays: element.preBookingPeriodInDays,
-      isEditClicked: false
+      isEditClicked: false,
+      isActive: element.isActive
     });
   }
 

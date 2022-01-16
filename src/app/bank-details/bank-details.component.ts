@@ -33,7 +33,7 @@ export class BankDetailsComponent implements OnInit {
     var bankDetails = new NewRetailerBankRequest();
     bankDetails = this.bankDetailsForm.getRawValue();
     bankDetails.retailerId = this.appStateService.retailerId;
-    bankDetails.createdBy = "manju";
+    bankDetails.createdBy = this.appStateService.retailerName;
     bankDetails.createdDate = new Date().toISOString();
     this.bankService.createBankForRetailer(bankDetails,
       (res: any) => {

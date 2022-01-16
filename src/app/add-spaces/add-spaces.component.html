@@ -141,16 +141,24 @@
                         </div>
                         <div class="col-6">
                             <div class="row">
-                                <div class="col-4 bg-grey">
+                                <div class="col-3 bg-grey">
                                     <label class="small text-muted">Custom Name</label>
                                     <input type="text" id="state" class="form-control w-100"
                                         formControlName="customName" [attr.disabled]="!space.value.isEditClicked ? true : null"/>
                                 </div>
-                                <div class="col-4" *ngIf="space.value.isEditClicked">
+                                <div class="col-3 bg-grey" *ngIf="space.value.shelfId">
+                                    <label class="small text-muted">Status</label>
+                                    <select id="status" class="form-control form-select w-100"
+                                        formControlName="isActive" [attr.disabled]="!space.value.isEditClicked ? true : null">
+                                        <option [selected]="space.value.isActive" [value]="true">Available</option>
+                                        <option [selected]="!space.value.isActive" [value]="false">Blocked</option>
+                                    </select>
+                                </div>
+                                <div class="col-3" *ngIf="space.value.isEditClicked">
                                     <button class="btn btn-color" (click)="cancel(space,i)">X</button>
                                     <button class="btn btn-color" (click)="saveSpace(space,i)">Save</button>
                                 </div>
-                                <div class="col-4" *ngIf="!space.value.isEditClicked">
+                                <div class="col-3" *ngIf="!space.value.isEditClicked">
                                     <button class="btn btn-color" (click)="editSpace(space,i)">edit</button><button
                                         class="btn btn-color" (click)="deleteSpace(space, i)">delete</button>
                                 </div>

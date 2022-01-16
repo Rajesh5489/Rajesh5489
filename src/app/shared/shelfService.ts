@@ -60,4 +60,12 @@ export class ShelfService {
                 error => errorCallback(error)
             );
     }
+    
+    getShelvesDetailsForRetailerByStore(retailerId: number, storeId: number, successCallback: Function, errorCallback: Function) {
+        return this.http
+            .get(this.baseUrl + 'Shelf/GetShelvesDetailsForRetailerByStore/' + retailerId + '/' + storeId).subscribe(
+                response => successCallback(response),
+                error => errorCallback(error)
+            );
+    }
 }

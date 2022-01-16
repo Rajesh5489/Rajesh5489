@@ -69,7 +69,7 @@ export class RetailerRequestedComponent implements OnInit {
     res.retailerId = this.appStateService.retailerId;
     res.bookingId = booking.bookingId;
     res.approvalStatus = status;
-    res.modifiedBy = "manju";
+    res.modifiedBy = this.appStateService.retailerName;
     res.modifiedDate = new Date().toISOString();
     return res;
   }

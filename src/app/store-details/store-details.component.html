@@ -50,18 +50,18 @@
                                     <input formControlName="location" type="text" class="form-control"
                                         placeholder="Location">
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3" *ngIf="!storeId">
                                     <input formControlName="city" type="text" class="form-control" placeholder="City">
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" *ngIf="!storeId">
                                     <select id="state" class="form-control form-select" formControlName="state">
                                         <option *ngFor="let state of states" [value]="state">{{state}}</option>
                                     </select>
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3" *ngIf="!storeId">
                                     <input formControlName="country" type="text" class="form-control" placeholder="Country">
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3" *ngIf="!storeId">
                                     <input formControlName="pinCode" type="text" class="form-control"
                                         placeholder="Pin Code">
                                 </div>
@@ -71,20 +71,20 @@
                                         </option>
                                     </select>
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3" *ngIf="!storeId">
                                     <input formControlName="gstin" type="text" class="form-control" placeholder="GSTIN">
                                 </div>
                                 <div class="mb-3">
                                     <select id="projectedFootfall" class="form-control form-select"
                                         formControlName="projectedFootfallPerMonth">
-                                        <option *ngFor="let projectedFootfall of projectedFootfalls" [value]="projectedFootfall">
+                                        <option *ngFor="let projectedFootfall of projectedFootfalls" [selected]="storeForm.value.projectedFootfallPerMonth === projectedFootfall" [value]="projectedFootfall">
                                             {{projectedFootfall}}</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
                                     <select id="estimatedFootfall" class="form-control form-select"
                                         formControlName="estimatedSalesPerMonth">
-                                        <option *ngFor="let estimatedFootfall of estimatedFootfalls" [value]="estimatedFootfall">
+                                        <option *ngFor="let estimatedFootfall of estimatedFootfalls" [selected]="storeForm.value.estimatedSalesPerMonth === estimatedFootfall" [value]="estimatedFootfall">
                                             {{estimatedFootfall}}</option>
                                     </select>
                                 </div>
@@ -166,7 +166,7 @@
                     <div class="col-4">
                         <button class="btn btn-color mr-2 w-100" type=submit>Add more store </button>
                     </div> -->
-                    <div class="col-4" *ngIf="!storeId">
+                    <div class="col-4">
                         <button class="btn btn-color mr-2 w-100" type=submit (click)="saveStoreDetails()">Save</button>
                     </div>
                     <div class="col-4" *ngIf="storeId">
