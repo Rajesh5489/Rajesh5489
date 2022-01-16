@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-6 ">
                             <div class="form-row  d-flex">
-                                <div class="input-group mx-3 w-75 d-inline-block">
+                                <div class="input-group mr-1 w-75 d-inline-block">
                                     <label class="small text-muted">Type of spaces</label>
                                     <select id="state" class="form-control form-select w-100"
                                         formControlName="shelfTypeId" [attr.disabled]="!space.value.isEditClicked ? true : null">
@@ -22,7 +22,7 @@
                                         </option>
                                     </select>
                                 </div>
-                                <div class="input-group mx-3 w-75 d-inline-block">
+                                <div class="input-group mx-1 w-75 d-inline-block">
                                     <label class="small text-muted">Category</label>
                                     <select id="state" class="form-control form-select w-100"
                                         formControlName="currentCategory" [attr.disabled]="!space.value.isEditClicked ? true : null">
@@ -31,12 +31,12 @@
                                             {{category.name}}</option>
                                     </select>
                                 </div>
-                                <div class="input-group mx-3 w-75 d-inline-block">
+                                <div class="input-group mx-1 w-75 d-inline-block">
                                     <label class="small text-muted">Area in sqft</label>
                                     <input type="text" id="state" class="form-control w-100"
                                         formControlName="areaInSft" [attr.disabled]="!space.value.isEditClicked ? true : null"/>
                                 </div>
-                                <div class="input-group mx-3 w-75 d-inline-block">
+                                <div class="input-group mx-1 w-75 d-inline-block">
                                     <label class="small text-muted">Cost in Rs</label>
                                     <input type="text" id="state" class="form-control w-100"
                                         formControlName="costPerSft" [attr.disabled]="!space.value.isEditClicked ? true : null"/>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-row  d-flex">
-                                <div class="input-group mx-3 w-75 d-inline-block">
+                                <div class="input-group mx-1 w-75 d-inline-block">
                                     <label class="small text-muted">Minimum booking period</label>
                                     <div class="mb-3 d-flex">
                                         <input type="text" id="state" class="form-control w-100"
@@ -56,7 +56,7 @@
                                         </select> -->
                                     </div>
                                 </div>
-                                <div class="input-group mx-3 w-75 d-inline-block">
+                                <div class="input-group mx-1 w-75 d-inline-block">
                                     <label class="small text-muted">Minimum pre-booking</label>
                                     <div class="mb-3 d-flex">
                                         <input type="text" id="state" class="form-control w-100"
@@ -67,10 +67,10 @@
                                         </select> -->
                                     </div>
                                 </div>
-                                <div class="input-group mx-3 w-75 d-inline-block">
+                                <div class="input-group mx-1 w-75 d-inline-block">
                                     <label class="small text-muted">Prohibited Categories</label>
-                                    <select id="state" class="form-control form-select w-100"
-                                        formControlName="prohibitedCategories" [attr.disabled]="!space.value.isEditClicked ? true : null">
+                                    <select id="state" class="form-control form-select w-100 select"
+                                        formControlName="prohibitedCategories" [attr.disabled]="!space.value.isEditClicked ? true : null" multiple>
                                         <option *ngFor="let cat of productCategories" [value]="cat.name">{{cat.name}}</option>
                                     </select>
                                 </div>
@@ -81,6 +81,13 @@
                         <div class="col-6">
                             <label class="small text-muted">Add pictures</label>
                             <div class="col-12 d-flex  ">
+                                <div class="col-1 mr-2 my-2">
+                                    <label>
+                                        <img src={{url}} height="50" width="50" class="border border-1 rounded">
+                                        <input id="fileUpload" type="file" (change)="onSelectFile($event)"
+                                            class="d-none">
+                                    </label>
+                                </div>
                                 <div class="col-1 m-2">
                                     <label>
                                         <img src={{url}} height="50" width="50" class="border border-1 rounded">
@@ -146,13 +153,13 @@
                                     <input type="text" id="state" class="form-control w-100"
                                         formControlName="customName" [attr.disabled]="!space.value.isEditClicked ? true : null"/>
                                 </div>
-                                <div class="col-4" *ngIf="space.value.isEditClicked">
-                                    <button class="btn btn-color" (click)="cancel(space,i)">X</button>
-                                    <button class="btn btn-color" (click)="saveSpace(space,i)">Save</button>
+                                <div class="col-8 d-flex flex-column-reverse align-items-end" *ngIf="space.value.isEditClicked">
+                                    <button class="btn btn-color my-1 mx-1 w-25" (click)="cancel(space,i)">X</button>
+                                    <button class="btn btn-color my-1 mx-1 w-25" (click)="saveSpace(space,i)">Save</button>
                                 </div>
-                                <div class="col-4" *ngIf="!space.value.isEditClicked">
-                                    <button class="btn btn-color" (click)="editSpace(space,i)">edit</button><button
-                                        class="btn btn-color" (click)="deleteSpace(space, i)">delete</button>
+                                <div class="col-8 d-flex flex-column align-items-end" *ngIf="!space.value.isEditClicked">
+                                    <button class="btn btn-color my-1 mx-1 w-25" (click)="editSpace(space,i)">edit</button>
+                                    <button class="btn btn-color my-1 mx-1 w-25" (click)="deleteSpace(space, i)">delete</button>
                                 </div>
                             </div>
                         </div>
@@ -160,6 +167,6 @@
                 </div>
             </form>
         </ng-container>
-        <button class="btn btn-color" type=submit (click)="close()">Close</button>
+        <button class="btn btn-color mx-4" type=submit (click)="close()">Save and Close</button>
     </div>
 </div>
