@@ -1,96 +1,115 @@
 <div class="section">
     <div class="container-fluid">
         <h2 class="mx-4 py-2 border-btm">
-            Retailer- Add Store Details
+            Store Details
         </h2>
         <form [formGroup]="storeForm" class="m-4">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-6">
-                    <div class="row">
-                        <div class="col-8">
-                            <h6>STORE DETAILS</h6>
-                            <small class="text-muted">(xxx)</small>
-
-                            <div class="form-group">
-
-                                <div class="input-group mb-3">
-                                    <input formControlName="storeName" type="text" class="form-control"
-                                        placeholder="Store Name">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input formControlName="fullAddress" type="text" class="form-control"
-                                        placeholder="Full Address">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input formControlName="managerContactName" type="text" class="form-control" placeholder="managerContactName">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input formControlName="managerContactNumber" type="text" class="form-control" placeholder="managerContactNumber">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input formControlName="managerEmailAddress" type="text" class="form-control" placeholder="managerEmailAddress">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input formControlName="secondaryContactName" type="text" class="form-control" placeholder="secondaryContactName">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input formControlName="secondaryContactNumber" type="text" class="form-control" placeholder="secondaryContactNumber">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input formControlName="secondaryEmailAddress" type="text" class="form-control" placeholder="secondaryEmailAddress">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input formControlName="storeContactNumber" type="text" class="form-control" placeholder="storeContactNumber">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input formControlName="geoTag" type="text" class="form-control"
-                                        placeholder="Geo Tag (google Location)">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input formControlName="location" type="text" class="form-control"
-                                        placeholder="Location">
-                                </div>
-                                <div class="input-group mb-3" *ngIf="!storeId">
-                                    <input formControlName="city" type="text" class="form-control" placeholder="City">
-                                </div>
-                                <div class="mb-3" *ngIf="!storeId">
-                                    <select id="state" class="form-control form-select" formControlName="state">
-                                        <option *ngFor="let state of states" [value]="state">{{state}}</option>
-                                    </select>
-                                </div>
-                                <div class="input-group mb-3" *ngIf="!storeId">
-                                    <input formControlName="country" type="text" class="form-control" placeholder="Country">
-                                </div>
-                                <div class="input-group mb-3" *ngIf="!storeId">
-                                    <input formControlName="pinCode" type="text" class="form-control"
-                                        placeholder="Pin Code">
-                                </div>
-                                <div class="mb-3">
-                                    <select id="areaInSft" class="form-control form-select" formControlName="areaInSft">
-                                        <option *ngFor="let areaInSft of areaInSfts" [value]="areaInSft">{{areaInSft}}
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="input-group mb-3" *ngIf="!storeId">
-                                    <input formControlName="gstin" type="text" class="form-control" placeholder="GSTIN">
-                                </div>
-                                <div class="mb-3">
-                                    <select id="projectedFootfall" class="form-control form-select"
-                                        formControlName="projectedFootfallPerMonth">
-                                        <option *ngFor="let projectedFootfall of projectedFootfalls" [selected]="storeForm.value.projectedFootfallPerMonth === projectedFootfall" [value]="projectedFootfall">
-                                            {{projectedFootfall}}</option>
-                                    </select>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <select id="estimatedFootfall" class="form-control form-select"
-                                        formControlName="estimatedSalesPerMonth">
-                                        <option *ngFor="let estimatedFootfall of estimatedFootfalls" [selected]="storeForm.value.estimatedSalesPerMonth === estimatedFootfall" [value]="estimatedFootfall">
-                                            {{estimatedFootfall}}</option>
-                                    </select>
-                                </div>
-
-                            </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <label>Store Name</label>
+                            <input formControlName="storeName" type="text" class="form-control"
+                                placeholder="Store Name">
                         </div>
+
+                        <div class="input-group mb-3">
+                            <label>Manager Contact Name</label>
+                            <input formControlName="managerContactName" type="text" class="form-control"
+                                placeholder="Manager Contact Name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Manager Contact Number</label>
+                            <input formControlName="managerContactNumber" type="text" class="form-control"
+                                placeholder="Manager Contact Number">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Manager Email Address</label>
+                            <input formControlName="managerEmailAddress" type="text" class="form-control"
+                                placeholder="Manager Email Address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Secondary Contact Name</label>
+                            <input formControlName="secondaryContactName" type="text" class="form-control"
+                                placeholder="Secondary Contact Name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Secondary Contact Number</label>
+                            <input formControlName="secondaryContactNumber" type="text" class="form-control"
+                                placeholder="Secondary Contact Number">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Secondary Email Address</label>
+                            <input formControlName="secondaryEmailAddress" type="text" class="form-control"
+                                placeholder="Secondary Email Address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Store Contact Number</label>
+                            <input formControlName="storeContactNumber" type="text" class="form-control"
+                                placeholder="Store Contact Number">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Geo Tag</label>
+                            <input formControlName="geoTag" type="text" class="form-control"
+                                placeholder="Geo Tag (google Location)">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Store Location</label>
+                            <input formControlName="location" type="text" class="form-control" placeholder="Location">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>City</label>
+                            <input formControlName="city" type="text" class="form-control" placeholder="City">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>State</label>
+                            <select id="state" class="form-control form-select" formControlName="state">
+                                <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Country</label>
+                            <input formControlName="country" type="text" class="form-control" placeholder="Country">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>PIN Code</label>
+                            <input formControlName="pinCode" type="text" class="form-control" placeholder="Pin Code">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Store Address</label>
+                            <input formControlName="fullAddress" type="text" class="form-control"
+                                placeholder="Full Address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Store Area In SFT</label>
+                            <select id="areaInSft" class="form-control form-select" formControlName="areaInSft">
+                                <option *ngFor="let areaInSft of areaInSfts" [value]="areaInSft">{{areaInSft}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Store GSTIN</label>
+                            <input formControlName="gstin" type="text" class="form-control" placeholder="GSTIN">
+                        </div>
+                        <div class="input-group  mb-3">
+                            <label>Projected Footfall per Month</label>
+                            <select id="projectedFootfall" class="form-control form-select"
+                                formControlName="projectedFootfallPerMonth">
+                                <option *ngFor="let projectedFootfall of projectedFootfalls"
+                                    [value]="projectedFootfall">
+                                    {{projectedFootfall}}</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label>Estimated Footfall per Month</label>
+                            <select id="estimatedFootfall" class="form-control form-select"
+                                formControlName="estimatedSalesPerMonth">
+                                <option *ngFor="let estimatedFootfall of estimatedFootfalls"
+                                    [value]="estimatedFootfall">
+                                    {{estimatedFootfall}}</option>
+                            </select>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-6" *ngIf="storeId">
@@ -159,17 +178,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="row ">
+                <div class="row justify-content-end">
                     <!-- <div class="col-4">
                         <button class="btn btn-color mr-2 w-100" type=submit (click)="addSpaces()">Add Ad spaces</button>
                     </div>
                     <div class="col-4">
                         <button class="btn btn-color mr-2 w-100" type=submit>Add more store </button>
                     </div> -->
-                    <div class="col-4">
+                    <div class="col-3" *ngIf="!storeId">
                         <button class="btn btn-color mr-2 w-100" type=submit (click)="saveStoreDetails()">Save</button>
                     </div>
-                    <div class="col-4" *ngIf="storeId">
+                    <div class="col-3" *ngIf="storeId">
                         <button class="btn btn-color mr-2 w-100" type=submit (click)="close()">Close</button>
                     </div>
 
