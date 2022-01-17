@@ -1,90 +1,107 @@
 <div class="section">
     <div class="container-fluid">
         <h2 class="mx-4 py-2 border-btm">
-            Retailer- Add Store Details
+            Store Details
         </h2>
         <form [formGroup]="storeForm" class="m-4">
             <div class="row">
                 <div class="col-6">
                     <div class="row">
                         <div class="col-8">
-                            <h6>STORE DETAILS</h6>
-                            <small class="text-muted">(xxx)</small>
-
                             <div class="form-group">
-
                                 <div class="input-group mb-3">
+                                    <div>Store Name</div>
                                     <input formControlName="storeName" type="text" class="form-control"
                                         placeholder="Store Name">
                                 </div>
+                                
                                 <div class="input-group mb-3">
-                                    <input formControlName="fullAddress" type="text" class="form-control"
-                                        placeholder="Full Address">
+                                    <div>Manager Contact Name</div>
+                                    <input formControlName="managerContactName" type="text" class="form-control" 
+                                    placeholder="Manager Contact Name">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input formControlName="managerContactName" type="text" class="form-control" placeholder="managerContactName">
+                                    <div>Manager Contact Number</div>
+                                    <input formControlName="managerContactNumber" type="text" class="form-control" 
+                                    placeholder="Manager Contact Number">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input formControlName="managerContactNumber" type="text" class="form-control" placeholder="managerContactNumber">
+                                    <div>Manager Email Address</div>
+                                    <input formControlName="managerEmailAddress" type="text" class="form-control" placeholder="Manager Email Address">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input formControlName="managerEmailAddress" type="text" class="form-control" placeholder="managerEmailAddress">
+                                    <div>Secondary Contact Name</div>
+                                    <input formControlName="secondaryContactName" type="text" class="form-control" placeholder="Secondary Contact Name">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input formControlName="secondaryContactName" type="text" class="form-control" placeholder="secondaryContactName">
+                                    <div>Secondary Contact Number</div>
+                                    <input formControlName="secondaryContactNumber" type="text" class="form-control" placeholder="Secondary Contact Number">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input formControlName="secondaryContactNumber" type="text" class="form-control" placeholder="secondaryContactNumber">
+                                    <div>Secondary Email Address</div>
+                                    <input formControlName="secondaryEmailAddress" type="text" class="form-control" placeholder="Secondary Email Address">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input formControlName="secondaryEmailAddress" type="text" class="form-control" placeholder="secondaryEmailAddress">
+                                    <div>Store Contact Number</div>
+                                    <input formControlName="storeContactNumber" type="text" class="form-control" placeholder="Store Contact Number">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input formControlName="storeContactNumber" type="text" class="form-control" placeholder="storeContactNumber">
-                                </div>
-                                <div class="input-group mb-3">
+                                    <div>Geo Tag</div>
                                     <input formControlName="geoTag" type="text" class="form-control"
                                         placeholder="Geo Tag (google Location)">
                                 </div>
                                 <div class="input-group mb-3">
+                                    <div>Store Location</div>
                                     <input formControlName="location" type="text" class="form-control"
                                         placeholder="Location">
                                 </div>
-                                <div class="input-group mb-3" *ngIf="!storeId">
+                                <div class="input-group mb-3">
+                                    <div>City</div>
                                     <input formControlName="city" type="text" class="form-control" placeholder="City">
                                 </div>
-                                <div class="mb-3" *ngIf="!storeId">
+                                <div class="mb-3">
+                                    <div>State</div>
                                     <select id="state" class="form-control form-select" formControlName="state">
                                         <option *ngFor="let state of states" [value]="state">{{state}}</option>
                                     </select>
                                 </div>
-                                <div class="input-group mb-3" *ngIf="!storeId">
+                                <div class="input-group mb-3">
+                                    <div>Country</div>
                                     <input formControlName="country" type="text" class="form-control" placeholder="Country">
                                 </div>
-                                <div class="input-group mb-3" *ngIf="!storeId">
+                                <div class="input-group mb-3">
+                                    <div>PIN Code</div>
                                     <input formControlName="pinCode" type="text" class="form-control"
                                         placeholder="Pin Code">
                                 </div>
+                                <div class="input-group mb-3">
+                                    <div>Store Address</div>
+                                    <input formControlName="fullAddress" type="text" class="form-control"
+                                        placeholder="Full Address">
+                                </div>
                                 <div class="mb-3">
+                                    <div>Store Area In SFT</div>
                                     <select id="areaInSft" class="form-control form-select" formControlName="areaInSft">
                                         <option *ngFor="let areaInSft of areaInSfts" [value]="areaInSft">{{areaInSft}}
                                         </option>
                                     </select>
                                 </div>
-                                <div class="input-group mb-3" *ngIf="!storeId">
+                                <div class="input-group mb-3">
+                                    <div>Store GSTIN</div>
                                     <input formControlName="gstin" type="text" class="form-control" placeholder="GSTIN">
                                 </div>
                                 <div class="mb-3">
                                     <select id="projectedFootfall" class="form-control form-select"
                                         formControlName="projectedFootfallPerMonth">
-                                        <option *ngFor="let projectedFootfall of projectedFootfalls" [selected]="storeForm.value.projectedFootfallPerMonth === projectedFootfall" [value]="projectedFootfall">
+                                        <option *ngFor="let projectedFootfall of projectedFootfalls" [value]="projectedFootfall">
                                             {{projectedFootfall}}</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
+                                    <div>Estimated Footfall per Month</div>
                                     <select id="estimatedFootfall" class="form-control form-select"
                                         formControlName="estimatedSalesPerMonth">
-                                        <option *ngFor="let estimatedFootfall of estimatedFootfalls" [selected]="storeForm.value.estimatedSalesPerMonth === estimatedFootfall" [value]="estimatedFootfall">
+                                        <option *ngFor="let estimatedFootfall of estimatedFootfalls" [value]="estimatedFootfall">
                                             {{estimatedFootfall}}</option>
                                     </select>
                                 </div>
@@ -166,7 +183,7 @@
                     <div class="col-4">
                         <button class="btn btn-color mr-2 w-100" type=submit>Add more store </button>
                     </div> -->
-                    <div class="col-4">
+                    <div class="col-4" *ngIf="!storeId">
                         <button class="btn btn-color mr-2 w-100" type=submit (click)="saveStoreDetails()">Save</button>
                     </div>
                     <div class="col-4" *ngIf="storeId">
