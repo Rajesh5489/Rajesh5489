@@ -57,25 +57,25 @@
                             <label>Store Location</label>
                             <input formControlName="location" type="text" class="form-control" placeholder="Location">
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" *ngIf="!storeId">
                             <label>City</label>
                             <input formControlName="city" type="text" class="form-control" placeholder="City">
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" *ngIf="!storeId">
                             <label>State</label>
                             <select id="state" class="form-control form-select" formControlName="state">
                                 <option *ngFor="let state of states" [value]="state">{{state}}</option>
                             </select>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" *ngIf="!storeId">
                             <label>Country</label>
                             <input formControlName="country" type="text" class="form-control" placeholder="Country">
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" *ngIf="!storeId">
                             <label>PIN Code</label>
                             <input formControlName="pinCode" type="text" class="form-control" placeholder="Pin Code">
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" *ngIf="!storeId">
                             <label>Store Address</label>
                             <input formControlName="fullAddress" type="text" class="form-control"
                                 placeholder="Full Address">
@@ -87,7 +87,7 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" *ngIf="!storeId">
                             <label>Store GSTIN</label>
                             <input formControlName="gstin" type="text" class="form-control" placeholder="GSTIN">
                         </div>
