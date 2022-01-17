@@ -21,6 +21,7 @@ import { BankDetailsComponent } from './bank-details/bank-details.component';
 import { StoreListComponent } from './store-list/store-list.component';
 import { StoreDetailsComponent } from './store-details/store-details.component';
 import { RetailerRequestedComponent } from './retailer-requested/retailer-requested.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RetailerRequestedComponent } from './retailer-requested/retailer-reques
     HeaderComponent,
     BankDetailsComponent,
     StoreListComponent,
-    RetailerRequestedComponent
+    RetailerRequestedComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

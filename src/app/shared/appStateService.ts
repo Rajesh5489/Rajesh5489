@@ -6,6 +6,7 @@ import { StoreSummary } from "../Models/StoreSummary";
 })
 export class AppStateService {
     enviromentData: any;
+    userType: any;
     retailerId: any;
     retailerName: any;
     storeList!: Array<StoreSummary>;
