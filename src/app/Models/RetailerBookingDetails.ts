@@ -9,4 +9,5 @@ export class RetailerBookingDetails {
     bookingAmount!: number;
     bookingLedger!: BookingLedger;
     createdDate!: string;
+    selected!: boolean;
 }

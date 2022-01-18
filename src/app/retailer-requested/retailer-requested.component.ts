@@ -34,6 +34,7 @@ export class RetailerRequestedComponent implements OnInit {
         this.requestedBookings = res.filter((x: RetailerBookingDetails) => x.shelfBookingStatusType == this.statusType.Requested.toString());
         this.confirmedBookings = res.filter((x: RetailerBookingDetails) => x.shelfBookingStatusType == this.statusType.Booked.toString());
         this.rejectedBookings = res.filter((x: RetailerBookingDetails) => x.shelfBookingStatusType == this.statusType.Rejected.toString());
+        this.requestedBookings.forEach(x => x.selected = false);
         if (this.requestedBookings.length > 0) {
           this.bookingDetails = this.requestedBookings;
           this.bookingType = this.statusType.Requested;
