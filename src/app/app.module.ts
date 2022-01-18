@@ -4,32 +4,31 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddSpacesComponent } from './add-spaces/add-spaces.component';
-import { CountersComponent } from './counters/counters.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { MyprofileComponent } from './myprofile/myprofile.component';
-import { SearchComponent } from './search/search.component';
-import { MapsComponent } from './maps/maps.component';
-import { OverviewComponent } from './overview/overview.component'
+import { HomepageComponent } from './brand/homepage/homepage.component';
+import { MyprofileComponent } from './brand/myprofile/myprofile.component';
+import { SearchComponent } from './brand/search/search.component';
+import { MapsComponent } from './brand/maps/maps.component';
+import { OverviewComponent } from './brand/overview/overview.component'
 import { BsDatepickerModule, BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './common/header/header.component';
 import { AppInitService } from './app-init.service';
-import { BankDetailsComponent } from './bank-details/bank-details.component';
-import { StoreListComponent } from './store-list/store-list.component';
-import { StoreDetailsComponent } from './store-details/store-details.component';
-import { RetailerRequestedComponent } from './retailer-requested/retailer-requested.component';
-import { LoginComponent } from './login/login.component';
+import { BankDetailsComponent } from './common/bank-details/bank-details.component';
+import { StoreListComponent } from './retailer/store-list/store-list.component';
+import { StoreDetailsComponent } from './retailer/store-details/store-details.component';
+import { LoginComponent } from './common/login/login.component';
+import { LandingPageComponent } from './common/landing-page/landing-page.component';
+import { RegistrationComponent } from './retailer/registration/registration.component';
+import { BookingsComponent } from './retailer/bookings/bookings.component';
+import { ShelvesComponent } from './retailer/shelves/shelves.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserDetailsComponent,
+    RegistrationComponent,
     StoreDetailsComponent,
-    AddSpacesComponent,
-    CountersComponent,
+    ShelvesComponent,
     HomepageComponent,
     MyprofileComponent,
     SearchComponent,
@@ -38,8 +37,9 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     BankDetailsComponent,
     StoreListComponent,
-    RetailerRequestedComponent,
-    LoginComponent
+    BookingsComponent,
+    LoginComponent,
+    LandingPageComponent
   ],
   imports: [
     CommonModule,

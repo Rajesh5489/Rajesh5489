@@ -1,26 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddSpacesComponent } from './add-spaces/add-spaces.component';
-import { CountersComponent } from './counters/counters.component';
-import { StoreDetailsComponent } from './store-details/store-details.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { HomepageComponent } from './homepage/homepage.component'
-import { StoreListComponent } from './store-list/store-list.component';
-import { BankDetailsComponent } from './bank-details/bank-details.component';
-import { RetailerRequestedComponent } from './retailer-requested/retailer-requested.component';
-import { LoginComponent } from './login/login.component';
-
+import { StoreDetailsComponent } from './retailer/store-details/store-details.component';
+import { HomepageComponent } from './brand/homepage/homepage.component'
+import { StoreListComponent } from './retailer/store-list/store-list.component';
+import { BankDetailsComponent } from './common/bank-details/bank-details.component';
+import { LoginComponent } from './common/login/login.component';
+import { BookingsComponent } from './retailer/bookings/bookings.component';
+import { RegistrationComponent } from './retailer/registration/registration.component';
+import { ShelvesComponent } from './retailer/shelves/shelves.component';
+import { LandingPageComponent } from './common/landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: LandingPageComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'storedetails', component: StoreDetailsComponent },
-  { path: 'addSpaces', component: AddSpacesComponent },
-  { path: 'counters', component: CountersComponent },
-  { path: 'homePage', component: HomepageComponent },
+  { path: 'shelves', component: ShelvesComponent },
+  { path: 'brand-home', component: HomepageComponent },
   { path: 'storelist', component: StoreListComponent },
   { path: 'bankdetails', component: BankDetailsComponent },
-  { path: 'bookings', component: RetailerRequestedComponent },
-  { path: 'registration', component: UserDetailsComponent }
+  { path: 'bookings', component: BookingsComponent },
+  { path: 'retailer-registration', component: RegistrationComponent }
 ];
 
 @NgModule({
