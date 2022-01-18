@@ -28,10 +28,4 @@ export class LoginComponent implements OnInit {
     this.appstateservice.retailerId = this.loginForm.value.retailerId;
     this.router.navigate(["/storelist"]);
   }
-
-  Register()
-  {
-    this.router.navigate(["/retailer-registration"]);
-  }
-
 }

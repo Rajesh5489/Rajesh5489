@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppStateService } from 'src/app/_services/appStateService';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public appstateService:AppStateService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  public logout(){
+    this.appstateService.retailerId = null;
+    this.router.navigate(["/"]);
+  }
 }

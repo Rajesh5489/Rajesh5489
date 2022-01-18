@@ -22,6 +22,7 @@ import { LandingPageComponent } from './common/landing-page/landing-page.compone
 import { RegistrationComponent } from './retailer/registration/registration.component';
 import { BookingsComponent } from './retailer/bookings/bookings.component';
 import { ShelvesComponent } from './retailer/shelves/shelves.component';
+import { RetailHomeComponent } from './retailer/retail-home/retail-home.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ShelvesComponent } from './retailer/shelves/shelves.component';
     StoreListComponent,
     BookingsComponent,
     LoginComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    RetailHomeComponent
   ],
   imports: [
     CommonModule,

@@ -8,23 +8,23 @@
                 <div class="col-4">
                     <div class="form-group">
                         <div class="input-group mb-3">
-                            <div>User Name</div>
+                            <label class="mr-3">User Name</label>
                             <input formControlName="userName" type="text" class="form-control" placeholder="User Name">
                         </div>
                         <div class="input-group mb-3">
-                            <div>Password</div>
+                            <label class="mr-3">Password</label>
                             <input formControlName="password" type="text" class="form-control" placeholder="Password">
                         </div>
                         <div class="input-group mb-3">
-                            <div>Retailer Id</div>
+                            <label class="mr-3">Retailer Id</label>
                             <input formControlName="retailerId" type="text" class="form-control"
                                 placeholder="RetailerId">
                         </div>
                         <div class="input-group mb-3">
-                            <label for="userType">User Type:</label>
+                            <label class="mr-3">User Type :</label>
                             <div>
+                                <label class="mr-3" for="retailer">Retailer</label>
                                 <input id="retailer" type="radio" value="Retailer" name="userType" formControlName="userType">
-                                <label for="retailer">Retailer</label>
                             </div>
                             <div>
                                 <input id="brand" type="radio" value="Brand" name="userType" formControlName="userType">
@@ -35,8 +35,6 @@
                 </div>
             </div>
             <button class="btn btn-color" (click)="Login()" type=submit>Submit</button>
-
-            <button class="btn btn-color" (click)="Register()" type=submit>Register</button>
         </form>
     </div>
 </div>
