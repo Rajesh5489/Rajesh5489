@@ -2,64 +2,36 @@
     <thead>
         <tr>
             <th scope="col">Store Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">footfall</th>
-            <th scope="col">Est sales/Mo</th>
             <th scope="col">Area in sft</th>
+            <th scope="col">Location</th>
+            <th scope="col">Footfall</th>
+            <th scope="col">Est sales/Mo</th>
             <th scope="col">No of spaces listed</th>
             <th scope="col">No of spaces Available</th>
             <th scope="col">Next space availabilty</th>
-            <th scope="col">
+            <!-- <th scope="col">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                 </div>
-            </th>
+            </th> -->
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+        <tr *ngFor="let booking of bookingsList; let i = index">
+            <td>{{booking.storeName}}</td>
+            <td>{{booking.areaInSft}}</td>
+            <td>{{booking.location}}</td>
+            <td>{{booking.projectedFootfallPerMonth}}</td>
+            <td>{{booking.estimatedSalesPerMonth}}</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <!-- <td>@mdo</td>
             <th scope="col">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                 </div>
-            </th>
-        </tr>
-        <tr>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@fat</td>
-            <td>Thornton</td>
-            <th scope="col">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                </div>
-            </th>
-        </tr>
-        <tr>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@twitter</td>
-            <td>Jacob</td>
-            <th scope="col">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                </div>
-            </th>
+            </th> -->
         </tr>
     </tbody>
 </table>
