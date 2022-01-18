@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RetailerBookingSummary } from '../../Models/RetailerBookingSummary';
-import { StoreSummary } from '../../Models/StoreSummary';
-import { AppStateService } from '../../shared/appStateService';
-import { BookingService } from '../../shared/bookingService';
-import { RetailerStoreService } from '../../shared/retailerStoreService';
+import { RetailerBookingSummary } from '../../_models/RetailerBookingSummary';
+import { StoreSummary } from '../../_models/StoreSummary';
+import { AppStateService } from '../../_services/appStateService';
+import { BookingService } from '../../_services/bookingService';
+import { RetailerStoreService } from '../../_services/retailerStoreService';
 
 @Component({
   selector: 'app-store-list',

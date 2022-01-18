@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
 
-import { NewStoreRequest } from '../Models/NewStoreRequest';
+import { NewStoreRequest } from '../_models/NewStoreRequest';
 
 @Injectable({
   providedIn: 'root'

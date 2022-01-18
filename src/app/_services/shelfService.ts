@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { NewShelfRequest } from "../Models/NewShelfRequest";
-import { ShelfRequest } from "../Models/ShelfRequest";
+import { NewShelfRequest } from "../_models/NewShelfRequest";
+import { ShelfRequest } from "../_models/ShelfRequest";
 import { AppStateService } from "./appStateService";
 
 @Injectable({

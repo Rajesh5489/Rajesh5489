@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NewRetailerProfileRequest } from '../../Models/NewRetailerProfileRequest';
-import { AppStateService } from '../../shared/appStateService';
-import { CompanyService } from '../../shared/companyService';
+import { NewRetailerProfileRequest } from '../../_models/NewRetailerProfileRequest';
+import { AppStateService } from '../../_services/appStateService';
+import { CompanyService } from '../../_services/companyService';
 
 @Component({
   selector: 'app-retailer-registration',

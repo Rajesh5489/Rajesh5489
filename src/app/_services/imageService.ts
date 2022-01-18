@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { RetailerStoreDetailsImageRequest } from "../Models/RetailerStoreDetailsImageRequest";
+import { RetailerStoreDetailsImageRequest } from "../_models/RetailerStoreDetailsImageRequest";
 import { AppStateService } from "./appStateService";
 
 @Injectable({

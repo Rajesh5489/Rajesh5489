@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AppStateService } from './shared/appStateService';
+import { AppStateService } from './_services/appStateService';
 
 @Injectable()
 export class AppInitService {

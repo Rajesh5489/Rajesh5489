@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppStateService } from '../../shared/appStateService';
-import { RetailerStoreService } from '../../shared/retailerStoreService';
+import { AppStateService } from '../../_services/appStateService';
+import { RetailerStoreService } from '../../_services/retailerStoreService';
 import { FormGroup, FormControl } from '@angular/forms';
-import { BankService } from '../../shared/bankService';
-import { NewRetailerBankRequest } from '../../Models/NewRetailerBankRequest';
+import { BankService } from '../../_services/bankService';
+import { NewRetailerBankRequest } from '../../_models/NewRetailerBankRequest';
 @Component({
   selector: 'app-bank-details',
   templateUrl: './bank-details.component.html',

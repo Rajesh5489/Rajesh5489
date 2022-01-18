@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { NewStoreRequest } from '../../Models/NewStoreRequest';
-import { StoreRequest } from '../../Models/StoreRequest';
-import { AppStateService } from '../../shared/appStateService';
-import { RetailerStoreService } from '../../shared/retailerStoreService';
+import { NewStoreRequest } from '../../_models/NewStoreRequest';
+import { StoreRequest } from '../../_models/StoreRequest';
+import { AppStateService } from '../../_services/appStateService';
+import { RetailerStoreService } from '../../_services/retailerStoreService';
 @Component({
   selector: 'app-store-details',
   templateUrl: './store-details.component.html',

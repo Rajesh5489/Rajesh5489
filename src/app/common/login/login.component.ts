@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AppStateService } from 'src/app/shared/appStateService';
+import { AppStateService } from 'src/app/_services/appStateService';
 
 @Component({
   selector: 'app-login',

@@ -1,7 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
-import { MapMarkerService } from '../../shared/mapMarkerService';
-import { NewStoreRequest } from '../../Models/NewStoreRequest';
+import { MapMarkerService } from '../../_services/mapMarkerService';
+import { NewStoreRequest } from '../../_models/NewStoreRequest';
 
 const iconRetinaUrl = '/assets/mapicons/blue-marker.svg';
 const iconUrl = '/assets/mapicons/blue-marker.svg';

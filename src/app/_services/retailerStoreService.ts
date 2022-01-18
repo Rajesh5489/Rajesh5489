@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { NewStoreRequest } from "../Models/NewStoreRequest";
-import { StoreRequest } from "../Models/StoreRequest";
+import { NewStoreRequest } from "../_models/NewStoreRequest";
+import { StoreRequest } from "../_models/StoreRequest";
 import { AppStateService } from "./appStateService";
 
 @Injectable({

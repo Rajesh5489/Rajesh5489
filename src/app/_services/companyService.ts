@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BrandProfileRequest } from "../Models/BrandProfileRequest";
-import { NewBrandProfileRequest } from "../Models/NewBrandProfileRequest";
-import { NewRetailerProfileRequest } from "../Models/NewRetailerProfileRequest";
-import { RetailerProfileRequest } from "../Models/RetailerProfileRequest";
+import { BrandProfileRequest } from "../_models/BrandProfileRequest";
+import { NewBrandProfileRequest } from "../_models/NewBrandProfileRequest";
+import { NewRetailerProfileRequest } from "../_models/NewRetailerProfileRequest";
+import { RetailerProfileRequest } from "../_models/RetailerProfileRequest";
 import { AppStateService } from "./appStateService";
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { StoreSummary } from "../Models/StoreSummary";
+import { StoreSummary } from "../_models/StoreSummary";
 
 @Injectable({
     providedIn: "root"

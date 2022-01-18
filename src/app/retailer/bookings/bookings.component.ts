@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RetailerBookingApprovalStatusRequest } from '../../Models/RetailerBookingApprovalStatusRequest';
-import { RetailerBookingDetails } from '../../Models/RetailerBookingDetails';
-import { AppStateService } from '../../shared/appStateService';
-import { BookingService } from '../../shared/bookingService';
+import { RetailerBookingApprovalStatusRequest } from '../../_models/RetailerBookingApprovalStatusRequest';
+import { RetailerBookingDetails } from '../../_models/RetailerBookingDetails';
+import { AppStateService } from '../../_services/appStateService';
+import { BookingService } from '../../_services/bookingService';
 
 export enum ShelfBookingStatusType {
   Requested,

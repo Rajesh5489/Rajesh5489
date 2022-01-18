@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormControlName, FormArray, FormBuilder } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddSpacesService } from 'src/app/shared/metadata.service';
-import { ImageDetails } from '../../Models/ImageDetails';
-import { NewShelfRequest } from '../../Models/NewShelfRequest';
-import { RetailerStoreDetailsImageRequest } from '../../Models/RetailerStoreDetailsImageRequest';
-import { ShelfRequest } from '../../Models/ShelfRequest';
-import { ShelfSummary } from '../../Models/ShelfSummary';
-import { AppStateService } from '../../shared/appStateService';
-import { RetailerStoreService } from '../../shared/retailerStoreService';
-import { ShelfService } from '../../shared/shelfService';
+import { AddSpacesService } from 'src/app/_services/metadata.service';
+import { ImageDetails } from '../../_models/ImageDetails';
+import { NewShelfRequest } from '../../_models/NewShelfRequest';
+import { RetailerStoreDetailsImageRequest } from '../../_models/RetailerStoreDetailsImageRequest';
+import { ShelfRequest } from '../../_models/ShelfRequest';
+import { ShelfSummary } from '../../_models/ShelfSummary';
+import { AppStateService } from '../../_services/appStateService';
+import { RetailerStoreService } from '../../_services/retailerStoreService';
+import { ShelfService } from '../../_services/shelfService';
 
 @Component({
   selector: 'app-shelves',

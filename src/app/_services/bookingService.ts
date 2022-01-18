@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BrandBookingRequest } from "../Models/BrandBookingRequest";
-import { RetailerBookingApprovalStatusRequest } from "../Models/RetailerBookingApprovalStatusRequest";
+import { BrandBookingRequest } from "../_models/BrandBookingRequest";
+import { RetailerBookingApprovalStatusRequest } from "../_models/RetailerBookingApprovalStatusRequest";
 import { AppStateService } from "./appStateService";
 
 @Injectable({

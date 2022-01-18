@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NewStoreRequest } from '../../Models/NewStoreRequest';
-import { ShelfService } from '../../shared/shelfService';
+import { NewStoreRequest } from '../../_models/NewStoreRequest';
+import { ShelfService } from '../../_services/shelfService';
 
 @Component({
   selector: 'app-overview',

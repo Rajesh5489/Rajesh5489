@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BrandBankRequest } from "../Models/BrandBankRequest";
-import { NewBrandBankRequest } from "../Models/NewBrandBankRequest";
-import { NewRetailerBankRequest } from "../Models/NewRetailerBankRequest";
-import { RetailerBankRequest } from "../Models/RetailerBankRequest";
+import { BrandBankRequest } from "../_models/BrandBankRequest";
+import { NewBrandBankRequest } from "../_models/NewBrandBankRequest";
+import { NewRetailerBankRequest } from "../_models/NewRetailerBankRequest";
+import { RetailerBankRequest } from "../_models/RetailerBankRequest";
 import { AppStateService } from "./appStateService";
 
 @Injectable({
