@@ -50,11 +50,14 @@ export class AddSpacesComponent {
     this.shelfService.getShelvesDetailsForRetailerByStore(this.appStateService.retailerId,
       this.storeId,
       (res: any) => {
-        if (res) {
-          this.shelves = res;
-          res.forEach((element: any) => {
+        if (res && res.length > 0) {
+          this.shelves = res.reverse();
+          this.shelves.forEach((element: any) => {
             this.spaceFormArray.push(this.intialiseItem(element));
           });
+        }
+        else{
+          this.addNewSpace();
         }
       },
       (err: any) => { }
@@ -103,7 +106,7 @@ export class AddSpacesComponent {
 
   addNewSpace() {
     this.isAddMoreDisable = true;
-    this.spaceFormArray.push(
+    this.spaceFormArray.unshift(
       this.createItem());
   }
 
