@@ -51,6 +51,10 @@ export class BrandRegistrationComponent implements OnInit {
           }
         },
         (err: any) => {
+          if(err.statusCode = 218)
+          {
+            this.sampleMessage = "Primary contact number and email are already present."
+          }
         });
     }
     else
