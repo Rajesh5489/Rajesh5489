@@ -21,7 +21,7 @@ export class StoreListComponent implements OnInit {
     private storeService: RetailerStoreService) { }
 
   ngOnInit() {
-    this.bookingService.getAllBookingsForRetailer(this.appStateService.retailerId,
+    this.bookingService.getAllBookingsForRetailer(this.appStateService.retailerOrBrandId,
       (res: any) => {
         this.bookingsList = res;
       },
@@ -34,7 +34,7 @@ export class StoreListComponent implements OnInit {
     this.router.navigate(["/bookings"], { queryParams: { storeId: storeId } });
   }
   editStore(storeId: number) {
-    this.storeService.getAllStores(this.appStateService.retailerId,
+    this.storeService.getAllStores(this.appStateService.retailerOrBrandId,
       (res: any) => {
         this.storesList = res;
         this.appStateService.storeList = this.storesList;

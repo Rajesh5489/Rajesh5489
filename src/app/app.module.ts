@@ -19,15 +19,21 @@ import { StoreListComponent } from './retailer/store-list/store-list.component';
 import { StoreDetailsComponent } from './retailer/store-details/store-details.component';
 import { LoginComponent } from './common/login/login.component';
 import { LandingPageComponent } from './common/landing-page/landing-page.component';
-import { RegistrationComponent } from './retailer/registration/registration.component';
 import { BookingsComponent } from './retailer/bookings/bookings.component';
 import { ShelvesComponent } from './retailer/shelves/shelves.component';
 import { RetailHomeComponent } from './retailer/retail-home/retail-home.component';
+import { StoreHomeComponent } from './brand/store-home/store-home.component';
+import { StoreShelvesComponent } from './brand/store-shelves/store-shelves.component';
+import { StoreBookingsComponent } from './brand/store-bookings/store-bookings.component';
+import { AllBookingsComponent } from './brand/all-bookings/all-bookings.component';
+import { StoreCartComponent } from './brand/store-cart/store-cart.component';
+import { RetailerRegistrationComponent } from './retailer/retailer-registration/retailer-registration.component';
+import { BrandRegistrationComponent } from './brand/brand-registration/brand-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent,
+    RetailerRegistrationComponent,
     StoreDetailsComponent,
     ShelvesComponent,
     HomepageComponent,
@@ -41,7 +47,13 @@ import { RetailHomeComponent } from './retailer/retail-home/retail-home.componen
     BookingsComponent,
     LoginComponent,
     LandingPageComponent,
-    RetailHomeComponent
+    RetailHomeComponent,
+    StoreHomeComponent,
+    StoreShelvesComponent,
+    StoreBookingsComponent,
+    AllBookingsComponent,
+    StoreCartComponent,
+    BrandRegistrationComponent
   ],
   imports: [
     CommonModule,

@@ -28,7 +28,7 @@ export class BookingsComponent implements OnInit {
     private appStateService: AppStateService) { }
 
   ngOnInit(): void {
-    this.bookingService.getRetailerBookingDetailsById(this.appStateService.retailerId,
+    this.bookingService.getRetailerBookingDetailsById(this.appStateService.retailerOrBrandId,
       1,
       (res: Array<RetailerBookingDetails>) => {
         this.allBookings = res;
@@ -68,10 +68,10 @@ export class BookingsComponent implements OnInit {
 
   buildBookingApprovalRequest(booking: RetailerBookingDetails, status: any): RetailerBookingApprovalStatusRequest {
     let res = new RetailerBookingApprovalStatusRequest;
-    res.retailerId = this.appStateService.retailerId;
+    res.retailerId = this.appStateService.retailerOrBrandId;
     res.bookingId = booking.bookingId;
     res.approvalStatus = status;
-    res.modifiedBy = this.appStateService.retailerName;
+    res.modifiedBy = this.appStateService.userName;
     res.modifiedDate = new Date().toISOString();
     return res;
   }

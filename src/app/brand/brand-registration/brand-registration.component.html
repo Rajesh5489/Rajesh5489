@@ -1,36 +1,36 @@
 <div class="section">
     <div class="container-fluid">
         <h2 class="mx-3 py-2 border-btm">
-            Retailer Registration Form
+            Brand Registration Form
         </h2>
-        <form [formGroup]="userDetailsForm" class="m-4">
+        <form [formGroup]="registrationForm" class="m-4">
             <div class="row justify-content-center">
                 <div class="col-5">
                     <div class="form-group">
                         <div class="input-group mb-3">
-                            <label class="mr-3">Registered Name</label>
-                            <input formControlName="registeredName" type="text" class="form-control"
-                                placeholder="Registered Name">
+                            <label class="mr-3">Registered Name <span class="text-danger"> * </span></label>
+                            <input id="registeredName" formControlName="registeredName" type="text" class="form-control"
+                                placeholder="Registered Name" required>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="mr-3">Business Name</label>
+                            <label class="mr-3">Business Name<span class="text-danger"> * </span></label>
                             <input formControlName="businessName" type="text" class="form-control"
-                                placeholder="Bussiness Name">
+                                placeholder="Bussiness Name" required>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="mr-3">Primary Contact Name</label>
+                            <label class="mr-3">Primary Contact Name<span class="text-danger"> * </span></label>
                             <input formControlName="primaryContactName" type="text" class="form-control"
-                                placeholder="Owners Name">
+                                placeholder="Owners Name" required>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="mr-3">Primary Contact Number</label>
+                            <label class="mr-3">Primary Contact Number<span class="text-danger"> * </span></label>
                             <input formControlName="primaryContactNumber" type="text" class="form-control"
-                                placeholder="Primary Contact Number">
+                                placeholder="Primary Contact Number" required>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="mr-3">Primary Email Address</label>
+                            <label class="mr-3">Primary Email Address<span class="text-danger"> * </span></label>
                             <input formControlName="primaryEmailAddress" type="text" class="form-control"
-                                placeholder="Primary email id">
+                                placeholder="Primary email id" required>
                         </div>
                         <div class="input-group mb-3">
                             <label class="mr-3">Secondary Contact Name</label>
@@ -47,15 +47,21 @@
                             <input formControlName="secondaryEmailAddress" type="text" class="form-control"
                                 placeholder="Secondary Email Id">
                         </div>
+                        <div class="input-group mb-3">
+                            <label class="mr-3">PAN Number<span class="text-danger"> * </span></label>
+                            <input formControlName="pan" type="text" class="form-control" placeholder="PAN No" required>
+                        </div>
                         <div class="input-group">
-                            <label class="mr-3  mb-0">Permanent Account Number (PAN)</label>
-                            <input formControlName="pan" type="text" class="form-control" placeholder="PAN No">
+                            <label class="mr-3 mb-0">GSTIN<span class="text-danger"> * </span></label>
+                            <input formControlName="gstin" type="text" class="form-control" placeholder="GSTIN"
+                                required>
                         </div>
                     </div>
                 </div>
             </div>
             <button class="btn btn-color float-right" (click)="completeRegistration()" type=submit>Complete
                 Registration</button>
+            <h3 class="text-danger">{{sampleMessage}}</h3>
         </form>
     </div>
 </div>

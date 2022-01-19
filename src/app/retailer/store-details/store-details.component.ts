@@ -91,7 +91,7 @@ export class StoreDetailsComponent {
       //this.router.navigate(["/storelist"]);
     } else {
       let storeDetails = this.getStoreDetails(false);
-      this.storeService.updateStore(storeDetails, this.appStateService.retailerId, this.storeId,
+      this.storeService.updateStore(storeDetails, this.appStateService.retailerOrBrandId, this.storeId,
         (res: any) => {
           if (res) {
             this.router.navigate(["/storelist"]);
@@ -107,20 +107,20 @@ export class StoreDetailsComponent {
     var storeDetails: any;
     if (isNew) {
       storeDetails = new NewStoreRequest();
-      storeDetails.retailerId = this.appStateService.retailerId;
+      storeDetails.retailerId = this.appStateService.retailerOrBrandId;
       storeDetails.country = this.storeForm.value.country;
       storeDetails.state = this.storeForm.value.state;
       storeDetails.city = this.storeForm.value.city;
       storeDetails.pinCode = this.storeForm.value.pinCode;
       storeDetails.gstin = this.storeForm.value.gstin;
       storeDetails.createdDate = new Date().toISOString();
-      storeDetails.createdBy = this.appStateService.retailerName;
+      storeDetails.createdBy = this.appStateService.userName;
     }
     else {
       storeDetails = new StoreRequest();
       storeDetails.storeId = this.storeId;
       storeDetails.modifiedDate = new Date().toISOString();
-      storeDetails.modifiedBy = this.appStateService.retailerName;
+      storeDetails.modifiedBy = this.appStateService.userName;
       storeDetails.isActive = true;
     }
     storeDetails.storeName = this.storeForm.value.storeName;

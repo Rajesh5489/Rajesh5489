@@ -29,9 +29,9 @@
                             class="nav-link text-uppercase font-weight-bold">Brand Registration</a></li>
 
 
-                    <li class="nav-item" *ngIf="!appstateService.retailerId"><a [routerLink]="['/login']"
+                    <li class="nav-item" *ngIf="!appStateService.retailerOrBrandId"><a [routerLink]="['/login']"
                             class="nav-link text-uppercase font-weight-bold">Login</a></li>
-                    <li class="nav-item" *ngIf="appstateService.retailerId"><a (click)="logout()"
+                    <li class="nav-item" *ngIf="appStateService.retailerOrBrandId"><a (click)="logout()"
                             class="nav-link text-uppercase font-weight-bold">Logout</a></li>
                 </ul>
             </div>

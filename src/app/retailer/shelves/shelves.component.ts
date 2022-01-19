@@ -48,7 +48,7 @@ export class ShelvesComponent {
     });
   }
   getShelvesDetails() {
-    this.shelfService.getShelvesDetailsForRetailerByStore(this.appStateService.retailerId,
+    this.shelfService.getShelvesDetailsForRetailerByStore(this.appStateService.retailerOrBrandId,
       this.storeId,
       (res: any) => {
         if (res && res.length > 0) {
@@ -113,7 +113,7 @@ export class ShelvesComponent {
 
   deleteSpace(space: any, index: any) {
     this.shelfService.deleteShelf(
-      this.appStateService.retailerId,
+      this.appStateService.retailerOrBrandId,
       this.storeId,
       space.value.shelfId,
       (res: any) => { this.deleteSuccessCallback(space, index); },
@@ -139,12 +139,12 @@ export class ShelvesComponent {
       let shelf = new ShelfRequest();
       shelf.shelfId = +space.value.shelfId;
       shelf.modifiedDate = new Date().toISOString();
-      shelf.modifiedBy = this.appStateService.retailerName;
+      shelf.modifiedBy = this.appStateService.userName;
       shelf.isActive = space.value.isActive === "true" ? true : false;
       this.buildShelfRequest(shelf, space);
       this.shelfService.updateShelf(
         shelf,
-        this.appStateService.retailerId,
+        this.appStateService.retailerOrBrandId,
         this.storeId,
         space.value.shelfId,
         (res: any) => {
@@ -155,10 +155,10 @@ export class ShelvesComponent {
     }
     else {
       let shelf = new NewShelfRequest();
-      shelf.retailerId = this.appStateService.retailerId;
+      shelf.retailerId = this.appStateService.retailerOrBrandId;
       shelf.storeId = this.storeId;
       shelf.createdDate = new Date().toISOString();
-      shelf.createdBy = this.appStateService.retailerName;
+      shelf.createdBy = this.appStateService.userName;
       this.buildShelfRequest(shelf, space);
       this.shelfService.createShelf(
         shelf,

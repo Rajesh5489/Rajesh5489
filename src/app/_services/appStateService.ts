@@ -7,8 +7,8 @@ import { StoreSummary } from "../_models/StoreSummary";
 export class AppStateService {
     enviromentData: any;
     userType: any;
-    retailerId: any;
-    retailerName: any;
+    retailerOrBrandId: any;
+    userName: any;
     storeList!: Array<StoreSummary>;
     constructor() { }
 

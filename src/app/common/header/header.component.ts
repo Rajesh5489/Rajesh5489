@@ -9,14 +9,14 @@ import { AppStateService } from 'src/app/_services/appStateService';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public appstateService:AppStateService,
+  constructor(public appStateService:AppStateService,
     private router: Router) { }
 
   ngOnInit(): void {
   }
 
   public logout(){
-    this.appstateService.retailerId = null;
+    this.appStateService.retailerOrBrandId = null;
     this.router.navigate(["/"]);
   }
 }

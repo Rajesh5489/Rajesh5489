@@ -80,4 +80,13 @@ export class CompanyService {
                     error => errorCallback(error)
                 );
     }
+
+    getUserMappings(username: string, successCallback: Function, errorCallback: Function) {
+        return this.http
+            .get(this.baseUrl + 'User/GetUserMapping/' + username).subscribe(
+                response => successCallback(response),
+                error => errorCallback(error)
+            );
+    }
+
 }

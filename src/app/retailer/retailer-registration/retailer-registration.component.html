@@ -1,0 +1,62 @@
+<div class="section">
+    <div class="container-fluid">
+        <h2 class="mx-3 py-2 border-btm">
+            Retailer Registration Form
+        </h2>
+        <form [formGroup]="retailerRegistrationForm" class="m-4">
+            <div class="row justify-content-center">
+                <div class="col-5">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Registered Name <span class="text-danger"> * </span></label>
+                            <input formControlName="registeredName" type="text" class="form-control"
+                                placeholder="Registered Name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Business Name <span class="text-danger"> * </span></label>
+                            <input formControlName="businessName" type="text" class="form-control"
+                                placeholder="Bussiness Name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Primary Contact Name <span class="text-danger"> * </span></label>
+                            <input formControlName="primaryContactName" type="text" class="form-control"
+                                placeholder="Owners Name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Primary Contact Number <span class="text-danger"> * </span></label>
+                            <input formControlName="primaryContactNumber" type="text" class="form-control"
+                                placeholder="Primary Contact Number" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Primary Email Address <span class="text-danger"> * </span></label>
+                            <input formControlName="primaryEmailAddress" type="text" class="form-control"
+                                placeholder="Primary email id" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Secondary Contact Name</label>
+                            <input formControlName="secondaryContactName" type="text" class="form-control"
+                                placeholder="Secondary Contact Name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Secondary Contact Number</label>
+                            <input formControlName="secondaryContactNumber" type="text" class="form-control"
+                                placeholder="Secondary Contact Number">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Secondary Email Address</label>
+                            <input formControlName="secondaryEmailAddress" type="text" class="form-control"
+                                placeholder="Secondary Email Id">
+                        </div>
+                        <div class="input-group">
+                            <label class="mr-3  mb-0">PAN Number <span class="text-danger"> * </span></label>
+                            <input formControlName="pan" type="text" class="form-control" placeholder="PAN No" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-color float-right" (click)="completeRegistration()" type=submit>Complete
+                Registration</button>
+            <h3 class="text-danger">{{sampleMessage}}</h3>
+        </form>
+    </div>
+</div>
