@@ -296,6 +296,6 @@ export class ShelvesComponent {
   }
 
   close() {
-    this.router.navigate(["/retail-sub-home"]);
+    this.router.navigate(["/retail-home"]);
   }
 }
