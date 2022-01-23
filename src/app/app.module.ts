@@ -29,6 +29,8 @@ import { AllBookingsComponent } from './brand/all-bookings/all-bookings.componen
 import { StoreCartComponent } from './brand/store-cart/store-cart.component';
 import { RetailerRegistrationComponent } from './retailer/retailer-registration/retailer-registration.component';
 import { BrandRegistrationComponent } from './brand/brand-registration/brand-registration.component';
+import { RetailSubHomeComponent } from './retailer/retail-sub-home/retail-sub-home.component';
+import { ConfirmedBookingsComponent } from './retailer/confirmed-bookings/confirmed-bookings.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { BrandRegistrationComponent } from './brand/brand-registration/brand-reg
     StoreBookingsComponent,
     AllBookingsComponent,
     StoreCartComponent,
-    BrandRegistrationComponent
+    BrandRegistrationComponent,
+    RetailSubHomeComponent,
+    ConfirmedBookingsComponent
   ],
   imports: [
     CommonModule,

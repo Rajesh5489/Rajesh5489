@@ -47,16 +47,18 @@ export class BookingsComponent implements OnInit {
       (err: any) => { })
     this.bookingType = this.statusType.Requested;
   }
-  openConfirmedBooking() {
-    this.bookingDetails = this.confirmedBookings;
-    this.bookingType = this.statusType.Booked;
-  }
+
+  // openConfirmedBooking() {
+  //   this.bookingDetails = this.confirmedBookings;
+  //   this.bookingType = this.statusType.Booked;
+  // }
 
   approveBookings(status: any) {
     let approvalBookings!: RetailerBookingApprovalStatusRequest[];
     this.requestedBookings.filter((x: any) => x.selected).forEach((x: any) =>
       approvalBookings.push(this.buildBookingApprovalRequest(x, status))
     );
+    
     this.bookingService.updateRetailerApprovalBookingsStatus(
       approvalBookings,
       (res: any) => {

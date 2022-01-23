@@ -1,25 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NewStoreRequest } from '../../_models/NewStoreRequest';
 import { StoreRequest } from '../../_models/StoreRequest';
 import { AppStateService } from '../../_services/appStateService';
 import { RetailerStoreService } from '../../_services/retailerStoreService';
+
 @Component({
   selector: 'app-store-details',
   templateUrl: './store-details.component.html',
   styleUrls: ['./store-details.component.scss']
 })
 export class StoreDetailsComponent {
-  storeId!: any;
   constructor(private router: Router,
     private storeService: RetailerStoreService,
     private route: ActivatedRoute,
     private appStateService: AppStateService) { }
-  states: any = ["telangana", "AndhraPradesh", "Orissa"];
-  areaInSfts: any = [1000, 2000, 3000];
-  projectedFootfalls: any = [10, 20, 30]
-  estimatedFootfalls: any = [10, 20, 30]
+
+  storeId!: any;
+  states: any = ["Telangana", "Andhra Pradesh", "Orissa", "Karnataka", "Madhya Pradesh", "Uttar Pradesh", "Gujarat"];
+  @Output() showAddStoreView = new EventEmitter<string>();
+
+  getIfAddStoreViewNeeded(value: string) {
+    this.showAddStoreView.emit(value);
+  }
+
   storeForm = new FormGroup({
     storeName: new FormControl(''),
     fullAddress: new FormControl(''),
@@ -41,14 +46,26 @@ export class StoreDetailsComponent {
     projectedFootfallPerMonth: new FormControl(''),
     estimatedSalesPerMonth: new FormControl(''),
   });
+
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.storeId = +params.storeId ?? null;
-      if (this.storeId) {
-        this.initialiseForm();
-      }
-    });
+
+    // Fetch store id from appstateservice
+    this.storeId = this.appStateService.storeId;
+
+    // If store id is present, implies existing record is being viewed/edited
+    // Fetch the details from the DB and initialise
+    if (this.storeId) {
+      this.initialiseForm();
+    }
+
+    // this.route.queryParams.subscribe(params => {
+    //   this.storeId = +params.storeId ?? null;
+    //   if (this.storeId) {
+    //     this.initialiseForm();
+    //   }
+    // });
   }
+
   initialiseForm() {
     var storeInfo = this.appStateService.storeList.find((x: any) => x.storeId == this.storeId);
     this.storeForm.patchValue({
@@ -68,6 +85,7 @@ export class StoreDetailsComponent {
       estimatedSalesPerMonth: storeInfo?.estimatedSalesPerMonth,
     })
   }
+
   onSelectFile(event: any) {
     if (event.target.files) {
       var reader = new FileReader();
@@ -88,21 +106,24 @@ export class StoreDetailsComponent {
         },
         (err: any) => {
         });
-      //this.router.navigate(["/storelist"]);
-    } else {
+      this.router.navigate(["/retail-home"]);
+    } 
+    else 
+    {
       let storeDetails = this.getStoreDetails(false);
       this.storeService.updateStore(storeDetails, this.appStateService.retailerOrBrandId, this.storeId,
         (res: any) => {
           if (res) {
-            this.router.navigate(["/storelist"]);
+            this.router.navigate(["/retail-home"]);
           }
         },
         (err: any) => {
         });
-      //this.router.navigate(["/storelist"]);
     }
   }
 
+  // Method that fetches the store details from DB if UPDATE scenario
+  // or gets the details from the UI form if its a new CREATE scenario
   getStoreDetails(isNew: boolean) {
     var storeDetails: any;
     if (isNew) {
@@ -133,18 +154,25 @@ export class StoreDetailsComponent {
     storeDetails.secondaryEmailAddress = this.storeForm.value.secondaryEmailAddress;
     storeDetails.storeContactNumber = this.storeForm.value.storeContactNumber;
     storeDetails.location = this.storeForm.value.location;
-    // storeDetails.latitude = this.storeForm.value.latitude;
-    // storeDetails.longitude = this.storeForm.value.longitude;    
-    storeDetails.latitude = 1;
-    storeDetails.longitude = 2;
-    storeDetails.areaInSft = +this.storeForm.value.areaInSft;
-    storeDetails.projectedFootfallPerMonth = +this.storeForm.value.projectedFootfallPerMonth;
-    storeDetails.estimatedSalesPerMonth = +this.storeForm.value.estimatedSalesPerMonth;
+
+    var latitude = 17.4 + (Math.floor(Math.random() * 90000) + 10000) / 1000000;
+    latitude = Math.round(latitude * 100000) / 100000;
+
+    var longitude = 78.3 + (Math.floor(Math.random() * 90000) + 10000) / 1000000;
+    longitude = Math.round(longitude * 100000) / 100000;
+
+    storeDetails.latitude = latitude; //this.storeForm.value.latitude;
+    storeDetails.longitude = longitude; // this.storeForm.value.longitude;    
+    storeDetails.areaInSft = this.storeForm.value.areaInSft;
+    storeDetails.projectedFootfallPerMonth = this.storeForm.value.projectedFootfallPerMonth;
+    storeDetails.estimatedSalesPerMonth = this.storeForm.value.estimatedSalesPerMonth;
 
     return storeDetails;
   }
 
   close() {
-    this.router.navigate(["/storelist"]);
+    this.appStateService.clearRetailerOrBrandId();
+    this.getIfAddStoreViewNeeded("false");
+    this.router.navigate(["/retail-home"]);
   }
 }

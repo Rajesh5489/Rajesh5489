@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { NewStoreRequest } from '../../_models/NewStoreRequest';
-import { ShelfService } from '../../_services/shelfService';
+import { Component, Input, OnInit } from '@angular/core';
+import { BrandSearchResultSummaryResponse } from 'src/app/_models/BrandSearchResultSummaryResponse';
 
 @Component({
   selector: 'app-overview',
@@ -10,14 +8,9 @@ import { ShelfService } from '../../_services/shelfService';
 })
 export class OverviewComponent implements OnInit {
 
-  allStores: string = 'https://localhost:7271/api/shelf/SearchShelvesBasicFilter'
-  bookingsList : any;
-  constructor(private shelfService: ShelfService,private http: HttpClient) { }
+  @Input() bookingsList = new Array<BrandSearchResultSummaryResponse>();
 
-  ngOnInit(): void {
-    this.http.post(this.allStores, new NewStoreRequest()).subscribe((res: any) => {
-      this.bookingsList = res;
-      }
-    );
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
 }

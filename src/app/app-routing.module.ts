@@ -14,6 +14,7 @@ import { RetailerRoleAuthGuard } from './retailer-role-auth.guard';
 import { BrandRoleAuthGuard } from './brand-role-auth.guard';
 import { RetailerRegistrationComponent } from './retailer/retailer-registration/retailer-registration.component';
 import { BrandRegistrationComponent } from './brand/brand-registration/brand-registration.component';
+import { RetailSubHomeComponent } from './retailer/retail-sub-home/retail-sub-home.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
 
   { path: 'retail-home', component: RetailHomeComponent, canActivate: [RetailerRoleAuthGuard] },
   { path: 'retailer-registration', component: RetailerRegistrationComponent },
+  { path: 'retail-sub-home', component: RetailSubHomeComponent, canActivate: [RetailerRoleAuthGuard] },
  
   { path: 'brand-home', component: HomepageComponent, canActivate: [BrandRoleAuthGuard] },
   { path: 'brand-registration', component: BrandRegistrationComponent },

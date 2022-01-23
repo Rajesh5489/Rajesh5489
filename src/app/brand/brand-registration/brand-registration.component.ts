@@ -51,8 +51,7 @@ export class BrandRegistrationComponent implements OnInit {
           }
         },
         (err: any) => {
-          if(err.statusCode = 218)
-          {
+          if (err.statusCode = 218) {
             this.sampleMessage = "Primary contact number and email are already present."
           }
         });
@@ -60,5 +59,4 @@ export class BrandRegistrationComponent implements OnInit {
     else
       this.sampleMessage = "All required fields need to be provided.";
   }
-
 }

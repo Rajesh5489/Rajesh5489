@@ -19,13 +19,13 @@
     <tbody>
         <tr *ngFor="let booking of bookingsList; let i = index">
             <td>{{booking.storeName}}</td>
-            <td>{{booking.areaInSft}}</td>
+            <td>{{booking.storeAreaInSft}}</td>
             <td>{{booking.location}}</td>
             <td>{{booking.projectedFootfallPerMonth}}</td>
             <td>{{booking.estimatedSalesPerMonth}}</td>
-            <td>N/A</td>
-            <td>N/A</td>
-            <td>N/A</td>
+            <td>{{booking.noOfSpacesListed}}</td>
+            <td>{{booking.noOfSpacesAvailable}}</td>
+            <td>{{booking.noOfSpacesListed}}</td>
             <!-- <td>@mdo</td>
             <th scope="col">
                 <div class="form-check">

@@ -13,9 +13,24 @@ export class ShelfService {
         this.baseUrl = this.appStateService.getBaseUrl();
     }
 
-    searchShelfBasicFilter(startDate: string, endDate: string, shelfTypeId: number, categoryId: number, customCategoryName: string, successCallback: Function, errorCallback: Function) {
+    searchShelfBasicFilterOld(startDate: string, endDate: string, shelfTypeId: number, categoryId: number, customCategoryName: string, successCallback: Function, errorCallback: Function) {
         return this.http
             .get(this.baseUrl + 'Shelf/SearchShelfBasicFilter/' + startDate + '/' + endDate + '/' + shelfTypeId + '/' + categoryId + '/' + customCategoryName).subscribe(
+                response => successCallback(response),
+                error => errorCallback(error)
+            );
+    }
+
+    searchShelfBasicFilter(startDate: string, endDate: string, shelfTypeId: number, categoryId: number, customCategoryName: string, successCallback: Function, errorCallback: Function) {
+        return this.http
+            .get(this.baseUrl + 'Shelf/SearchShelvesBasicFilter/' 
+                    + this.appStateService.retailerOrBrandId+ '?' 
+                    + 'Sdt='  + startDate
+                    + '&Edt='  + endDate
+                    + '&SfId='  + shelfTypeId
+                    + '&CatId='+ categoryId
+                    + '&WishCategories='+ customCategoryName)
+            .subscribe(
                 response => successCallback(response),
                 error => errorCallback(error)
             );

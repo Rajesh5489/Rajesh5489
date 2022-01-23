@@ -21,6 +21,7 @@
     "bootstrap": "^4.6.1",
     "leaflet": "^1.7.1",
     "ngx-bootstrap": "^7.1.0",
+    "ngx-cookie-service": "^13.1.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

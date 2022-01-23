@@ -1,32 +1,32 @@
 <div class="section">
     <div class="container-fluid">
-        <h2 class="mx-4 py-2 border-btm">
-            Store Details
+        <h2 class="mx-4 py-2 border-btm text-center">
+            Add Store Details
         </h2>
         <form [formGroup]="storeForm" class="m-4">
             <div class="row justify-content-center">
                 <div class="col-6">
                     <div class="form-group">
                         <div class="input-group mb-3">
-                            <label>Store Name</label>
+                            <label>Store Name <span class="text-danger"> * </span></label>
                             <input formControlName="storeName" type="text" class="form-control"
-                                placeholder="Store Name">
+                                placeholder="Store Name" required>
                         </div>
 
                         <div class="input-group mb-3">
-                            <label>Manager Contact Name</label>
+                            <label>Manager Contact Name <span class="text-danger"> * </span></label>
                             <input formControlName="managerContactName" type="text" class="form-control"
-                                placeholder="Manager Contact Name">
+                                placeholder="Manager Contact Name" required>
                         </div>
                         <div class="input-group mb-3">
-                            <label>Manager Contact Number</label>
+                            <label>Manager Contact Number <span class="text-danger"> * </span></label>
                             <input formControlName="managerContactNumber" type="text" class="form-control"
-                                placeholder="Manager Contact Number">
+                                placeholder="Manager Contact Number" required>
                         </div>
                         <div class="input-group mb-3">
-                            <label>Manager Email Address</label>
+                            <label>Manager Email Address <span class="text-danger"> * </span></label>
                             <input formControlName="managerEmailAddress" type="text" class="form-control"
-                                placeholder="Manager Email Address">
+                                placeholder="Manager Email Address" required>
                         </div>
                         <div class="input-group mb-3">
                             <label>Secondary Contact Name</label>
@@ -44,9 +44,9 @@
                                 placeholder="Secondary Email Address">
                         </div>
                         <div class="input-group mb-3">
-                            <label>Store Contact Number</label>
+                            <label>Store Contact Number <span class="text-danger"> * </span></label>
                             <input formControlName="storeContactNumber" type="text" class="form-control"
-                                placeholder="Store Contact Number">
+                                placeholder="Store Contact Number" required>
                         </div>
                         <div class="input-group mb-3">
                             <label>Geo Tag</label>
@@ -54,21 +54,21 @@
                                 placeholder="Geo Tag (google Location)">
                         </div>
                         <div class="input-group mb-3">
-                            <label>Store Location</label>
+                            <label>Store Location <span class="text-danger"> * </span></label>
                             <input formControlName="location" type="text" class="form-control" placeholder="Location">
                         </div>
                         <div class="input-group mb-3" *ngIf="!storeId">
-                            <label>City</label>
+                            <label>City <span class="text-danger"> * </span></label>
                             <input formControlName="city" type="text" class="form-control" placeholder="City">
                         </div>
                         <div class="input-group mb-3" *ngIf="!storeId">
-                            <label>State</label>
+                            <label>State <span class="text-danger"> * </span></label>
                             <select id="state" class="form-control form-select" formControlName="state">
                                 <option *ngFor="let state of states" [value]="state">{{state}}</option>
                             </select>
                         </div>
                         <div class="input-group mb-3" *ngIf="!storeId">
-                            <label>Country</label>
+                            <label>Country <span class="text-danger"> * </span></label>
                             <input formControlName="country" type="text" class="form-control" placeholder="Country">
                         </div>
                         <div class="input-group mb-3" *ngIf="!storeId">
@@ -81,33 +81,39 @@
                                 placeholder="Full Address">
                         </div>
                         <div class="input-group mb-3">
-                            <label>Store Area In SFT</label>
-                            <select id="areaInSft" class="form-control form-select" formControlName="areaInSft">
+                            <label>Store Area In SFT <span class="text-danger"> * </span></label>
+                            <input formControlName="areaInSft" type="text" class="form-control"
+                                placeholder="Store Area in Sft">
+                            <!-- <select id="areaInSft" class="form-control form-select" formControlName="areaInSft">
                                 <option *ngFor="let areaInSft of areaInSfts" [value]="areaInSft">{{areaInSft}}
                                 </option>
-                            </select>
+                            </select> -->
                         </div>
                         <div class="input-group mb-3" *ngIf="!storeId">
-                            <label>Store GSTIN</label>
+                            <label>Store GSTIN <span class="text-danger"> * </span></label>
                             <input formControlName="gstin" type="text" class="form-control" placeholder="GSTIN">
                         </div>
                         <div class="input-group  mb-3">
                             <label>Projected Footfall per Month</label>
-                            <select id="projectedFootfall" class="form-control form-select"
+                            <input formControlName="projectedFootfallPerMonth" type="text" class="form-control" 
+                                    placeholder="Projected Footfall per Month">
+                            <!-- <select id="projectedFootfall" class="form-control form-select"
                                 formControlName="projectedFootfallPerMonth">
                                 <option *ngFor="let projectedFootfall of projectedFootfalls"
                                     [value]="projectedFootfall">
                                     {{projectedFootfall}}</option>
-                            </select>
+                            </select> -->
                         </div>
                         <div class="input-group mb-3">
-                            <label>Estimated Footfall per Month</label>
-                            <select id="estimatedFootfall" class="form-control form-select"
+                            <label>Estimated Sales per Month</label>
+                            <input formControlName="estimatedSalesPerMonth" type="text" class="form-control" 
+                                    placeholder="Estimated Sales per Month">
+                            <!-- <select id="estimatedFootfall" class="form-control form-select"
                                 formControlName="estimatedSalesPerMonth">
                                 <option *ngFor="let estimatedFootfall of estimatedFootfalls"
                                     [value]="estimatedFootfall">
                                     {{estimatedFootfall}}</option>
-                            </select>
+                            </select> -->
                         </div>
 
                     </div>
@@ -178,20 +184,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-end">
-                    <!-- <div class="col-4">
-                        <button class="btn btn-color mr-2 w-100" type=submit (click)="addSpaces()">Add Ad spaces</button>
-                    </div>
-                    <div class="col-4">
-                        <button class="btn btn-color mr-2 w-100" type=submit>Add more store </button>
-                    </div> -->
+                <div class="row justify-content-center">
                     <div class="col-3">
                         <button class="btn btn-color mr-2 w-100" type=submit (click)="saveStoreDetails()">Save</button>
                     </div>
-                    <div class="col-3" *ngIf="storeId">
-                        <button class="btn btn-color mr-2 w-100" type=submit (click)="close()">Close</button>
+                    <div class="col-3">
+                        <button class="btn btn-color mr-2 w-100" type=button (click)="close()">Close</button>
                     </div>
-
                 </div>
             </div>
         </form>

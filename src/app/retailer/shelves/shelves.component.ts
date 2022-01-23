@@ -40,13 +40,12 @@ export class ShelvesComponent {
   ) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.storeId = +params.storeId;
-      this.getShelfTypes();
-      this.getProductCategories();
-      this.getShelvesDetails();
-    });
+    this.storeId = this.appStateService.storeId;
+    this.getShelfTypes();
+    this.getProductCategories();
+    this.getShelvesDetails();
   }
+
   getShelvesDetails() {
     this.shelfService.getShelvesDetailsForRetailerByStore(this.appStateService.retailerOrBrandId,
       this.storeId,
@@ -57,7 +56,7 @@ export class ShelvesComponent {
             this.spaceFormArray.push(this.intialiseItem(element));
           });
         }
-        else{
+        else {
           this.addNewSpace();
         }
       },
@@ -296,6 +295,6 @@ export class ShelvesComponent {
   }
 
   close() {
-    this.router.navigate(["/storelist"]);
+    this.router.navigate(["/retail-sub-home"]);
   }
 }

@@ -11,9 +11,13 @@ import { RetailerStoreService } from '../../_services/retailerStoreService';
   templateUrl: './store-list.component.html',
   styleUrls: ['./store-list.component.scss']
 })
+
 export class StoreListComponent implements OnInit {
+  
   storesList!: Array<StoreSummary>;
   bookingsList!: Array<RetailerBookingSummary>;
+  showAddStoreView:boolean = false;
+  
   constructor(
     private router: Router,
     private bookingService: BookingService,
@@ -21,28 +25,46 @@ export class StoreListComponent implements OnInit {
     private storeService: RetailerStoreService) { }
 
   ngOnInit() {
-    this.bookingService.getAllBookingsForRetailer(this.appStateService.retailerOrBrandId,
+    this.storeService.getAllStores(this.appStateService.retailerOrBrandId,
       (res: any) => {
         this.bookingsList = res;
       },
       (err: any) => { });
   }
-  editSpace(storeId: number) {
-    this.router.navigate(["/shelves"], { queryParams: { storeId: storeId } });
+
+  editSpace(storeId: number, storeName:string, storeLocation:string) {
+    this.setStoreDetails(storeId,storeName,storeLocation);
+    this.router.navigate(["/retail-sub-home"]);
   }
-  editBookings(storeId: number) {
-    this.router.navigate(["/bookings"], { queryParams: { storeId: storeId } });
+
+  editBookings(storeId: number, storeName:string, storeLocation:string) {
+    this.setStoreDetails(storeId,storeName,storeLocation);
+    this.router.navigate(["/retail-sub-home"]);
   }
-  editStore(storeId: number) {
+
+  editStore(storeId: number, storeName:string, storeLocation:string) {
     this.storeService.getAllStores(this.appStateService.retailerOrBrandId,
       (res: any) => {
         this.storesList = res;
         this.appStateService.storeList = this.storesList;
-        this.router.navigate(["/storedetails"], { queryParams: { storeId: storeId } });
+        this.setStoreDetails(storeId,storeName,storeLocation);
+        this.router.navigate(["/retail-sub-home"]);
       },
       (err: any) => { });
   }
-  addStore() {
-    this.router.navigate(["/storedetails"]);
+
+  public addStore(): void {
+    this.showAddStoreView = true;
+  }
+
+  public checkForShowAddStoreView(addStoreViewValue:string){
+    this.showAddStoreView = addStoreViewValue.toLocaleLowerCase() === 'true';
+  }
+
+  private setStoreDetails(storeId: number, storeName:string, storeLocation:string)
+  {
+    this.appStateService.storeId = storeId;
+    this.appStateService.storeName = storeName;
+    this.appStateService.storeLocation = storeLocation;
   }
 }

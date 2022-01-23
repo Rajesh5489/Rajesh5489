@@ -1,7 +1,8 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, Input, SimpleChanges } from '@angular/core';
 import * as L from 'leaflet';
 import { MapMarkerService } from '../../_services/mapMarkerService';
 import { NewStoreRequest } from '../../_models/NewStoreRequest';
+import { BrandSearchResultSummaryResponse } from 'src/app/_models/BrandSearchResultSummaryResponse';
 
 const iconRetinaUrl = '/assets/mapicons/blue-marker.svg';
 const iconUrl = '/assets/mapicons/blue-marker.svg';
@@ -24,7 +25,9 @@ L.Marker.prototype.options.icon = iconDefault;
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements AfterViewInit {
+
   private map!: L.Map;
+  @Input() bookingsList = new Array<BrandSearchResultSummaryResponse>();
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -45,7 +48,14 @@ export class MapsComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    let storeRequest = new NewStoreRequest;
-    this.markerService.makeStoreMarkers(this.map, storeRequest);
+    this.markerService.makeStoreMarkers(this.map, this.bookingsList);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (const propName in changes) {
+      if (propName === "bookingsList") {
+        this.markerService.makeStoreMarkers(this.map, this.bookingsList);
+      }
+    }
   }
 }

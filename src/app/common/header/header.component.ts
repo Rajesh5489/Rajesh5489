@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public logout(){
-    this.appStateService.retailerOrBrandId = null;
+    this.appStateService.clearAllCookies();
     this.router.navigate(["/"]);
   }
 }
