@@ -33,13 +33,15 @@ export class StoreListComponent implements OnInit {
   }
 
   editSpace(storeId: number, storeName:string, storeLocation:string) {
-    this.setStoreDetails(storeId,storeName,storeLocation);
-    this.router.navigate(["/retail-sub-home"]);
+    this.setStoreDetails(storeId,storeName,storeLocation);    
+    //this.router.navigate(["/retail-sub-home"]);
+    this.appStateService.setExpandMenu("shelves");
   }
 
   editBookings(storeId: number, storeName:string, storeLocation:string) {
-    this.setStoreDetails(storeId,storeName,storeLocation);
-    this.router.navigate(["/retail-sub-home"]);
+    this.setStoreDetails(storeId,storeName,storeLocation);  
+    //this.router.navigate(["/retail-sub-home"]); 
+    this.appStateService.setExpandMenu("bookings");
   }
 
   editStore(storeId: number, storeName:string, storeLocation:string) {
@@ -48,7 +50,8 @@ export class StoreListComponent implements OnInit {
         this.storesList = res;
         this.appStateService.storeList = this.storesList;
         this.setStoreDetails(storeId,storeName,storeLocation);
-        this.router.navigate(["/retail-sub-home"]);
+        //this.router.navigate(["/retail-sub-home"]);   
+        this.appStateService.setExpandMenu("storeDetails");
       },
       (err: any) => { });
   }

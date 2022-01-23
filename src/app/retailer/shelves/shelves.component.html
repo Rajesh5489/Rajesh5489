@@ -166,8 +166,8 @@
                                     <select id="status" class="form-control form-select w-100"
                                         formControlName="isActive"
                                         [attr.disabled]="!space.value.isEditClicked ? true : null">
-                                        <option [selected]="space.value.isActive" [value]="true">Available</option>
-                                        <option [selected]="!space.value.isActive" [value]="false">Blocked</option>
+                                        <option [selected]="space.value.isActive == true" [value]="true">Available</option>
+                                        <option [selected]="space.value.isActive == false" [value]="false">Blocked</option>
                                     </select>
                                 </div>
                                 <div class="col-7 d-grid justify-content-end" *ngIf="space.value.isEditClicked">

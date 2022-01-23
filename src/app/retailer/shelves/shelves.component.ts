@@ -171,10 +171,10 @@ export class ShelvesComponent {
         },
         (err: any) => { }
       )
-      space.patchValue({
-        isEditClicked: false
-      });
-      this.isAddMoreDisable = false;
+      // space.patchValue({
+      //   isEditClicked: false
+      // });
+      //this.isAddMoreDisable = false;
     }
   }
 
@@ -225,7 +225,8 @@ export class ShelvesComponent {
   saveSuccessCallback(space: any, res: any) {
     space.patchValue({
       shelfId: res.shelfId,
-      isEditClicked: false
+      isEditClicked: false,
+      isActive: space.value.isActive == "false" ? false : true
     });
     this.updateShelfSummary(space);
     this.isAddMoreDisable = false;

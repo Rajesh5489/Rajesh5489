@@ -54,7 +54,7 @@ export class StoreDetailsComponent {
 
     // If store id is present, implies existing record is being viewed/edited
     // Fetch the details from the DB and initialise
-    if (this.storeId) {
+    if (this.storeId || this.storeId == 0) {
       this.initialiseForm();
     }
 
@@ -170,8 +170,8 @@ export class StoreDetailsComponent {
     return storeDetails;
   }
 
-  close() {
-    this.appStateService.clearRetailerOrBrandId();
+  close() {    
+    this.appStateService.clearStoreDetails();
     this.getIfAddStoreViewNeeded("false");
     this.router.navigate(["/retail-home"]);
   }

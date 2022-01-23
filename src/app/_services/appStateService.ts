@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { CookieService } from "ngx-cookie-service";
+import { Observable, Subject } from "rxjs";
 import { StoreSummary } from "../_models/StoreSummary";
 
 @Injectable({
     providedIn: "root"
 })
 export class AppStateService {
-
+    private expandMenu = new Subject<string>();
     enviromentData: any;
     //storeList!: Array<StoreSummary>;
 
@@ -72,27 +73,40 @@ export class AppStateService {
         this.cookieService.set("showAddStoreView", val.toString());
     }
 
-    public clearAllCookies()
-    {
+    public clearAllCookies() {
         this.cookieService.deleteAll();
     }
 
-    public clearRetailerOrBrandId()
-    {
+    public clearRetailerOrBrandId() {
         this.cookieService.delete("retailerOrBrandId");
     }
 
-    public getBoolean(value:any){
-        switch(value){
-             case true:
-             case "true":
-             case 1:
-             case "1":
-             case "on":
-             case "yes":
-                 return true;
-             default: 
-                 return false;
-         }
-     }
+    public clearStoreDetails() {
+        this.cookieService.delete("storeName");
+        this.cookieService.delete("storeId");
+        this.cookieService.delete("storeLocation");
+    }
+
+    public getBoolean(value: any) {
+        switch (value) {
+            case true:
+            case "true":
+            case 1:
+            case "1":
+            case "on":
+            case "yes":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    setExpandMenu(item: any) {
+        this.expandMenu.next(item);
+    }
+
+    getonExpandMenu(): Observable<any> {
+        return this.expandMenu.asObservable();
+    }
+
 }
