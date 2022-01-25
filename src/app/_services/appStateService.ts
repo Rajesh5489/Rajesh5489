@@ -66,6 +66,20 @@ export class AppStateService {
         this.cookieService.set("storeLocation", val);
     }
 
+    get bookingStartDate(): string {
+        return this.cookieService.get("bookingStartDate");
+    }
+    set bookingStartDate(val: string) {
+        this.cookieService.set("bookingStartDate", val);
+    }
+
+    get bookingEndDate(): string {
+        return this.cookieService.get("bookingEndDate");
+    }
+    set bookingEndDate(val: string) {
+        this.cookieService.set("bookingEndDate", val);
+    }
+
     get showAddStoreView(): boolean {
         return this.getBoolean(this.cookieService.get("showAddStoreView"));
     }

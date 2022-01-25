@@ -31,6 +31,7 @@ import { RetailerRegistrationComponent } from './retailer/retailer-registration/
 import { BrandRegistrationComponent } from './brand/brand-registration/brand-registration.component';
 import { RetailSubHomeComponent } from './retailer/retail-sub-home/retail-sub-home.component';
 import { ConfirmedBookingsComponent } from './retailer/confirmed-bookings/confirmed-bookings.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { ConfirmedBookingsComponent } from './retailer/confirmed-bookings/confir
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    NgbModule
   ],
   providers: [BsDatepickerConfig, AppInitService,
     {

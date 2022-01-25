@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'retail-sub-home', component: RetailSubHomeComponent, canActivate: [RetailerRoleAuthGuard] },
  
   { path: 'brand-home', component: HomepageComponent, canActivate: [BrandRoleAuthGuard] },
+  { path: 'store-home', component: StoreHomeComponent, canActivate: [BrandRoleAuthGuard] },
   { path: 'brand-registration', component: BrandRegistrationComponent },
 
 ];

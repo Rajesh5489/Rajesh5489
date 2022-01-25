@@ -33,12 +33,10 @@ export class SearchComponent implements OnInit {
     this.getShelfTypes();
   }
 
-  searchDetailsForm = new FormGroup({
-    fromDate: new FormControl(''),
-    toDate: new FormControl(''),
-    shelfType: new FormControl(''),
-    productCategory: new FormControl('')
-  });
+  fromDate!: string;
+  toDate!: string;
+  shelfType!: number;
+  productCategory!: number;
 
   private getShelfTypes() {
     this.addSpacesService.getShelfTypes(
@@ -56,19 +54,27 @@ export class SearchComponent implements OnInit {
       (err: any) => { })
   }
 
-  public getSearchResults() {
-    this.shelfService.searchShelfBasicFilter(
-      new Date(this.searchDetailsForm.value.fromDate).toISOString().split('T')[0],
-      new Date(this.searchDetailsForm.value.toDate).toISOString().split('T')[0],
-      this.searchDetailsForm.value.shelfType,
-      this.searchDetailsForm.value.productCategory, 'na',
-      (res: any) => {
-        if (res) {
-          this.searchResults = res;
-        }
-      },
-      (err: any) => {
-        let errorValue = err;
-      });
+  public onChangeGetSearchResults() {
+
+    if (this.fromDate && this.toDate && this.shelfType && this.productCategory) {
+      // this.appStateService.bookingStartDate = new Date(this.fromDate).toISOString().split('T')[0];
+      // this.appStateService.bookingEndDate = new Date(this.toDate).toISOString().split('T')[0];
+      this.appStateService.bookingStartDate = new Date(this.fromDate).toLocaleDateString();
+      this.appStateService.bookingEndDate = new Date(this.toDate).toLocaleDateString();
+
+      this.shelfService.searchShelfBasicFilter(
+        this.appStateService.bookingStartDate,
+        this.appStateService.bookingEndDate,
+        this.shelfType,
+        this.productCategory, 'na',
+        (res: any) => {
+          if (res) {
+            this.searchResults = res;
+          }
+        },
+        (err: any) => {
+          let errorValue = err;
+        });
+    }
   }
 }

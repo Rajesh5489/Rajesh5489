@@ -17,4 +17,5 @@ export class ShelfSummary {
     shelfImagesDetails!: ImageDetails[];
     createdDate!: string;
     createdBy!: string;
+    isSelected!:boolean;
 }

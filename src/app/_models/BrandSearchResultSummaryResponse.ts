@@ -15,4 +15,5 @@ export class BrandSearchResultSummaryResponse {
     noOfSpacesAvailable!: string;
     storeAreaInSft!: string;
     shelves!: Array<ShelfSummary>;
+    isSelected!:boolean;
 }

@@ -9,6 +9,7 @@
             <th scope="col">No of spaces listed</th>
             <th scope="col">No of spaces Available</th>
             <th scope="col">Next space availabilty</th>
+            <th scope="col">Add to Cart</th>
             <!-- <th scope="col">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
@@ -26,12 +27,14 @@
             <td>{{booking.noOfSpacesListed}}</td>
             <td>{{booking.noOfSpacesAvailable}}</td>
             <td>{{booking.noOfSpacesListed}}</td>
-            <!-- <td>@mdo</td>
             <th scope="col">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="booking.isSelected" id="flexCheckDefault"/>
                 </div>
-            </th> -->
+            </th>
         </tr>
     </tbody>
 </table>
+<button class="btn btn-color float-right" (click)="addSelectedToCart()" type=button>
+    Add to Cart
+</button>

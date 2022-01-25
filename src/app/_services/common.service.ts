@@ -1,18 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { BrandSearchResultSummaryResponse } from '../_models/BrandSearchResultSummaryResponse';
+import { ShelfSummary } from '../_models/ShelfSummary';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
 
-  private subjectName = new Subject<any>(); //need to create a subject
+  private selectedStoresSubject = new Subject<Array<BrandSearchResultSummaryResponse>>();
+  private selectedShelvesSubject = new Subject<Array<ShelfSummary>>();
 
-  sendUpdate(message: any) { //the component that wants to update something, calls this fn
-    this.subjectName.next(message); //next() will feed the value in Subject
+  sendSelectedStoresUpdate(message: any) { 
+    this.selectedStoresSubject.next(message); //next() will feed the value in Subject
   }
 
-  getUpdate(): Observable<any> { //the receiver component calls this function 
-    return this.subjectName.asObservable(); //it returns as an observable to which the receiver funtion will subscribe
+  getSelectedStoresUpdate(): Observable<any> { 
+    return this.selectedStoresSubject.asObservable(); //it returns as an observable to which the receiver funtion will subscribe
   }
+
+  sendSelectedShelvesUpdate(message: any) { 
+    this.selectedShelvesSubject.next(message);
+  }
+
+  getSelectedShelvesUpdate(): Observable<any> { 
+    return this.selectedShelvesSubject.asObservable();
+  }
+
 }
