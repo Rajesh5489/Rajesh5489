@@ -8,10 +8,10 @@
   }
   
   .map-frame {  
-    position: fixed;
+    position: relative;
     border: 2px solid black;
-    height: 50%;
-    width: 80%;
+    height: 400px;
+    width: 90%;
   }
   
   #map {

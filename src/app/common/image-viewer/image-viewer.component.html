@@ -1,0 +1,31 @@
+<h2 style="text-align:center">{{galleryTitle}}</h2>
+
+<div class="img-row">
+  <div class="img-column" *ngFor="let img of imagesList; let i=index">
+    <img src={{img.thumbUrl}} style="width:75px;height:75px" (click)="openModal(i+1)" class="hover-shadow cursor">
+  </div>
+</div>
+
+<div id="myModal" class="img-modal">
+  <span class="close cursor" (click)="closeModal()">&times;</span>
+  <div class="img-modal-content">
+
+    <div class="mySlides" *ngFor="let img of imagesList; let i=index">
+      <div class="numbertext"> {{i+1}}/{{imagesList.length}}</div>
+      <img src={{img.fullUrl}} style="width:100%">
+    </div>
+
+    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+    <a class="next" (click)="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+    <div class="img-column bottom-row" *ngFor="let img of imagesList; let i=index">
+      <img class="demo cursor" src={{img.fullUrl}} style="width:100%" 
+      (click)="currentSlide(i+1)" alt={{img.altText}}>
+    </div>
+    
+  </div>
+</div>

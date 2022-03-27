@@ -5,7 +5,7 @@ export class BrandBookingRequest {
     shelfId!: number;
     storeId!: number;
     brandId!: number;
-    bookingStatusId!: number;
+    bookingStatus!: number;
     startDate!: string;
     endDate!: string;
     totalAmount!: number;

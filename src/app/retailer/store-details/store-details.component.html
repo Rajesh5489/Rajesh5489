@@ -9,8 +9,8 @@
                     <div class="form-group">
                         <div class="input-group mb-3">
                             <label>Store Name <span class="text-danger"> * </span></label>
-                            <input formControlName="storeName" type="text" class="form-control"
-                                placeholder="Store Name" required>
+                            <input formControlName="storeName" type="text" class="form-control" placeholder="Store Name"
+                                required>
                         </div>
 
                         <div class="input-group mb-3">
@@ -95,8 +95,8 @@
                         </div>
                         <div class="input-group  mb-3">
                             <label>Projected Footfall per Month</label>
-                            <input formControlName="projectedFootfallPerMonth" type="text" class="form-control" 
-                                    placeholder="Projected Footfall per Month">
+                            <input formControlName="projectedFootfallPerMonth" type="text" class="form-control"
+                                placeholder="Projected Footfall per Month">
                             <!-- <select id="projectedFootfall" class="form-control form-select"
                                 formControlName="projectedFootfallPerMonth">
                                 <option *ngFor="let projectedFootfall of projectedFootfalls"
@@ -106,8 +106,8 @@
                         </div>
                         <div class="input-group mb-3">
                             <label>Estimated Sales per Month</label>
-                            <input formControlName="estimatedSalesPerMonth" type="text" class="form-control" 
-                                    placeholder="Estimated Sales per Month">
+                            <input formControlName="estimatedSalesPerMonth" type="text" class="form-control"
+                                placeholder="Estimated Sales per Month">
                             <!-- <select id="estimatedFootfall" class="form-control form-select"
                                 formControlName="estimatedSalesPerMonth">
                                 <option *ngFor="let estimatedFootfall of estimatedFootfalls"
@@ -163,17 +163,19 @@
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <label>Gantola View</label>
+                        <label>Gandola View</label>
                         <div class="col-2 m-2">
                             <label>
-                                <img src="./assets/godhala.jpg" height="100" width="100">
+                                <img src="https://stpsdevimages.blob.core.windows.net/uploads/IMG_0730.JPG" height="100"
+                                    width="100">
                                 <input id="fileUpload1" type="file" (change)="onSelectFile($event)" class="d-none">
                             </label>
                         </div>
                         <div class="col-2 m-2">
                             <label>
                                 <img src="./assets/plus.png" height="100" width="100" class="border border-1 rounded">
-                                <input id="fileUpload2" type="file" (change)="onSelectFile($event)" class="d-none">
+                                <input id="fileUpload2" type="file" (change)="onSelectFileNew($event, 12)"
+                                    class="d-none">
                             </label>
                         </div>
                         <div class="col-2 m-2">

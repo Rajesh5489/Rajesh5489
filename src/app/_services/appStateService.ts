@@ -7,6 +7,7 @@ import { StoreSummary } from "../_models/StoreSummary";
     providedIn: "root"
 })
 export class AppStateService {
+
     private expandMenu = new Subject<string>();
     enviromentData: any;
     //storeList!: Array<StoreSummary>;
@@ -78,6 +79,13 @@ export class AppStateService {
     }
     set bookingEndDate(val: string) {
         this.cookieService.set("bookingEndDate", val);
+    }
+
+    get bookingDaysCount(): number {
+        return Number(this.cookieService.get("bookingDaysCount"));
+    }
+    set bookingDaysCount(val: number) {
+        this.cookieService.set("bookingDaysCount", val.toString());
     }
 
     get showAddStoreView(): boolean {

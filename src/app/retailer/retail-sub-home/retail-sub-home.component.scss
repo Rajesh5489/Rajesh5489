@@ -5,7 +5,7 @@
 .blue-btn{
     background-color: #81dfe9;
 }
-.nav-pills .nav-link.active,.nav-link{
+.nav-pills ,.nav-link{
     background-color:#f7f4f4;
     color: grey;
 }
@@ -16,4 +16,9 @@
 
 .c-w-90{
     width: 90%;
+}
+
+.nav-pills .nav-link.active{
+    border: 1px solid;
+    background-color: chocolate;
 }

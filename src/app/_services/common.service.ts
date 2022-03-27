@@ -10,6 +10,8 @@ export class CommonService {
 
   private selectedStoresSubject = new Subject<Array<BrandSearchResultSummaryResponse>>();
   private selectedShelvesSubject = new Subject<Array<ShelfSummary>>();
+  private bookingDaysCount = new Subject<Number>();
+  private cartViewClickedUpdate = new Subject<boolean>();
 
   sendSelectedStoresUpdate(message: any) { 
     this.selectedStoresSubject.next(message); //next() will feed the value in Subject
@@ -25,6 +27,22 @@ export class CommonService {
 
   getSelectedShelvesUpdate(): Observable<any> { 
     return this.selectedShelvesSubject.asObservable();
+  }
+
+  sendBookingDaysCountUpdate(message: any) { 
+    this.bookingDaysCount.next(message);
+  }
+
+  getBookingDaysCountUpdate(): Observable<any> { 
+    return this.bookingDaysCount.asObservable();
+  }
+
+  sendCartViewClickedUpdate(message: boolean) { 
+    this.cartViewClickedUpdate.next(message);
+  }
+
+  getCartViewClickedUpdate(): Observable<boolean> { 
+    return this.cartViewClickedUpdate.asObservable();
   }
 
 }

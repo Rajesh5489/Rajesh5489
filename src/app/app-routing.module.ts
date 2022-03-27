@@ -15,10 +15,14 @@ import { BrandRoleAuthGuard } from './brand-role-auth.guard';
 import { RetailerRegistrationComponent } from './retailer/retailer-registration/retailer-registration.component';
 import { BrandRegistrationComponent } from './brand/brand-registration/brand-registration.component';
 import { RetailSubHomeComponent } from './retailer/retail-sub-home/retail-sub-home.component';
+import { ImageViewerComponent } from './common/image-viewer/image-viewer.component';
+import { StoreDetailsViewComponent } from './brand/store-details-view/store-details-view.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'images', component: ImageViewerComponent },
+  { path: 'stores', component: StoreDetailsViewComponent },
 
   { path: 'retail-home', component: RetailHomeComponent, canActivate: [RetailerRoleAuthGuard] },
   { path: 'retailer-registration', component: RetailerRegistrationComponent },

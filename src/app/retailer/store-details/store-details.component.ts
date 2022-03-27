@@ -12,6 +12,7 @@ import { RetailerStoreService } from '../../_services/retailerStoreService';
   styleUrls: ['./store-details.component.scss']
 })
 export class StoreDetailsComponent {
+
   constructor(private router: Router,
     private storeService: RetailerStoreService,
     private route: ActivatedRoute,
@@ -20,6 +21,7 @@ export class StoreDetailsComponent {
   storeId!: any;
   states: any = ["Telangana", "Andhra Pradesh", "Orissa", "Karnataka", "Madhya Pradesh", "Uttar Pradesh", "Gujarat"];
   @Output() showAddStoreView = new EventEmitter<string>();
+  formData = new FormData();
 
   getIfAddStoreViewNeeded(value: string) {
     this.showAddStoreView.emit(value);
@@ -88,6 +90,37 @@ export class StoreDetailsComponent {
 
   onSelectFile(event: any) {
     if (event.target.files) {
+
+      var file = event.target.files[0];
+      this.formData.append("name", file.name);
+
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+      }
+    }
+  }
+
+  onSelectFileNew(event: any, fileId:number) {
+    if (event.target.files) {
+
+      var file = event.target.files[0];
+      this.formData.append("file", file);
+      this.formData.append("name", file.name);
+      this.formData.append("retailerId", this.appStateService.retailerOrBrandId);
+      this.formData.append("fileId", fileId.toString());
+      this.formData.append("viewType", "Gandola");
+
+      this.storeService.upload(this.formData,
+        (res: any) => {
+          if (res) {
+            var temp = res;
+          }
+        },
+        (err: any) => {
+          let errorValue = err;
+        });
+
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {

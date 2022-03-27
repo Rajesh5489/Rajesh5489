@@ -1,8 +1,8 @@
 export class BookingLedger {
     storeId!: number;
-    storeName!: number;
+    storeName!: string;
     shelfTypeId!: number;
-    shelfTypeName!: number;
+    shelfTypeName!: string;
     rowNumber!: number;
     customName!: string;
     categoryId!: number;

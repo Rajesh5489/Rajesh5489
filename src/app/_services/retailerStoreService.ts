@@ -44,4 +44,20 @@ export class RetailerStoreService {
             error => errorCallback(error)
         );
     }
+
+    getStoreDetailsByStoreId(storeId: number, successCallback: Function, errorCallback: Function) {
+        return this.http
+            .get(this.baseUrl + 'RetailerStore/GetStoreDetails/' + storeId).subscribe(
+                response => successCallback(response),
+                error => errorCallback(error)
+            );
+    }
+
+    upload(formData: FormData, successCallback: Function, errorCallback: Function) {
+        return this.http
+            .post(this.baseUrl + 'RetailerStore/upload', formData).subscribe(
+                    response => successCallback(response),
+                    error => errorCallback(error)
+                );
+    }
 }

@@ -5,6 +5,11 @@ export class StoreSummary {
     storeId!: number;
     storeName!: string;
     fullAddress!: string;
+    country!:string;
+    state!:string;
+    city!:string;
+    pinCode!:string;
+    gstin!:string;
     managerContactName!: string;
     managerContactNumber!: string;
     managerEmailAddress!: string;

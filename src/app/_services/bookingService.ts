@@ -12,6 +12,7 @@ export class BookingService {
     constructor(private http: HttpClient, public appStateService: AppStateService) {
         this.baseUrl = this.appStateService.getBaseUrl();
     }
+    
     getAllBookingsForBrand(brandId: number, successCallback: Function, errorCallback: Function) {
         return this.http
             .get(this.baseUrl + 'Booking/GetAllBookingsForBrand/' + brandId).subscribe(
@@ -36,9 +37,9 @@ export class BookingService {
             );
     }
 
-    createBookingsForBrand(brandBookingDetails: Array<BrandBookingRequest>, bookingIds: Array<number>, successCallback: Function, errorCallback: Function) {
+    createBookingsForBrand(brandId: number, brandBookingDetails: Array<BrandBookingRequest>, successCallback: Function, errorCallback: Function) {
         return this.http
-            .post(this.baseUrl + 'Booking/CreateBookingsForBrand/', brandBookingDetails).subscribe(
+            .post(this.baseUrl + 'Booking/CreateBookingsForBrand/' + brandId, brandBookingDetails).subscribe(
                 response => successCallback(response),
                 error => errorCallback(error)
             );

@@ -1,83 +1,104 @@
-<!-- <h3 class="text-center">Stores Selected for Booking</h3>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Store Name</th>
-            <th scope="col">Area in sft</th>
-            <th scope="col">Location</th>
-            <th scope="col">Footfall</th>
-            <th scope="col">Est sales/Mo</th>
-            <th scope="col">No of spaces listed</th>
-            <th scope="col">No of spaces Available</th>
-            <th scope="col">Add Shelves to Cart</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let booking of bookingsList; let i = index">
-            <td>{{booking.storeName}}</td>
-            <td>{{booking.storeAreaInSft}}</td>
-            <td>{{booking.location}}</td>
-            <td>{{booking.projectedFootfallPerMonth}}</td>
-            <td>{{booking.estimatedSalesPerMonth}}</td>
-            <td>{{booking.noOfSpacesListed}}</td>
-            <td>{{booking.noOfSpacesListed}}</td>
-            <td><button (click)="goToIndividualStoreForShelfSelection()">View Shelves</button></td>
-        </tr>
-    </tbody>
-</table> -->
-
-<ngb-accordion [closeOthers]="true">
-    <ngb-panel *ngFor="let store of storesList; let i = index">
-        <ng-template ngbPanelTitle>
-            <span>{{store.storeName}} - Location: {{store.location}} - Total Area: {{store.storeAreaInSft}}
-                sft</span>
-        </ng-template>
-        <ng-template ngbPanelContent>
-            <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-shelves-tab" data-toggle="tab" href="#nav-shelves"
-                        role="tab" aria-controls="nav-shelves" aria-selected="true">Shelves</a>
-                    <a class="nav-item nav-link" id="nav-store-details-tab" data-toggle="tab" href="#nav-store-details"
-                        role="tab" aria-controls="nav-store-details" aria-selected="false">Store Details</a>
-                </div>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-shelves" role="tabpanel"
-                    aria-labelledby="nav-shelves-tab">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Shelf Type</th>
-                                <th scope="col">Current Category</th>
-                                <th scope="col">Area(Sft)</th>
-                                <th scope="col">Cost per sft</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let shelf of store.shelves; let j = index">
-                                <td>{{shelf.shelfTypeName}}</td>
-                                <td>{{shelf.currentCategoryName}}</td>
-                                <td>{{shelf.areaInSft}}</td>
-                                <td>{{shelf.costPerSft}}</td>
-                                <th scope="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" 
-                                        [(ngModel)]="shelf.isSelected" 
-                                        (change)="onCheckboxChange(shelf.isSelected,shelf.shelfId,store.storeId)"
-                                        id="flexCheckDefault"/>
-                                    </div>
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="tab-pane fade" id="nav-store-details" role="tabpanel"
-                    aria-labelledby="nav-store-details-tab">
+<div *ngIf="!showFinalCartResults">
+    <h3 class="text-center" *ngIf="storesList.length==0">No items added to the cart</h3>
+    <ngb-accordion [closeOthers]="true">
+        <ngb-panel *ngFor="let store of storesList; let i = index">
+            <ng-template ngbPanelTitle>
+                <span>{{store.storeName}} - Location: {{store.location}} - Total Area: {{store.storeAreaInSft}}
+                    sft</span>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-shelves-tab" data-toggle="tab" href="#nav-shelves"
+                            role="tab" aria-controls="nav-shelves" aria-selected="true">Shelves</a>
+                        <a class="nav-item nav-link" id="nav-store-details-tab" data-toggle="tab"
+                            href="#nav-store-details" role="tab" aria-controls="nav-store-details"
+                            aria-selected="false">Store Details</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-shelves" role="tabpanel"
+                        aria-labelledby="nav-shelves-tab">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Shelf Type</th>
+                                    <th scope="col">Current Category</th>
+                                    <th scope="col">Area(Sft)</th>
+                                    <th scope="col">Cost(Sft)/Month</th>
+                                    <th scope="col">Booking Days</th>
+                                    <th scope="col">Cost of Booking</th>
+                                    <th scope="col">Select Space</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let shelf of store.shelves; let j = index">
+                                    <td>{{shelf.shelfTypeName}}</td>
+                                    <td>{{shelf.currentCategoryName}}</td>
+                                    <td>{{shelf.areaInSft}}</td>
+                                    <td>{{shelf.costPerSft| currency:'INR':true}}</td>
+                                    <td>{{bookingDaysCount}}</td>
+                                    <td>{{(shelf.costPerSft*shelf.areaInSft*bookingDaysCount/30)| currency:'INR':true}}
+                                    </td>
+                                    <td scope="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox"
+                                                [(ngModel)]="shelf.isSelected"
+                                                (change)="onCheckboxChange(store, shelf, shelf.isSelected)"
+                                                id="flexCheckDefault" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="nav-store-details" role="tabpanel"
+                        aria-labelledby="nav-store-details-tab">
                         <h3 class="text-center">Read Only View of Store Details</h3>
+                    </div>
                 </div>
-            </div>
-        </ng-template>
-    </ngb-panel>
-</ngb-accordion>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
 
-<button class="btn blue-btn add-space mt-2 px-5" style="background-color: burlywood;">Proceed to Payment</button>
+    <button class="btn blue-btn add-space mt-2 px-5 text-center" style="background-color: burlywood;"
+        *ngIf="storesList.length!=0" (click)="onProceedToPaymentClick()">
+        Proceed to Payment
+    </button>
+</div>
+
+<div *ngIf="showFinalCartResults">
+    <div>
+        <div>Booking Start Date : {{bookingStartDate}}</div>
+        <div>Booking End Date : {{bookingEndDate}}</div>
+        <div>Total Cost of Booking : {{totalCostOfBooking|currency:'INR':true}}</div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Store Details</th>
+                <th scope="col">Area(Sft)</th>
+                <th scope="col">Cost(Sft)/Month</th>
+                <th scope="col">Booking Days</th>
+                <th scope="col">Cost of Booking</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of finalBookingsList; let j = index">
+                <td>{{booking.storeId}}-{{booking.bookingLedger.storeName}}</td>
+                <td>{{booking.bookingLedger.areaInSft}}</td>
+                <td>{{booking.bookingLedger.costPerSft | currency:'INR':true}}</td>
+                <td>{{bookingDaysCount}}</td>
+                <td>{{(booking.bookingLedger.costPerSft*booking.bookingLedger.areaInSft*bookingDaysCount/30)|
+                    currency:'INR':true}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <div><h2>Total Cost of Booking : {{totalCostOfBooking|currency:'INR':true}}</h2></div>
+    </div>
+    <button class="btn blue-btn add-space mt-2 px-5 text-center" style="background-color: burlywood;"
+        (click)="onCompleteBooking()">
+        Complete Booking
+    </button>
+</div>

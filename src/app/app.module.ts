@@ -2,7 +2,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomepageComponent } from './brand/homepage/homepage.component';
@@ -23,7 +23,6 @@ import { BookingsComponent } from './retailer/bookings/bookings.component';
 import { ShelvesComponent } from './retailer/shelves/shelves.component';
 import { RetailHomeComponent } from './retailer/retail-home/retail-home.component';
 import { StoreHomeComponent } from './brand/store-home/store-home.component';
-import { StoreShelvesComponent } from './brand/store-shelves/store-shelves.component';
 import { StoreBookingsComponent } from './brand/store-bookings/store-bookings.component';
 import { AllBookingsComponent } from './brand/all-bookings/all-bookings.component';
 import { StoreCartComponent } from './brand/store-cart/store-cart.component';
@@ -32,6 +31,11 @@ import { BrandRegistrationComponent } from './brand/brand-registration/brand-reg
 import { RetailSubHomeComponent } from './retailer/retail-sub-home/retail-sub-home.component';
 import { ConfirmedBookingsComponent } from './retailer/confirmed-bookings/confirmed-bookings.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FinalCheckoutComponent } from './brand/final-checkout/final-checkout.component';
+import { ImageViewerComponent } from './common/image-viewer/image-viewer.component';
+import { StoreDetailsViewComponent } from './brand/store-details-view/store-details-view.component';
+import { ShelfDetailsViewComponent } from './brand/shelf-details-view/shelf-details-view.component';
+import { CampaignsComponent } from './brand/campaigns/campaigns.component';
 
 @NgModule({
   declarations: [
@@ -52,13 +56,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LandingPageComponent,
     RetailHomeComponent,
     StoreHomeComponent,
-    StoreShelvesComponent,
     StoreBookingsComponent,
     AllBookingsComponent,
     StoreCartComponent,
     BrandRegistrationComponent,
     RetailSubHomeComponent,
-    ConfirmedBookingsComponent
+    ConfirmedBookingsComponent,
+    FinalCheckoutComponent,
+    ImageViewerComponent,
+    StoreDetailsViewComponent,
+    ShelfDetailsViewComponent,
+    CampaignsComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +79,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BsDatepickerModule.forRoot(),
     NgbModule
   ],
-  providers: [BsDatepickerConfig, AppInitService,
+  providers: [BsDatepickerConfig, AppInitService, DatePipe,
     {
       provide: APP_INITIALIZER,
       useFactory: init,
