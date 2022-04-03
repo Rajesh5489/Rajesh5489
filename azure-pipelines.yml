@@ -12,7 +12,8 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '12.x'
+    checkLatest: true
   displayName: 'Install Node.js'
 
 - script: |
@@ -23,6 +24,6 @@ steps:
 - task: AzureStaticWebApp@0
   inputs:
       app_location: "/" 
-      output_location: "dist/retail"
+      output_location: "dist/primeui"
   env:
       azure_static_web_apps_api_token: $(deployment_token)
