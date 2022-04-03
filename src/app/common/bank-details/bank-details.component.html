@@ -1,0 +1,31 @@
+<div class="form-row  d-flex">
+    <form [formGroup]="bankDetailsForm" class="m-4">
+        <div class="row">
+            <div class="col-12">
+                <h6>BANK DETAILS</h6>
+                <small class="f-12 text-muted">(Your earnings will be transfered to this account)</small>
+                <div class="form-group">
+                    <div class=" mb-3">
+                        <select id="bank" class="form-control form-select" formControlName="bankName" placeholder="Bank Name">
+                            <option [value]="">-- Select --</option>
+                            <option *ngFor="let bank of banks" [value]="bank">{{bank}}</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input formControlName="branch" type="text" class="form-control" placeholder="Branch">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input formControlName="accountNumber" type="text" class="form-control"
+                            placeholder="Account Number">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input formControlName="ifsc" type="text" class="form-control" placeholder="IFSC Code">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input formControlName="upi" type="text" class="form-control" placeholder="UPI Id">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-color" (click)="addBankDetails()" disabled="disableBankEdit">{{bankSaveEdit}}</button>
+    </form>

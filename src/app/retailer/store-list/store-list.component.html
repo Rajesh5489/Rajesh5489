@@ -1,0 +1,66 @@
+<div class="mx-4" *ngIf="!showAddStoreView">
+    <div class="mx-4">
+        <h2 class="py-2 border-btm text-center">
+            Retailer - Stores & Branches
+        </h2>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Store Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Store Area</th>
+                <th scope="col">Pictures</th>
+                <th scope="col">Shelf Spaces</th>
+                <!-- <th scope="col">Wall Space</th> -->
+                <th scope="col">Total Bookings</th>
+                <th scope="col">Total Revenues</th>
+                <th scope="col">End Of Engagement</th>
+                <th scope="col">Ad spaces</th>
+                <th scope="col">Bookings</th>
+                <th scope="col">More</th>
+                <!-- <th scope="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                </div>
+            </th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of bookingsList; let i=index">
+                <td>{{booking.storeName}}</td>
+                <td>{{booking.location}}</td>
+                <td>{{booking.city}}</td>
+                <td>{{booking.state}}</td>
+                <td>{{booking.storeAreaInSft}}</td>
+                <td>No Pictures!</td>
+                <td>N/A</td>
+                <td>{{booking.totalBookingsInStore}}</td>
+                <td>{{booking.totalRevenueAmountFromStore}}</td>
+                <td>{{booking.endOfEngagementDate}}</td>
+                <td><button (click)="editSpace(booking.storeId, booking.storeName, booking.location)">Manage</button></td>
+                <td><button (click)="editBookings(booking.storeId, booking.storeName, booking.location)">View</button></td>
+                <td><button (click)="editStore(booking.storeId, booking.storeName, booking.location)">View</button></td>
+                <!-- <th scope="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                </div>
+            </th> -->
+            </tr>
+        </tbody>
+    </table>
+    <div class="row d-flex justify-content-end">
+        <div class="col-2">
+            <button class="btn btn-color mr-2 w-100" type=submit (click)="addStore()">Add more store </button>
+        </div>
+        <!-- <div class="col-2">
+            <button class="btn btn-color mr-2 w-100" type=submit>Save & close</button>
+        </div> -->
+    </div>
+</div>
+
+<div claass="mx-4" *ngIf="showAddStoreView">
+    <app-store-details (showAddStoreView)="checkForShowAddStoreView($event)"></app-store-details>
+</div>

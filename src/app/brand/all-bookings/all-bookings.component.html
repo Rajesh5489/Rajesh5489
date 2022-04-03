@@ -1,0 +1,30 @@
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Booking Id</th>
+                <th scope="col">Store Id</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Booking Status</th>
+                <th scope="col">Booking Cost</th>
+                <th scope="col">Store Details</th>
+                <th scope="col">Shelf Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of bookingDetails">
+                <td>{{booking.bookingId}}</td>
+                <td>{{booking.storeId}}</td>
+                <td>{{booking.startDate| date:'mediumDate'}}</td>
+                <td>{{booking.endDate| date:'mediumDate'}}</td>
+                <td>{{booking.bookingStatus}}</td>
+                <td>{{booking.totalAmount| currency:'INR':true}}</td>
+                <td>
+                    <button (click)="onViewStoreDetailsClick(booking.storeId)">View</button>
+                </td>
+                <td><button (click)="onViewShelfDetailsClick(booking.shelfId)">View</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

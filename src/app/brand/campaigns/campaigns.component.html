@@ -1,0 +1,63 @@
+<div class="section">
+    <div class="container-fluid">
+        <h2 class="mx-3 py-2 border-btm">
+            Add New Campaign
+        </h2>
+        <form [formGroup]="registrationForm" class="m-4">
+            <div class="row justify-content-center">
+                <div class="col-5">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Campaign Name<span class="text-danger"> * </span></label>
+                            <input id="name" formControlName="name" type="text" class="form-control"
+                                placeholder="Campaign Name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Start Date<span class="text-danger"> * </span></label>
+                            <input formControlName="startDate" type="text" class="form-control" placeholder="Start Date"
+                                [bsConfig]="{ minMode:'month', adaptivePosition: true, dateInputFormat: 'MMMM YYYY' }"
+                                bsDatepicker required>
+
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="mr-3">End Date<span class="text-danger"> * </span></label>
+                            <input formControlName="endDate" type="text" class="form-control" placeholder="End Date"
+                                [bsConfig]="{ minMode:'month', adaptivePosition: true, dateInputFormat: 'MMMM YYYY' }"
+                                bsDatepicker required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Product Name<span class="text-danger"> * </span></label>
+                            <input id="productName" formControlName="productName" type="text" class="form-control"
+                                placeholder="Product Name" required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Product Category<span class="text-danger"> * </span></label>
+                            <select id="productCategory" class="form-control form-select" formControlName="productCategory" required>
+                                <option *ngFor="let category of productCategories" [value]="category.id">
+                                    {{category.name}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Campaign Objective<span class="text-danger"> * </span></label>
+                            <input id="objective" formControlName="objective" type="textarea"
+                                class="form-control" placeholder="Campaign Objective" required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="mr-3">Campaign Description<span class="text-danger"> * </span></label>
+                            <input id="description" formControlName="description" type="textarea"
+                                class="form-control" placeholder="Campaign Description" required>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-color float-right" (click)="createCampaign()" type=submit>Create Campaign</button>
+            <h3 class="text-danger">{{sampleMessage}}</h3>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="mx-4">
+    <div class="mx-4">
+        <div>
+            <h2 class="py-2 border-btm text-center" *ngIf="bookingType === statusType.Requested">
+                Requested bookings
+            </h2>
+            <!-- <h2 class="py-2 border-btm" *ngIf="bookingType === statusType.Booked">
+                Retailer Confirmed bookings
+            </h2>
+            <h2 class="py-2 border-btm" *ngIf="bookingType === statusType.Rejected">
+                Retailer Rejected bookings
+            </h2> -->
+        </div>
+        <div class="row">
+            <!-- <div class="col-6">
+                <button class="btn btn-color shelf-btn">Shelf</button>
+                <button class="btn btn-color wall-btn">Wall</button>
+            </div> -->
+            <div class="col-6 d-flex justify-content-end" *ngIf="bookingType === statusType.Requested">
+                <button class="btn btn-color accept-btn" (click)="approveBookings('Approved')">Accept</button>
+                <button class="btn btn-color" (click)="approveBookings('Rejected')">Reject</button>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Custom name of space</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Client Name</th>
+                <th scope="col">Booking category</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Prohitbited categories</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of bookingDetails">
+                <td>{{booking.bookingLedger.customName}}</td>
+                <td>{{booking.startDate}}</td>
+                <td>{{booking.endDate}}</td>
+                <td>{{booking.clientName}}</td>
+                <td>{{booking.bookingLedger.categoryName}}</td>
+                <td>{{booking.bookingAmount}}</td>
+                <td>{{booking.bookingLedger.prohibitedCategories}}</td>
+            </tr>
+            <tr>
+                <td>Larry the Bird</td>
+                <td>@twitter</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>@twitter</td>
+                <td>Jacob</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <div class="row d-flex justify-content-end">
+        <div class="col-3" *ngIf="bookingType === statusType.Requested">
+            <button class="btn btn-color mr-2 w-100" type=submit (click)="openConfirmedBooking()">Go to confirmed
+                booking</button>
+        </div>
+    </div> -->
+</div>

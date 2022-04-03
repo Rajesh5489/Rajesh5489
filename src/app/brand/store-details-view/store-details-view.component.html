@@ -1,0 +1,87 @@
+<div class="section">
+    <div class="container-fluid">
+        <div class="modal-header">
+            <h4 class="modal-title fs-32 text-bold" translate>{{storeDetails.storeName}} Store Details</h4>
+            <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="m-4 modal-body">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Store ID :</span>
+                        <span class="text-center col-3">{{storeDetails.storeId}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Store Name :</span>
+                        <span class="text-center col-3">{{storeDetails.storeName}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Store Location :</span>
+                        <span class="text-center col-3">{{storeDetails.location}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">City :</span>
+                        <span class="text-center col-3">{{storeDetails.city}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">State :</span>
+                        <span class="text-center col-3">{{storeDetails.state}}</span>
+
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Country :</span>
+                        <span class="text-center col-3">{{storeDetails.country}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">PIN Code :</span>
+                        <span class="text-center col-3">{{storeDetails.pinCode}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Store Address :</span>
+                        <span class="text-center col-3">{{storeDetails.fullAddress}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Manager Contact Name :</span>
+                        <span class="text-center col-3">{{storeDetails.managerContactName}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Manager Contact Number :</span>
+                        <span class="text-center col-3">{{storeDetails.managerContactNumber}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Manager Email Address :</span>
+                        <span class="text-center col-3">{{storeDetails.managerEmailAddress}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Store Contact Number :</span>
+                        <span class="text-center col-3">{{storeDetails.storeContactNumber}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Store Area In SFT :</span>
+                        <span class="text-center col-3">{{storeDetails.areaInSft}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Store GSTIN :</span>
+                        <span class="text-center col-3">{{storeDetails.gstin}}</span>
+                    </div>
+                    <div class=" mb-3">
+                        <span class="col-3 text-bold">Projected Footfall per Month :</span>
+                        <span class="text-center col-3">{{storeDetails.projectedFootfallPerMonth}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Estimated Sales per Month :</span>
+                        <span class="text-center col-3">{{storeDetails.estimatedSalesPerMonth}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

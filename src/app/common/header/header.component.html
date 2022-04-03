@@ -1,0 +1,41 @@
+<header class="header">
+    <nav class="navbar navbar-expand-lg py-3">
+        <div class="row d-contents mx-1"><a href="#" class="navbar-brand text-uppercase font-weight-bold col-4">PRIME
+                SHELF</a>
+            <!-- <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button> -->
+
+            <!-- <div id="navbarSupportedContent" class="collapse navbar-collapse flex-row-reverse col-8">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="/homePage"
+                            class="nav-link text-uppercase font-weight-bold">Home <span
+                                class="sr-only">(current)</span></a></li>
+                    <li class="nav-item"><a [routerLink]="['/storedetails']"
+                            class="nav-link text-uppercase font-weight-bold">Add-Stores</a></li>
+                    <li class="nav-item"><a [routerLink]="['/addSpaces']"
+                            class="nav-link text-uppercase font-weight-bold">Add-Shelves</a></li>
+                    <li class="nav-item"><a [routerLink]="['']" class="nav-link text-uppercase font-weight-bold">Portfolio</a></li>
+                    <li class="nav-item"><a [routerLink]="['']" class="nav-link text-uppercase font-weight-bold">Contact</a></li>
+                </ul>
+            </div> -->
+
+
+            <div id="navbarSupportedContent" class="collapse navbar-collapse flex-row-reverse col-8">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a [routerLink]="['/retailer-registration']"
+                            class="nav-link text-uppercase font-weight-bold">Retailer Registration</a></li>
+                    <li class="nav-item"><a [routerLink]="['/brand-registration']"
+                            class="nav-link text-uppercase font-weight-bold">Brand Registration</a></li>
+
+
+                    <li class="nav-item" *ngIf="!appStateService.retailerOrBrandId"><a [routerLink]="['/login']"
+                            class="nav-link text-uppercase font-weight-bold">Login</a></li>
+                    <li class="nav-item" *ngIf="appStateService.retailerOrBrandId"><a (click)="logout()"
+                            class="nav-link text-uppercase font-weight-bold">Logout</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>

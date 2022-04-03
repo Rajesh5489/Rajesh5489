@@ -1,0 +1,44 @@
+<div class="mx-4">
+    <div class="mx-4">
+        <div>
+            <h2 class="py-2 border-btm text-center">
+                Confirmed bookings
+            </h2>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Custom name of space</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Client name</th>
+                <th scope="col">Booking Category</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Payment Status:</th>
+                <th scope="col">Prohitbited categories</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of confirmedBookings">
+                <td>{{booking.bookingLedger.customName}}</td>
+                <td>{{booking.startDate}}</td>
+                <td>{{booking.endDate}}</td>
+                <td>{{booking.clientName}}</td>
+                <td>{{booking.bookingLedger.categoryName}}</td>
+                <td>{{booking.bookingAmount}}</td>
+                <td>{{booking.bookingLedger.prohibitedCategories}}</td>
+            </tr>
+            <tr>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>@twitter</td>
+                <td>Jacob</td>
+                <td>@fat</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

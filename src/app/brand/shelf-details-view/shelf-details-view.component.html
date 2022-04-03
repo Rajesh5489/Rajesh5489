@@ -1,0 +1,27 @@
+<div class="section">
+    <div class="container-fluid">
+        <div class="modal-header">
+            <h4 class="modal-title fs-32 text-bold" translate>{{shelfDetails.shelfId}} Shelf Details</h4>
+            <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="m-4 modal-body">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Shelf ID :</span>
+                        <span class="text-center col-3">{{shelfDetails.shelfId}}</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="col-3 text-bold">Store Name :</span>
+                        <span class="text-center col-3">{{shelfDetails.currentCategoryName}}</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

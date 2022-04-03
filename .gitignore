@@ -31,7 +31,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
-
+dist/
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
@@ -360,3 +360,32 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+dist/retail/3rdpartylicenses.txt
+dist/retail/favicon.ico
+dist/retail/index.html
+dist/retail/layers-2x.8f2c4d11474275fbc161.png
+dist/retail/layers.416d91365b44e4b4f477.png
+dist/retail/main.9ac743f6788236c670f2.js
+dist/retail/marker-icon.2b3e1faf89f94a483539.png
+dist/retail/polyfills.14a19a196324a16405ca.js
+dist/retail/runtime.5c8e1ece7adfbe5d30ba.js
+dist/retail/scripts.1744a239550261b1066e.js
+dist/retail/styles.372a65d8c7284476ad56.css
+dist/retail/assets/front-view.jpg
+dist/retail/assets/godhala.jpg
+dist/retail/assets/In-store.jpg
+dist/retail/assets/layers-2x.png
+dist/retail/assets/layers.png
+dist/retail/assets/map-view.jpg
+dist/retail/assets/marker-icon-2x.png
+dist/retail/assets/marker-icon.png
+dist/retail/assets/marker-shadow.png
+dist/retail/assets/plus.png
+dist/retail/assets/retail.jpg
+dist/retail/assets/json/Environment.json
+dist/retail/assets/mapicons/blue-marker.svg
+dist/retail/assets/mapicons/red-marker.svg
+.browserslistrc
+.editorconfig
+dist/retail
+dist/retail/main.05a187aaf301686b0d10.js
